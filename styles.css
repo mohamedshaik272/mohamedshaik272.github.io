@@ -11,7 +11,7 @@
   --text-color: #e0e0e0;      /* Main text */
   --text-light: #ffffff;      /* Headings, active nav */
   --text-muted: #757575;      /* Footer, less important text */
-  --accent-color: #f2be63;    /* Links, highlights, accents */
+  --accent-color: #60a5fa;    /* Links, highlights, accents */
 }
 
 html {

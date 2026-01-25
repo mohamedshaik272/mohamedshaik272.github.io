@@ -26,6 +26,7 @@
     <div class="container">
         <section id="projects" class="section">
             <h1>Projects</h1>
+
             <!-- Parkinson's Care VR System -->
             <div class="project-item">
                 <div class="proj-header">
@@ -51,12 +52,10 @@
                 <div class="award">Georgetown University H2AI Hackathon: 1st Place Grand Prize & Patient Safety Award
                 </div>
                 <ul>
-                    <li>Architected VR-based medical assessment tool for Parkinson's patients, integrating Unity with
-                        TensorFlow ML models to process four concurrent biometric streams for real-time symptom
-                        quantification with 92% clinical accuracy.</li>
-                    <li>Designed event-driven architecture for doctor-patient remote monitoring, connecting VR sensors
-                        to Python backend via WebSocket protocol to enable sub-100ms latency for medical data
-                        visualization.</li>
+                    <li>Built a VR tool for Parkinson's assessment that tracks movement and voice data using Unity and
+                        TensorFlow, achieving 92% accuracy in symptom detection.</li>
+                    <li>Connected VR sensors to a Python backend for real-time doctor monitoring with under 100ms
+                        latency.</li>
                 </ul>
             </div>
 
@@ -85,12 +84,10 @@
                 <div class="award">PatriotHacks 2024: Triple Winner (Patriot Favorite, Most Likely to be a Startup, Best
                     Cyberpunk Theme)</div>
                 <ul>
-                    <li>Engineered dual-purpose cleanup robot and file organizer, combining autonomous waste detection
-                        with LLM-powered digital file management to achieve 95% classification accuracy through custom
-                        prompt engineering.</li>
-                    <li>Implemented hardware abstraction layer for physical robot navigation, bridging Python computer
-                        vision models with C++ microcontroller firmware for real-time object detection on embedded
-                        systems.</li>
+                    <li>Built a robot that detects and picks up trash, plus a file organizer that uses GPT-4 to
+                        categorize files with 95% accuracy.</li>
+                    <li>Wrote the code connecting Python vision models to C++ microcontroller firmware for real-time
+                        navigation.</li>
                 </ul>
             </div>
 
@@ -117,12 +114,10 @@
                 </div>
                 <div class="award">HackOverflow 2024: Best Robot Hack Winner</div>
                 <ul>
-                    <li>Built IoT child safety monitoring robot using Raspberry Pi computer vision and Arduino motor
-                        control, tracking toddler movements in real-time to detect dangerous situations and send instant
-                        alerts.</li>
-                    <li>Architected home safety system integrating OpenCV/Mediapipe pose detection with AWS IoT cloud
-                        alerts and ngrok live streaming, enabling parents to monitor and receive notifications remotely.
-                    </li>
+                    <li>Built a child safety robot using Raspberry Pi and Arduino that tracks toddler movements and
+                        alerts parents to dangerous situations.</li>
+                    <li>Added pose detection with OpenCV/Mediapipe and live streaming so parents can monitor remotely
+                        via AWS IoT.</li>
                 </ul>
             </div>
 
@@ -149,12 +144,10 @@
                 </div>
                 <div class="award">PatriotHacks 2023: Best AI-Powered Hack Winner</div>
                 <ul>
-                    <li>Developed accessibility navigation aid for visually impaired users, using CNN-ViT fusion
-                        architecture with ResNet-18 backbone to achieve 92% obstacle detection accuracy at 127ms
-                        inference time.</li>
-                    <li>Engineered spatial audio guidance system for blind navigation, integrating PyAudio 3D sound
-                        synthesis with custom haptic feedback to enable 96% successful navigation through complex
-                        environments.</li>
+                    <li>Built a navigation aid for visually impaired users using ResNet-18 for obstacle detection,
+                        achieving 92% accuracy at 127ms inference.</li>
+                    <li>Added spatial audio and haptic feedback to guide users through spaces, with 96% successful
+                        navigation in testing.</li>
                 </ul>
             </div>
 
@@ -176,11 +169,28 @@
                     <span class="skill">A* Algorithm</span>
                 </div>
                 <ul>
-                    <li>Built indoor navigation system for visually impaired users, converting 2D images to 3D point
-                        clouds using Hugging Face transformers and solving camera calibration challenges for real-time
-                        environmental mapping.</li>
-                    <li>Implemented safe path planning for obstacle avoidance, using custom A* algorithm on projected 2D
-                        occupancy grids to enable dynamic navigation with sub-5 second route computation.</li>
+                    <li>Built an indoor navigation system that converts 2D images to 3D point clouds using Hugging Face
+                        depth estimation models.</li>
+                    <li>Used A* pathfinding on 2D occupancy grids to plan safe routes around obstacles in under 5
+                        seconds.</li>
+                </ul>
+            </div>
+
+            <!-- Optical Character Recognition System -->
+            <div class="project-item">
+                <div class="proj-header">
+                    <div class="proj-title">Optical Character Recognition System</div>
+                </div>
+                <div class="tech-skills">
+                    <span class="skill">Python</span>
+                    <span class="skill">NumPy</span>
+                    <span class="skill">Scikit-learn</span>
+                    <span class="skill">KNN</span>
+                    <span class="skill">Machine Learning</span>
+                </div>
+                <ul>
+                    <li>Built a handwritten digit recognizer using KNN, achieving 98.66% accuracy and cutting training
+                        time from 26 to 8 minutes.</li>
                 </ul>
             </div>
         </section>
