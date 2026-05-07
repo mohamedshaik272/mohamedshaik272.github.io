@@ -4,7 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohamed Shaik - Projects</title>
+    <title>Projects</title>
+    <meta name="description" content="Selected software, hardware, and research projects by Mohamed Shaik.">
+    <meta name="theme-color" content="#121212">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mohamedshaik.com/projects.html">
+    <meta property="og:title" content="Projects — Mohamed Shaik">
+    <meta property="og:description" content="Selected software, hardware, and research projects.">
+    <meta property="og:image" content="https://www.mohamedshaik.com/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Aleo:wght@400;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
@@ -52,10 +61,12 @@
                 <div class="award">Georgetown University H2AI Hackathon: 1st Place Grand Prize & Patient Safety Award
                 </div>
                 <ul>
-                    <li>Built a VR tool for Parkinson's assessment that tracks movement and voice data using Unity and
-                        TensorFlow, achieving 92% accuracy in symptom detection.</li>
-                    <li>Connected VR sensors to a Python backend for real-time doctor monitoring with under 100ms
-                        latency.</li>
+                    <li>Won the H2AI Grand Prize ($6,000) and Patient Safety Award building a VR platform that diagnoses
+                        Parkinson's disease through movement and voice analysis, achieving 92% clinical accuracy and
+                        capturing 3x more patient data than traditional methods.</li>
+                    <li>Trained a TensorFlow model on motion and vocal biomarkers and built the Unity VR environment that
+                        captures patient interactions, delivering real-time diagnostic feedback with a live physician
+                        dashboard.</li>
                 </ul>
             </div>
 
@@ -144,10 +155,10 @@
                 </div>
                 <div class="award">PatriotHacks 2023: Best AI-Powered Hack Winner</div>
                 <ul>
-                    <li>Built a navigation aid for visually impaired users using ResNet-18 for obstacle detection,
-                        achieving 92% accuracy at 127ms inference.</li>
-                    <li>Added spatial audio and haptic feedback to guide users through spaces, with 96% successful
-                        navigation in testing.</li>
+                    <li>Engineered an indoor navigation system for visually impaired users using AI-powered depth sensing
+                        to map surroundings in real-time, achieving 91% spatial accuracy with 127ms response time.</li>
+                    <li>Implemented spatial audio to deliver precise directional sound cues for hands-free navigation,
+                        validated through user testing with 15 visually impaired participants.</li>
                 </ul>
             </div>
 
@@ -176,21 +187,19 @@
                 </ul>
             </div>
 
-            <!-- Optical Character Recognition System -->
+            <!-- OS/161 Kernel -->
             <div class="project-item">
                 <div class="proj-header">
-                    <div class="proj-title">Optical Character Recognition System</div>
+                    <div class="proj-title">OS/161 Kernel</div>
                 </div>
                 <div class="tech-skills">
-                    <span class="skill">Python</span>
-                    <span class="skill">NumPy</span>
-                    <span class="skill">Scikit-learn</span>
-                    <span class="skill">KNN</span>
-                    <span class="skill">Machine Learning</span>
+                    <span class="skill">C</span>
+                    <span class="skill">MIPS Assembly</span>
                 </div>
                 <ul>
-                    <li>Built a handwritten digit recognizer using KNN, achieving 98.66% accuracy and cutting training
-                        time from 26 to 8 minutes.</li>
+                    <li>Implemented synchronization primitives (locks, condition variables, reader-writer locks), system
+                        call interface for user program execution, and a virtual memory subsystem with TLB management,
+                        page replacement, and swapping within a Harvard-developed instructional OS kernel.</li>
                 </ul>
             </div>
         </section>
