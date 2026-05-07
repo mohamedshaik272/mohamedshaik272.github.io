@@ -6,12 +6,12 @@
 }
 
 :root {
-  --bg-color: #121212;        /* Main background */
-  --bg-secondary: #333;       /* Skill backgrounds, borders */
-  --text-color: #e0e0e0;      /* Main text */
-  --text-light: #ffffff;      /* Headings, active nav */
-  --text-muted: #757575;      /* Footer, less important text */
-  --accent-color: #60a5fa;    /* Links, highlights, accents */
+  --bg-color: #0a0a0c;        /* Neutral dark background */
+  --bg-secondary: #27272a;    /* Skill backgrounds, borders */
+  --text-color: #e4e4e7;      /* Body text */
+  --text-light: #fafafa;      /* Headings, active nav */
+  --text-muted: #a1a1aa;      /* Footer, less important text */
+  --accent-color: #34d399;    /* Emerald accent */
 }
 
 html {
