@@ -139,6 +139,14 @@ a.cite{text-decoration:none;border-bottom:1px dotted var(--accent);white-space:n
 <a class="sub" href="#w7-47">Sphere from an octahedron</a>
 <a class="sub" href="#w7-48">Bounding volumes, minmax testing and collision detection</a>
 <a class="sub" href="#w7-49">What the assignment practiced</a>
+<label><input type="checkbox" data-k="quizzes"><a href="#quizzes">Your quizzes</a></label>
+<a class="sub" href="#quizzes-51">Quiz 1. Setup and course intro</a>
+<a class="sub" href="#quizzes-52">Quiz 2. Models, primitives, events, framebuffers</a>
+<a class="sub" href="#quizzes-53">Quiz 3. Graphics hardware and the pipeline</a>
+<a class="sub" href="#quizzes-54">Quiz 4. Libraries, shaders, viewports, vectors</a>
+<a class="sub" href="#quizzes-55">Quiz 5. Rasterization</a>
+<a class="sub" href="#quizzes-56">Quiz 6. Attributes, fonts, antialiasing</a>
+<a class="sub" href="#quizzes-57">Quiz 7. 3D models</a>
 </nav>
 <main>
 <h1>CS 551 Study Guide</h1>
@@ -148,12 +156,13 @@ a.cite{text-decoration:none;border-bottom:1px dotted var(--accent);white-space:n
 <h2>Start here</h2>
 <p>CS 551 has no midterm exam. What's left is the weekly Canvas quizzes, the "Animation with Parallelism and Transformation" project due 10/18, and a 2-hour, open-book online final worth 30 points whose date isn't set yet. Every quiz so far has been multiple answer, multiple choice, matching or ordering, so the Check yourself questions at the end of each week are written in those formats.</p>
 <p>Each week follows the same pattern. Read <b>The idea</b> first for the plain version, then <b>What to know</b> for Chen's exact facts and code. Work the <b>Worked example</b> yourself before reading the steps. The orange <b>Easy to get wrong</b> box lists the wrong-but-tempting options Chen uses as distractors. The last part of each week covers what that week's assignment practiced, since the final is likely to ask about the same code. Citations like W5 p.12 mean Week 5's deck, slide 12.</p>
-<p>Since the final is open book, this page is also meant as the thing to keep open during it. The menu on the left jumps to any topic.</p>
+<p>Since the final is open book, this page is also meant as the thing to keep open during it. The menu on the left jumps to any topic, and Your quizzes at the bottom has every graded question with its key.</p>
 <table class="plan">
 <tr><th>Block</th><th>What to do</th></tr>
 <tr><td>1</td><td>Weeks 1 to 3. Know the GLEventListener events, the framebuffers and the pipeline order cold.</td></tr>
 <tr><td>2</td><td>Week 4 and Week 5. Do the dot and cross product examples and a Bresenham trace by hand.</td></tr>
 <tr><td>3</td><td>Week 6 and Week 7. Derive the distance formula and a normal from three points yourself.</td></tr>
+<tr><td>4</td><td>Your quizzes. Answer every question before opening it, and redo the five first-attempt misses.</td></tr>
 </table>
 <p>Tick a week off in the menu when you're done with it.</p>
 </section>
@@ -2052,6 +2061,472 @@ else gl.glDisable(GL_CULL_FACE);</code></pre>
   <details><summary>Matching. Match each call to its effect. (1) glEnable(GL_DEPTH_TEST) (2) glCullFace(GL_FRONT) with culling enabled (3) glPolygonMode(GL_FRONT_AND_BACK, GL_LINE) (4) glClear(GL_DEPTH_BUFFER_BIT) (5) glClearDepth(1). Effects are (A) only back-facing triangles get drawn (B) sets every depth to the back plane (C) turns on the z-buffer algorithm (D) sets the value used when the depth buffer is cleared (E) wireframe</summary><p>1-C (<a class="cite" href="slides/W7-13.jpg" data-s="W7-13">W7 p.13</a>), 2-A (<a class="cite" href="slides/W7-16.jpg" data-s="W7-16">W7 p.16</a>), 3-E (<a class="cite" href="slides/W7-15.jpg" data-s="W7-15">W7 p.15 to 16</a>), 4-B (<a class="cite" href="slides/W7-10.jpg" data-s="W7-10">W7 p.10</a>), 5-D (<a class="cite" href="slides/W7-09.jpg" data-s="W7-9">W7 p.9</a>).</p></details>
   <details><summary>Ordering. Put the z-buffer steps for one pixel in order. (a) compute the polygon's z at (x,y) (b) clear depth to the back plane (c) write the new depth and the color (d) compare with the stored depth</summary><p>(b), (a), (d), (c). Clearing happens per frame before drawing (<a class="cite" href="slides/W7-10.jpg" data-s="W7-10">W7 p.10</a>). For each pixel the polygon's z comes from its plane equation (<a class="cite" href="slides/W7-12.jpg" data-s="W7-12">W7 p.12</a>), it's compared with the depth buffer, and both buffers are written only if it's closer (<a class="cite" href="slides/W7-11.jpg" data-s="W7-11">W7 p.11</a>).</p></details>
   <details><summary>Multiple answer. About Chen's 3D models, which are true? (a) a cone raises the circle's center along z (b) a cylinder connects a circle at z = 0 and a circle at z = 1 with rectangles (c) the circle at depth 1 draws 8 triangles (d) glDrawArraysInstanced spreads the copies out on its own</summary><p>(a), (b) and (c) (<a class="cite" href="slides/W7-17.jpg" data-s="W7-17">W7 p.17 to 19</a>, <a class="cite" href="slides/W7-24.jpg" data-s="W7-24">W7 p.24 to 25</a>). (d) is false, because each copy has to be moved in the vertex shader using <code>gl_InstanceID</code> (<a class="cite" href="slides/W7-23.jpg" data-s="W7-23">W7 p.23</a>).</p></details>
+</div>
+</section>
+
+<section id="quizzes">
+<h2>Your quizzes</h2>
+<p class="slides">Quizzes 1 to 7 from Canvas, with the answer key and the reason for each answer</p>
+
+<p>These are all seven quizzes you've taken. Your kept score is 100% on every one, but four of them took a second or third attempt, and the questions you missed the first time are the ones most likely to trip you up again. Those are marked with an orange box. Pick your answers, then press <b>Check</b>. It marks the right options in green and anything wrong in red, then opens the explanation. Matching questions use a dropdown for each item, and ordering questions use a number dropdown. Each week's section above has the full explanation, so if a reason here doesn't click, go back to that week.</p>
+
+<p>The misses on first attempts were Eclipse vs JDK (Quiz 1), the order of primitive assembly and clipping (Quiz 3), bitmap fonts and the pixel distance formula (Quiz 6), and sphere collision (Quiz 7).</p>
+
+<div data-scope="0" data-slides="W1-3 W1-4 W1-5 W1-6 W1-7 W1-10 W2-6 W4-3" class="topic" id="quizzes-51"><h3>Quiz 1. Setup and course intro</h3>
+<p class="muted">Attempt 1 45/50, attempt 2 50/50.</p>
+<div class="mq" data-kind="multi">
+<p><b>1.</b> What you have learned in MATH 203? <span class="muted">(Multiple answer, pick all that apply)</span></p>
+<label class="opt" data-ok="1"><input type="checkbox" name="q1-1"> vector cross product and dot product</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q1-1"> Matrix multiplications</label>
+<label class="opt" data-ok="0"><input type="checkbox" name="q1-1"> Java programming</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q1-1"> Inverse of a matrix</label>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>Matrix multiplications, inverse of a matrix, cross and dot product.</b> MATH 203 is linear algebra, so Java isn't part of it. These are the prerequisites Chen uses for transformations later (<a class="cite" href="slides/W1-03.jpg" data-s="W1-3">W1 p.3</a>).</p></details>
+</div>
+<div class="mq" data-kind="multi">
+<p><b>2.</b> What you have learned in CS 310? <span class="muted">(Multiple answer, pick all that apply)</span></p>
+<label class="opt" data-ok="0"><input type="checkbox" name="q1-2"> 3D Transformation</label>
+<label class="opt" data-ok="0"><input type="checkbox" name="q1-2"> 3D Viewing</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q1-2"> Data Structure</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q1-2"> Java Programming</label>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>Java programming and data structures.</b> CS 310 is the data structures course. 3D viewing and transformation are what this course teaches (<a class="cite" href="slides/W1-03.jpg" data-s="W1-3">W1 p.3</a>).</p></details>
+</div>
+<div class="mq" data-kind="multi">
+<p><b>3.</b> What will you be able to do after taking this course? <span class="muted">(Multiple answer, pick all that apply)</span></p>
+<label class="opt" data-ok="1"><input type="checkbox" name="q1-3"> Implement 3D animations in Java</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q1-3"> Implement transparency, texture mapping, and other advanced graphics capabilities</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q1-3"> Utilize transformation and viewing for 3D animations</label>
+<label class="opt" data-ok="0"><input type="checkbox" name="q1-3"> Draw anything you can imagine</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q1-3"> Utilize GPU for lighting in 3D animation</label>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>Everything except "draw anything you can imagine".</b> The other four are the course outcomes listed on the Week 1 slides. "Anything you can imagine" is the overclaim distractor (<a class="cite" href="slides/W1-04.jpg" data-s="W1-4">W1 p.4</a>).</p></details>
+</div>
+<div class="mq" data-kind="single">
+<p><b>4.</b> What is the purpose of selecting Java Proposals in Eclipse under Window, Preferences, Java, Editor, Content Assist, Advanced <span class="muted">(Multiple choice)</span></p>
+<label class="opt" data-ok="0"><input type="radio" name="q1-4"> It doesn&#x27;t provide anything meaningful.</label>
+<label class="opt" data-ok="0"><input type="radio" name="q1-4"> It is supporting running faster.</label>
+<label class="opt" data-ok="1"><input type="radio" name="q1-4"> When you edit an object in the program, it comes up with method suggestions.</label>
+<label class="opt" data-ok="0"><input type="radio" name="q1-4"> It proposes data structure.</label>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>When you edit an object, Eclipse suggests its methods.</b> It's autocomplete. It doesn't make anything run faster or propose data structures (<a class="cite" href="slides/W1-10.jpg" data-s="W1-10">W1 p.10</a>).</p></details>
+</div>
+<div class="mq" data-kind="match">
+<p><b>5.</b> Matching the closest relations <span class="muted">(Matching)</span></p>
+<div class="mrow" data-ans="3"><span class="ml">JOGL</span><select><option value="">choose</option><option value="0">a software development environment used for developing Java applications</option><option value="1">an integrated development environment for Java programs</option><option value="2">a cross-language and cross-platform API for rendering 2D/3D objects</option><option value="3">a wrapper library that allows OpenGL to be programmed in Java</option></select></div>
+<div class="mrow" data-ans="2"><span class="ml">OpenGL</span><select><option value="">choose</option><option value="0">a software development environment used for developing Java applications</option><option value="1">an integrated development environment for Java programs</option><option value="2">a cross-language and cross-platform API for rendering 2D/3D objects</option><option value="3">a wrapper library that allows OpenGL to be programmed in Java</option></select></div>
+<div class="mrow" data-ans="1"><span class="ml">Eclipse</span><select><option value="">choose</option><option value="0">a software development environment used for developing Java applications</option><option value="1">an integrated development environment for Java programs</option><option value="2">a cross-language and cross-platform API for rendering 2D/3D objects</option><option value="3">a wrapper library that allows OpenGL to be programmed in Java</option></select></div>
+<div class="mrow" data-ans="0"><span class="ml">JDK</span><select><option value="">choose</option><option value="0">a software development environment used for developing Java applications</option><option value="1">an integrated development environment for Java programs</option><option value="2">a cross-language and cross-platform API for rendering 2D/3D objects</option><option value="3">a wrapper library that allows OpenGL to be programmed in Java</option></select></div>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>JOGL</b> is the wrapper library that lets OpenGL be programmed in Java. <b>OpenGL</b> is the cross-language, cross-platform API for rendering 2D and 3D. <b>Eclipse</b> is the integrated development environment (IDE) for Java programs. <b>JDK</b> is the software development kit used to develop Java applications, meaning the compiler and tools (<a class="cite" href="slides/W1-05.jpg" data-s="W1-5">W1 p.5 to 7</a>, <a class="cite" href="slides/W2-06.jpg" data-s="W2-6">W2 p.6</a>, <a class="cite" href="slides/W4-03.jpg" data-s="W4-3">W4 p.3</a>).</p>
+<div class="mine">Attempt 1 swapped Eclipse and JDK, 5/10. The way to keep them apart is that Eclipse is the editor you click around in, and the JDK is what actually compiles the code. Eclipse needs a JDK installed, not the other way round.</div></details>
+</div>
+</div>
+<div data-scope="1" data-slides="W2-3 W2-4 W2-7 W2-8 W2-9 W2-10 W3-13" class="topic" id="quizzes-52"><h3>Quiz 2. Models, primitives, events, framebuffers</h3>
+<p class="muted">70/70 on attempt 1.</p>
+<div class="mq" data-kind="multi">
+<p><b>1.</b> A real or imaginary object corresponds to <span class="muted">(Multiple answer, pick all that apply)</span></p>
+<label class="opt" data-ok="0"><input type="checkbox" name="q2-1"> a number</label>
+<label class="opt" data-ok="0"><input type="checkbox" name="q2-1"> a color</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q2-1"> an image displayed on the screen</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q2-1"> a model stored in the computer</label>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>An image on the screen and a model stored in the computer.</b> The object is described by a model (data), and rendering the model produces the image (<a class="cite" href="slides/W2-03.jpg" data-s="W2-3">W2 p.3</a>).</p></details>
+</div>
+<div class="mq" data-kind="single">
+<p><b>2.</b> A model is stored as <span class="muted">(Multiple choice)</span></p>
+<label class="opt" data-ok="0"><input type="radio" name="q2-2"> framebuffer</label>
+<label class="opt" data-ok="0"><input type="radio" name="q2-2"> image</label>
+<label class="opt" data-ok="0"><input type="radio" name="q2-2"> graphics library</label>
+<label class="opt" data-ok="1"><input type="radio" name="q2-2"> vertices and colors</label>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>Vertices and colors.</b> The framebuffer holds the image after rendering, which is the output, not the model (<a class="cite" href="slides/W2-03.jpg" data-s="W2-3">W2 p.3</a>).</p></details>
+</div>
+<div class="mq" data-kind="multi">
+<p><b>3.</b> A graphics library is <span class="muted">(Multiple answer, pick all that apply)</span></p>
+<label class="opt" data-ok="1"><input type="checkbox" name="q2-3"> an API (Application Programming Interface)</label>
+<label class="opt" data-ok="0"><input type="checkbox" name="q2-3"> a library of 2D or 3D images</label>
+<label class="opt" data-ok="0"><input type="checkbox" name="q2-3"> a set of models</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q2-3"> a set of graphics commands</label>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>An API and a set of graphics commands.</b> OpenGL is a set of functions you call to draw. It doesn't ship images or models (<a class="cite" href="slides/W2-04.jpg" data-s="W2-4">W2 p.4</a>).</p></details>
+</div>
+<div class="mq" data-kind="multi">
+<p><b>4.</b> A primitive stands for <span class="muted">(Multiple answer, pick all that apply)</span></p>
+<label class="opt" data-ok="1"><input type="checkbox" name="q2-4"> a line</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q2-4"> a point</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q2-4"> a triangle</label>
+<label class="opt" data-ok="0"><input type="checkbox" name="q2-4"> a 3D object</label>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>Point, line, triangle.</b> Primitives are the simple shapes OpenGL can draw directly. A 3D object is built out of many primitives (<a class="cite" href="slides/W2-04.jpg" data-s="W2-4">W2 p.4</a>).</p></details>
+</div>
+<div class="mq" data-kind="multi">
+<p><b>5.</b> GLEventListener waits for the following events in a loop <span class="muted">(Multiple answer, pick all that apply)</span></p>
+<label class="opt" data-ok="0"><input type="checkbox" name="q2-5"> window destroy</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q2-5"> reshape</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q2-5"> init</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q2-5"> display</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q2-5"> dispose</label>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>init, reshape, display, dispose.</b> Those are the four methods you implement. "Window destroy" isn't one of them, since closing the window triggers dispose (<a class="cite" href="slides/W2-07.jpg" data-s="W2-7">W2 p.7 to 9</a>).</p></details>
+</div>
+<div class="mq" data-kind="multi">
+<p><b>6.</b> Reshape event happens <span class="muted">(Multiple answer, pick all that apply)</span></p>
+<label class="opt" data-ok="0"><input type="checkbox" name="q2-6"> like init only once.</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q2-6"> After init is called.</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q2-6"> After the size of the display (area) is changed.</label>
+<label class="opt" data-ok="0"><input type="checkbox" name="q2-6"> After display is called.</label>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>After init is called, and after the drawing area's size changes.</b> It runs once at startup right after init, then again every time the window is resized, so it isn't once-only (<a class="cite" href="slides/W2-09.jpg" data-s="W2-9">W2 p.9</a>, <a class="cite" href="slides/W3-13.jpg" data-s="W3-13">W3 p.13</a>).</p></details>
+</div>
+<div class="mq" data-kind="match">
+<p><b>7.</b> Matching the closest relations <span class="muted">(Matching)</span></p>
+<div class="mrow" data-ans="2"><span class="ml">Back buffer</span><select><option value="">choose</option><option value="0">The video controller reads from it and sends the resulting image to the display.</option><option value="1">Front buffer and Back buffer</option><option value="2">Rasterization</option><option value="3">It happens after display() is called. That is, after rasterization is finished.</option></select></div>
+<div class="mrow" data-ans="1"><span class="ml">Framebuffers</span><select><option value="">choose</option><option value="0">The video controller reads from it and sends the resulting image to the display.</option><option value="1">Front buffer and Back buffer</option><option value="2">Rasterization</option><option value="3">It happens after display() is called. That is, after rasterization is finished.</option></select></div>
+<div class="mrow" data-ans="3"><span class="ml">Swap the buffers</span><select><option value="">choose</option><option value="0">The video controller reads from it and sends the resulting image to the display.</option><option value="1">Front buffer and Back buffer</option><option value="2">Rasterization</option><option value="3">It happens after display() is called. That is, after rasterization is finished.</option></select></div>
+<div class="mrow" data-ans="0"><span class="ml">Front buffer</span><select><option value="">choose</option><option value="0">The video controller reads from it and sends the resulting image to the display.</option><option value="1">Front buffer and Back buffer</option><option value="2">Rasterization</option><option value="3">It happens after display() is called. That is, after rasterization is finished.</option></select></div>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>Back buffer</b> is where rasterization draws. <b>Framebuffers</b> means the front and back buffer. <b>Swapping</b> happens after display() finishes, meaning after rasterization is done. <b>Front buffer</b> is what the video controller reads and sends to the screen. Drawing into the hidden back buffer and then swapping is what stops the flicker (<a class="cite" href="slides/W2-10.jpg" data-s="W2-10">W2 p.10</a>).</p></details>
+</div>
+</div>
+<div data-scope="2" data-slides="W3-7 W3-8 W3-9 W3-10 W3-13 W3-19 W3-20 W4-9 W5-4" class="topic" id="quizzes-53"><h3>Quiz 3. Graphics hardware and the pipeline</h3>
+<p class="muted">Attempts 56.667, 58.333, then 60/60.</p>
+<div class="mq" data-kind="multi">
+<p><b>1.</b> Which of the following steps are parallel programs? <span class="muted">(Multiple answer, pick all that apply)</span></p>
+<label class="opt" data-ok="0"><input type="checkbox" name="q3-1"> primitive assembly</label>
+<label class="opt" data-ok="0"><input type="checkbox" name="q3-1"> rasterization</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q3-1"> Fragment shader</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q3-1"> Vertex shader</label>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>Vertex shader and fragment shader.</b> The shaders are the programs that run in parallel on the GPU, one copy per vertex or per fragment. In Chen's course model, primitive assembly and rasterization are fixed steps the system does, not programs you write (<a class="cite" href="slides/W3-10.jpg" data-s="W3-10">W3 p.10</a>, <a class="cite" href="slides/W3-13.jpg" data-s="W3-13">W3 p.13</a>).</p></details>
+</div>
+<div class="mq" data-kind="order">
+<p><b>2.</b> Order the following activities in their timely order. <span class="muted">(Ordering, number them first to last)</span></p>
+<div class="mrow" data-ans="4"><select><option value="">#</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select><span class="ml">Vertex shader is called, parallel vertex processing (per vertex)</span></div>
+<div class="mrow" data-ans="1"><select><option value="">#</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select><span class="ml">init() is called once, initialize shader programs</span></div>
+<div class="mrow" data-ans="3"><select><option value="">#</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select><span class="ml">Display() is called once and again (for front and back buffers)</span></div>
+<div class="mrow" data-ans="2"><select><option value="">#</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select><span class="ml">reshape() is called once, and then after every reshape of the drawing area</span></div>
+<div class="mrow" data-ans="5"><select><option value="">#</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select><span class="ml">Primitive assembly is called for preparation on scan-conversion</span></div>
+<div class="mrow" data-ans="6"><select><option value="">#</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select><span class="ml">Fragment shader is called, parallel fragment processing (per pixel) for calculating each pixel color</span></div>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>init, reshape, display, vertex shader, primitive assembly, fragment shader.</b> init sets up the shaders once, reshape runs next, display issues the draw call, and then the pipeline runs per vertex, then per primitive, then per pixel (<a class="cite" href="slides/W3-13.jpg" data-s="W3-13">W3 p.13</a>).</p></details>
+</div>
+<div class="mq" data-kind="order">
+<p><b>3.</b> Order the rendering pipeline processing steps from the beginning to the end. <span class="muted">(Ordering, number them first to last)</span></p>
+<div class="mrow" data-ans="4"><select><option value="">#</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select><span class="ml">Clipping</span></div>
+<div class="mrow" data-ans="5"><select><option value="">#</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select><span class="ml">Rasterization</span></div>
+<div class="mrow" data-ans="2"><select><option value="">#</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select><span class="ml">Vertex Shader</span></div>
+<div class="mrow" data-ans="6"><select><option value="">#</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select><span class="ml">Fragment Shader</span></div>
+<div class="mrow" data-ans="3"><select><option value="">#</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select><span class="ml">Primitive Assembly</span></div>
+<div class="mrow" data-ans="1"><select><option value="">#</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select><span class="ml">Vertex Specification</span></div>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>Vertex specification, vertex shader, primitive assembly, clipping, rasterization, fragment shader.</b> (<a class="cite" href="slides/W3-10.jpg" data-s="W3-10">W3 p.10</a>, <a class="cite" href="slides/W3-19.jpg" data-s="W3-19">W3 p.19 to 20</a>)</p>
+<div class="mine">Attempt 1 swapped primitive assembly and clipping, losing 3.333 points. Clipping cuts a primitive against the boundary, so the vertices have to be assembled into a line or triangle first. You can't clip half a triangle that doesn't exist yet.</div></details>
+</div>
+<div class="mq" data-kind="multi">
+<p><b>4.</b> A per-vertex value means each vertex has its individual (maybe different) value for a primitive. Which values are possibly different among vertices? <span class="muted">(Multiple answer, pick all that apply)</span></p>
+<label class="opt" data-ok="0"><input type="checkbox" name="q3-4"> Color for a uniform-color primitive</label>
+<label class="opt" data-ok="0"><input type="checkbox" name="q3-4"> viewpoint</label>
+<label class="opt" data-ok="0"><input type="checkbox" name="q3-4"> light source positions</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q3-4"> vertex positions of the primitive</label>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>Only the vertex positions.</b> The light, the viewpoint and a single color for the whole primitive are the same for every vertex, so they're uniforms (<a class="cite" href="slides/W4-09.jpg" data-s="W4-9">W4 p.9</a>, <a class="cite" href="slides/W5-04.jpg" data-s="W5-4">W5 p.4</a>).</p></details>
+</div>
+<div class="mq" data-kind="multi">
+<p><b>5.</b> A graphics card, also called a video card, includes the following components. <span class="muted">(Multiple answer, pick all that apply)</span></p>
+<label class="opt" data-ok="0"><input type="checkbox" name="q3-5"> CPU</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q3-5"> Framebuffers</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q3-5"> GPU</label>
+<label class="opt" data-ok="0"><input type="checkbox" name="q3-5"> Display</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q3-5"> Video Controller</label>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>GPU, framebuffers, video controller.</b> The CPU is on the motherboard and the display is the monitor, both outside the card (<a class="cite" href="slides/W3-07.jpg" data-s="W3-7">W3 p.7 to 9</a>).</p></details>
+</div>
+<div class="mq" data-kind="multi">
+<p><b>6.</b> A uniform value means the value is the same for all vertices of a primitive (a red triangle has uniform color, but its vertex positions differ). Which values are uniform for all vertices? <span class="muted">(Multiple answer, pick all that apply)</span></p>
+<label class="opt" data-ok="0"><input type="checkbox" name="q3-6"> vertex positions for a triangle</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q3-6"> Color for a green triangle.</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q3-6"> a light source position for the vertices</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q3-6"> view position (viewpoint) for the vertices</label>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>Viewpoint, the green triangle's color, the light position.</b> This is question 4 turned around. Only the positions differ per vertex (<a class="cite" href="slides/W4-09.jpg" data-s="W4-9">W4 p.9</a>, <a class="cite" href="slides/W5-04.jpg" data-s="W5-4">W5 p.4</a>).</p></details>
+</div>
+</div>
+<div data-scope="3" data-slides="W4-3 W4-4 W4-5 W4-6 W4-7 W4-9 W4-14 W4-15 W4-18 W4-19 W3-16 W5-4" class="topic" id="quizzes-54"><h3>Quiz 4. Libraries, shaders, viewports, vectors</h3>
+<p class="muted">50/50 on attempt 1.</p>
+<div class="mq" data-kind="match">
+<p><b>1.</b> Matching the closest relations <span class="muted">(Matching)</span></p>
+<div class="mrow" data-ans="3"><span class="ml">GLUT</span><select><option value="">choose</option><option value="0">OpenGL shading language for parallel shader programming</option><option value="1">OpenGL library bound in Java</option><option value="2">A set of functions implemented in OpenGL to provide higher-level drawing routines for convenience</option><option value="3">A toolkit to make OpenGL programs run on different platforms (operating systems)</option></select></div>
+<div class="mrow" data-ans="2"><span class="ml">GLU</span><select><option value="">choose</option><option value="0">OpenGL shading language for parallel shader programming</option><option value="1">OpenGL library bound in Java</option><option value="2">A set of functions implemented in OpenGL to provide higher-level drawing routines for convenience</option><option value="3">A toolkit to make OpenGL programs run on different platforms (operating systems)</option></select></div>
+<div class="mrow" data-ans="1"><span class="ml">JOGL</span><select><option value="">choose</option><option value="0">OpenGL shading language for parallel shader programming</option><option value="1">OpenGL library bound in Java</option><option value="2">A set of functions implemented in OpenGL to provide higher-level drawing routines for convenience</option><option value="3">A toolkit to make OpenGL programs run on different platforms (operating systems)</option></select></div>
+<div class="mrow" data-ans="0"><span class="ml">GLSL</span><select><option value="">choose</option><option value="0">OpenGL shading language for parallel shader programming</option><option value="1">OpenGL library bound in Java</option><option value="2">A set of functions implemented in OpenGL to provide higher-level drawing routines for convenience</option><option value="3">A toolkit to make OpenGL programs run on different platforms (operating systems)</option></select></div>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>GLUT</b> is the toolkit that makes OpenGL programs run on different operating systems. <b>GLU</b> is a set of higher-level drawing routines built on OpenGL. <b>JOGL</b> is OpenGL bound into Java. <b>GLSL</b> is the OpenGL shading language for parallel shader programs (<a class="cite" href="slides/W4-03.jpg" data-s="W4-3">W4 p.3 to 7</a>).</p></details>
+</div>
+<div class="mq" data-kind="multi">
+<p><b>2.</b> A vertex shader is <span class="muted">(Multiple answer, pick all that apply)</span></p>
+<label class="opt" data-ok="0"><input type="checkbox" name="q4-2"> a CPU program that runs on the GPU, all vertices have the same vertex program and receive the same results</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q4-2"> a parallel program that runs on the GPU, each vertex has its own vertex shader with possibly unique per-vertex values received from the corresponding JOGL program</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q4-2"> a parallel program that runs on the GPU, each vertex has its own vertex shader with possibly same variable values received from the corresponding JOGL program</label>
+<label class="opt" data-ok="0"><input type="checkbox" name="q4-2"> a CPU program that runs on the GPU, all vertices have the same vertex program and receive different results by running it with different input serially</label>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>Both "parallel program that runs on the GPU" options.</b> Each vertex gets its own run of the shader. Uniforms give every vertex the same value, and per-vertex attributes give each its own, so both wordings are true. Anything calling it a CPU program or serial is wrong (<a class="cite" href="slides/W3-16.jpg" data-s="W3-16">W3 p.16</a>, <a class="cite" href="slides/W4-09.jpg" data-s="W4-9">W4 p.9</a>, <a class="cite" href="slides/W5-04.jpg" data-s="W5-4">W5 p.4</a>).</p></details>
+</div>
+<div class="mq" data-kind="match">
+<p><b>3.</b> Matching the closest relations <span class="muted">(Matching)</span></p>
+<div class="mrow" data-ans="3"><span class="ml">Viewports</span><select><option value="">choose</option><option value="0">The whole area in a frame for display</option><option value="1">the coordinates inside the viewport. It is logical because the viewport is within [-1, 1] along x and y, it is the vertex position to be displayed</option><option value="2">the pixel (fragment) location to be displayed in the window, corresponds to the physical window coordinates</option><option value="3">areas inside the display window</option></select></div>
+<div class="mrow" data-ans="2"><span class="ml">gl_FragCoord</span><select><option value="">choose</option><option value="0">The whole area in a frame for display</option><option value="1">the coordinates inside the viewport. It is logical because the viewport is within [-1, 1] along x and y, it is the vertex position to be displayed</option><option value="2">the pixel (fragment) location to be displayed in the window, corresponds to the physical window coordinates</option><option value="3">areas inside the display window</option></select></div>
+<div class="mrow" data-ans="1"><span class="ml">gl_Position</span><select><option value="">choose</option><option value="0">The whole area in a frame for display</option><option value="1">the coordinates inside the viewport. It is logical because the viewport is within [-1, 1] along x and y, it is the vertex position to be displayed</option><option value="2">the pixel (fragment) location to be displayed in the window, corresponds to the physical window coordinates</option><option value="3">areas inside the display window</option></select></div>
+<div class="mrow" data-ans="0"><span class="ml">Window</span><select><option value="">choose</option><option value="0">The whole area in a frame for display</option><option value="1">the coordinates inside the viewport. It is logical because the viewport is within [-1, 1] along x and y, it is the vertex position to be displayed</option><option value="2">the pixel (fragment) location to be displayed in the window, corresponds to the physical window coordinates</option><option value="3">areas inside the display window</option></select></div>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>Viewports</b> are areas inside the display window. <b>gl_FragCoord</b> is the pixel location in physical window coordinates. <b>gl_Position</b> is the vertex position in logical viewport coordinates, from -1 to 1 on x and y. <b>Window</b> is the whole display area of the frame (<a class="cite" href="slides/W4-14.jpg" data-s="W4-14">W4 p.14 to 15</a>).</p></details>
+</div>
+<div class="mq" data-kind="single">
+<p><b>4.</b> Which of the following is often used to find the angle between two vectors? <span class="muted">(Multiple choice)</span></p>
+<label class="opt" data-ok="1"><input type="radio" name="q4-4"> dot product of the two vectors</label>
+<label class="opt" data-ok="0"><input type="radio" name="q4-4"> multiplication of the two vectors</label>
+<label class="opt" data-ok="0"><input type="radio" name="q4-4"> cross product of the two vectors</label>
+<label class="opt" data-ok="0"><input type="radio" name="q4-4"> addition of the two vectors</label>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>The dot product.</b> \(\cos\theta = \frac{\mathbf a\cdot\mathbf b}{|\mathbf a||\mathbf b|}\) (<a class="cite" href="slides/W4-18.jpg" data-s="W4-18">W4 p.18</a>).</p></details>
+</div>
+<div class="mq" data-kind="single">
+<p><b>5.</b> Which of the following is used to find a vector that is perpendicular to the given two vectors? <span class="muted">(Multiple choice)</span></p>
+<label class="opt" data-ok="0"><input type="radio" name="q4-5"> dot product of the two vectors</label>
+<label class="opt" data-ok="0"><input type="radio" name="q4-5"> multiplication of the two vectors</label>
+<label class="opt" data-ok="1"><input type="radio" name="q4-5"> cross product of the two vectors</label>
+<label class="opt" data-ok="0"><input type="radio" name="q4-5"> addition of the two vectors</label>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>The cross product.</b> \(\mathbf a\times\mathbf b\) is perpendicular to both, and it's how you get a polygon's normal in Week 7 (<a class="cite" href="slides/W4-19.jpg" data-s="W4-19">W4 p.19</a>).</p></details>
+</div>
+</div>
+<div data-scope="4" data-slides="W3-10 W5-3 W5-4 W5-5 W5-7 W5-8 W5-9 W5-10 W5-11 W5-21 W5-22 W5-23 W5-28 W5-29 W5-30 W5-31 W5-32 W5-33 W5-34 W5-35 W5-36 W5-37 W5-38 W4-9 W7-4" class="topic" id="quizzes-55"><h3>Quiz 5. Rasterization</h3>
+<p class="muted">70/70 on attempt 1.</p>
+<div class="mq" data-kind="order">
+<p><b>1.</b> Order the pipeline activities in the computer and graphics hardware. <span class="muted">(Ordering, number them first to last)</span></p>
+<div class="mrow" data-ans="2"><select><option value="">#</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option></select><span class="ml">vertex shader: on the GPU side, shader programs process all vertices in parallel</span></div>
+<div class="mrow" data-ans="4"><select><option value="">#</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option></select><span class="ml">Clipping: on the CPU side, JOGL system cuts or modifies the primitive according to the given boundaries</span></div>
+<div class="mrow" data-ans="6"><select><option value="">#</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option></select><span class="ml">Fragment shader: on the GPU side, shader program calculates in parallel for all pixel&#x27;s colors that will be sent to the framebuffer</span></div>
+<div class="mrow" data-ans="7"><select><option value="">#</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option></select><span class="ml">Framebuffer: the output from the fragment shaders are sent to the corresponding pixel locations in the framebuffer for display</span></div>
+<div class="mrow" data-ans="5"><select><option value="">#</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option></select><span class="ml">Scan-conversion: on the CPU side, JOGL system calculates each pixel&#x27;s coordinates, color, and/or other interpolated values in the primitive</span></div>
+<div class="mrow" data-ans="3"><select><option value="">#</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option></select><span class="ml">Primitive assembly: on the CPU side, JOGL system puts the vertices back into the primitive(s) for further processing</span></div>
+<div class="mrow" data-ans="1"><select><option value="">#</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option></select><span class="ml">VAO/VBO: on the CPU side, JOGL program constructs per-vertex values of the primitive(s) in an array to be sent to the vertex shader</span></div>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>That order exactly.</b> The program fills the VBO, the vertex shader runs per vertex, the vertices are assembled into primitives, the primitives are clipped, scan-conversion finds their pixels, the fragment shader colors each pixel, and the results land in the framebuffer. It's Quiz 3's pipeline with the buffer at the start and the framebuffer at the end (<a class="cite" href="slides/W3-10.jpg" data-s="W3-10">W3 p.10</a>, <a class="cite" href="slides/W5-03.jpg" data-s="W5-3">W5 p.3</a>).</p></details>
+</div>
+<div class="mq" data-kind="single">
+<p><b>2.</b> What&#x27;s the difference between uniform variables and per-vertex variables through VBO? <span class="muted">(Multiple choice)</span></p>
+<label class="opt" data-ok="0"><input type="radio" name="q5-2"> Uniform and per-vertex values are the same. There is no difference.</label>
+<label class="opt" data-ok="0"><input type="radio" name="q5-2"> Per-vertex values can be sent as uniform as well. There is no difference.</label>
+<label class="opt" data-ok="1"><input type="radio" name="q5-2"> Uniform variable values are the same for all vertices, but per-vertex variable values are different for different vertices that are sent to the vertex shader to be processed in parallel.</label>
+<label class="opt" data-ok="0"><input type="radio" name="q5-2"> Uniform can be sent through VAO/VBO as per-vertex values. There is no difference.</label>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>Uniforms are the same for all vertices, per-vertex values can differ for each vertex.</b> Every "there is no difference" option is wrong (<a class="cite" href="slides/W4-09.jpg" data-s="W4-9">W4 p.9</a>, <a class="cite" href="slides/W5-04.jpg" data-s="W5-4">W5 p.4</a>).</p></details>
+</div>
+<div class="mq" data-kind="single">
+<p><b>3.</b> How many different algorithms do we need in the JOGL system for clipping? <span class="muted">(Multiple choice)</span></p>
+<label class="opt" data-ok="0"><input type="radio" name="q5-3"> It depends on how many different boundaries are specified for clipping. For example, if we clip against a cube, we need to develop a couple of algorithms for the cube.</label>
+<label class="opt" data-ok="1"><input type="radio" name="q5-3"> We need at most 3 algorithms for each kind of boundaries.</label>
+<label class="opt" data-ok="0"><input type="radio" name="q5-3"> There are so many different models, so we need many different algorithms.</label>
+<label class="opt" data-ok="0"><input type="radio" name="q5-3"> It is not clear how many algorithms we need.</label>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>At most 3, one for each kind of boundary.</b> The system only clips points, lines and polygons, so the count doesn't depend on how many models or boundaries you have (<a class="cite" href="slides/W7-04.jpg" data-s="W7-4">W7 p.4</a>, <a class="cite" href="slides/W5-32.jpg" data-s="W5-32">W5 p.32 to 39</a>).</p></details>
+</div>
+<div class="mq" data-kind="multi">
+<p><b>4.</b> Which of the following are correct about VBO (Vertex Buffer Object) <span class="muted">(Multiple answer, pick all that apply)</span></p>
+<label class="opt" data-ok="1"><input type="checkbox" name="q5-4"> The NIO FloatBuffer Class defines a container for per-vertex values, which is used to be uploaded into the graphics card memory and enables accelerated operations in the graphics hardware.</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q5-4"> Layouts in the vertex shader correspond to the active VBOs. It specifies the per-vertex values to be retrieved and used in the vertex shader that runs in parallel for the vertices.</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q5-4"> VBO provides methods for uploading per-vertex data (position, color, etc.) to the vertex shader in the graphics card for rendering. VBOs offer substantial performance gains because the data reside in the graphics card memory rather than system memory and so it can be rendered directly by the graphics hardware.</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q5-4"> glBufferData function uploads per-vertex values to the active VBO in the graphics card.</label>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>All four.</b> FloatBuffer holds the per-vertex values on the Java side, glBufferData uploads them to the active VBO on the card, each layout in the vertex shader reads one VBO, and the speedup comes from the data living in graphics memory (<a class="cite" href="slides/W5-07.jpg" data-s="W5-7">W5 p.7 to 11</a>).</p></details>
+</div>
+<div class="mq" data-kind="multi">
+<p><b>5.</b> In polygon scan-conversion algorithm, which of the following are true? <span class="muted">(Multiple answer, pick all that apply)</span></p>
+<label class="opt" data-ok="0"><input type="checkbox" name="q5-5"> The algorithm only works for convex polygon.</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q5-5"> ET (Edge Table) is built by going over the vertices of the polygon. It&#x27;s a table of the edges to facilitate the next step of the scan-line algorithm.</label>
+<label class="opt" data-ok="0"><input type="checkbox" name="q5-5"> The algorithm builds AET first, then ET, and then pairs of intersections.</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q5-5"> AET (Active Edge Table) corresponds to the current scan-line, which is for finding intersection endpoints of the scan-line with the edges. The endpoints are pairs to draw lines interior of the polygon.</label>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>The ET statement and the AET statement.</b> The ET is built first from all the edges, then the AET tracks the edges crossing the current scan-line, and its intersections are filled in pairs. It works for concave polygons too, which is the point of pairing intersections (<a class="cite" href="slides/W5-28.jpg" data-s="W5-28">W5 p.28 to 31</a>).</p></details>
+</div>
+<div class="mq" data-kind="single">
+<p><b>6.</b> Answer the following questions concerning per-vertex values. <span class="muted">(Multiple choice)</span></p>
+<label class="opt" data-ok="0"><input type="radio" name="q5-6"> All shaders receive the same value.</label>
+<label class="opt" data-ok="0"><input type="radio" name="q5-6"> The values are put into a buffer and sent as Uniform to the vertex shader.</label>
+<label class="opt" data-ok="1"><input type="radio" name="q5-6"> A per-vertex value is individual to a vertex. It may be different from vertex to vertex. For example, the positions of the vertices in a primitive.</label>
+<label class="opt" data-ok="0"><input type="radio" name="q5-6"> The values are also called Uniform.</label>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>A value individual to each vertex, like its position.</b> Anything calling it a uniform or "the same for all shaders" describes uniforms (<a class="cite" href="slides/W5-04.jpg" data-s="W5-4">W5 p.4 to 5</a>).</p></details>
+</div>
+<div class="mq" data-kind="multi">
+<p><b>7.</b> What can we say about Bresenham&#x27;s Line Algorithm? <span class="muted">(Multiple answer, pick all that apply)</span></p>
+<label class="opt" data-ok="0"><input type="checkbox" name="q5-7"> It is a parallel algorithm for finding multiple pixels on the line.</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q5-7"> The decision factor in each iteration is updated by an integer addition.</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q5-7"> The decision factor is derived from the line equation.</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q5-7"> It is an iteration of finding the next pixel (EAST or NORTHEAST) on the line by a decision factor.</label>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>Everything except "parallel".</b> Bresenham walks one pixel at a time, and each step depends on the decision factor from the step before, so it's sequential (<a class="cite" href="slides/W5-21.jpg" data-s="W5-21">W5 p.21 to 23</a>).</p></details>
+</div>
+</div>
+<div data-scope="5" data-slides="W6-3 W6-4 W6-6 W6-7 W6-8 W6-14 W6-19 W6-20 W4-17" class="topic" id="quizzes-56"><h3>Quiz 6. Attributes, fonts, antialiasing</h3>
+<p class="muted">Attempt 1 33.333/50, attempt 2 50/50.</p>
+<div class="mq" data-kind="multi">
+<p><b>1.</b> Which of the following are true about bitmap fonts? <span class="muted">(Multiple answer, pick all that apply)</span></p>
+<label class="opt" data-ok="1"><input type="checkbox" name="q6-1"> font library requires space to store variations of fonts.</label>
+<label class="opt" data-ok="0"><input type="checkbox" name="q6-1"> each font shape is represented by lines and curves.</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q6-1"> each character (specific size and typeface) corresponds to one rectangular grid pattern.</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q6-1"> binary values in a rectangular area</label>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>Library needs space for variations, one rectangular grid per character, binary values in a rectangular area.</b> A bitmap font stores each character at each size as a grid of on and off pixels. Every size and style needs its own grid, which is why it takes storage (<a class="cite" href="slides/W6-03.jpg" data-s="W6-3">W6 p.3 to 4</a>).</p>
+<div class="mine">Attempt 1 picked "lines and curves" and missed "binary values", 3.333/10. Lines and curves describe outline fonts. Bitmap means bits, a grid of 0s and 1s.</div></details>
+</div>
+<div class="mq" data-kind="multi">
+<p><b>2.</b> Which of the following are true about outline fonts? <span class="muted">(Multiple answer, pick all that apply)</span></p>
+<label class="opt" data-ok="1"><input type="checkbox" name="q6-2"> Require time for scan-conversion instead of copying</label>
+<label class="opt" data-ok="0"><input type="checkbox" name="q6-2"> are mostly stored in a font library.</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q6-2"> Represented by lines and curves</label>
+<label class="opt" data-ok="0"><input type="checkbox" name="q6-2"> are generated by copying rectangular images</label>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>Need scan-conversion time, represented by lines and curves.</b> This is question 1 flipped. Outline fonts are shapes that have to be rasterized, while bitmap fonts are just copied (<a class="cite" href="slides/W6-03.jpg" data-s="W6-3">W6 p.3</a>).</p></details>
+</div>
+<div class="mq" data-kind="match">
+<p><b>3.</b> Matching the closest <span class="muted">(Matching)</span></p>
+<div class="mrow" data-ans="1"><span class="ml">primitives</span><select><option value="">choose</option><option value="0">images inside primitives</option><option value="1">lines or triangles</option><option value="2">pattern is fixed when the primitive moves, the pattern creeps in the primitive when the primitive moves</option><option value="3">pattern moves with the primitive</option></select></div>
+<div class="mrow" data-ans="3"><span class="ml">Anchor at a vertex</span><select><option value="">choose</option><option value="0">images inside primitives</option><option value="1">lines or triangles</option><option value="2">pattern is fixed when the primitive moves, the pattern creeps in the primitive when the primitive moves</option><option value="3">pattern moves with the primitive</option></select></div>
+<div class="mrow" data-ans="2"><span class="ml">Anchor at a corner of the viewport</span><select><option value="">choose</option><option value="0">images inside primitives</option><option value="1">lines or triangles</option><option value="2">pattern is fixed when the primitive moves, the pattern creeps in the primitive when the primitive moves</option><option value="3">pattern moves with the primitive</option></select></div>
+<div class="mrow" data-ans="0"><span class="ml">patterns</span><select><option value="">choose</option><option value="0">images inside primitives</option><option value="1">lines or triangles</option><option value="2">pattern is fixed when the primitive moves, the pattern creeps in the primitive when the primitive moves</option><option value="3">pattern moves with the primitive</option></select></div>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>Primitives</b> are lines or triangles. <b>Anchoring at a vertex</b> makes the pattern move with the primitive. <b>Anchoring at a viewport corner</b> keeps the pattern fixed on screen, so it creeps across the primitive as the primitive moves. <b>Patterns</b> are images inside primitives (<a class="cite" href="slides/W6-06.jpg" data-s="W6-6">W6 p.6 to 8</a>).</p></details>
+</div>
+<div class="mq" data-kind="single">
+<p><b>4.</b> Given the current pixel&#x27;s distance to the line is D, what is the distance to the line from the pixel m_th to the east and n_th to the north? <span class="muted">(Multiple choice)</span></p>
+<label class="opt" data-ok="0"><input type="radio" name="q6-4"> D + N*cos a + M*sin a</label>
+<label class="opt" data-ok="0"><input type="radio" name="q6-4"> D - N*cos a - M*sin a</label>
+<label class="opt" data-ok="0"><input type="radio" name="q6-4"> D + N*cos a - M*sin a</label>
+<label class="opt" data-ok="1"><input type="radio" name="q6-4"> D - N*cos a + M*sin a</label>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>D − N cos a + M sin a.</b> Each step east changes the distance by sin a, and each step north changes it by cos a in the opposite direction. The Week 6 section derives the signs from Chen's distance formula (<a class="cite" href="slides/W6-14.jpg" data-s="W6-14">W6 p.14</a>).</p>
+<div class="mine">Attempt 1 chose D + N cos a − M sin a, which has both signs flipped, 0/10. Remember that east adds sin a and north subtracts cos a.</div></details>
+</div>
+<div class="mq" data-kind="match">
+<p><b>5.</b> Matching the closest about drawing a circle by recursively subdividing the triangles <span class="muted">(Matching)</span></p>
+<div class="mrow" data-ans="3"><span class="ml">normalize</span><select><option value="">choose</option><option value="0">add the two edges as vectors and normalize the result</option><option value="1">length</option><option value="2">2^depth</option><option value="3">unit vector</option></select></div>
+<div class="mrow" data-ans="0"><span class="ml">subdivide a triangle</span><select><option value="">choose</option><option value="0">add the two edges as vectors and normalize the result</option><option value="1">length</option><option value="2">2^depth</option><option value="3">unit vector</option></select></div>
+<div class="mrow" data-ans="1"><span class="ml">sqrt(x^2 + y^2 + z^2)</span><select><option value="">choose</option><option value="0">add the two edges as vectors and normalize the result</option><option value="1">length</option><option value="2">2^depth</option><option value="3">unit vector</option></select></div>
+<div class="mrow" data-ans="2"><span class="ml">number of triangles after depth subdivision recursions</span><select><option value="">choose</option><option value="0">add the two edges as vectors and normalize the result</option><option value="1">length</option><option value="2">2^depth</option><option value="3">unit vector</option></select></div>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>Normalize</b> gives a unit vector. <b>Subdividing</b> adds the two edge vectors and normalizes the result to get the new point on the circle. <b>The square root</b> is the length. <b>The triangle count</b> is \(2^{depth}\), since each recursion splits a triangle in two (<a class="cite" href="slides/W6-19.jpg" data-s="W6-19">W6 p.19 to 20</a>, <a class="cite" href="slides/W4-17.jpg" data-s="W4-17">W4 p.17</a>).</p></details>
+</div>
+</div>
+<div data-scope="6" data-slides="W7-4 W7-7 W7-8 W7-9 W7-10 W7-11 W7-14 W7-17 W7-26 W7-27 W7-29 W4-19 W4-28 W4-29" class="topic" id="quizzes-57"><h3>Quiz 7. 3D models</h3>
+<p class="muted">Attempt 1 40/50, attempt 2 50/50. Questions 3 and 5 were worth 0 points, so their key may be loose.</p>
+<div class="mq" data-kind="multi">
+<p><b>1.</b> OpenGL primitives include <span class="muted">(Multiple answer, pick all that apply)</span></p>
+<label class="opt" data-ok="1"><input type="checkbox" name="q7-1"> triangles</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q7-1"> points</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q7-1"> lines</label>
+<label class="opt" data-ok="0"><input type="checkbox" name="q7-1"> spheres</label>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>Points, lines, triangles.</b> A sphere is built from many triangles (<a class="cite" href="slides/W7-04.jpg" data-s="W7-4">W7 p.4</a>).</p></details>
+</div>
+<div class="mq" data-kind="multi">
+<p><b>2.</b> A pixel value in the depth buffer means <span class="muted">(Multiple answer, pick all that apply)</span></p>
+<label class="opt" data-ok="1"><input type="checkbox" name="q7-2"> The closest distance to the viewpoint of models in the scene at that pixel</label>
+<label class="opt" data-ok="0"><input type="checkbox" name="q7-2"> The color or intensity of the model at the pixel.</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q7-2"> If there is no model at the pixel, the value is the distance to the back-clipping plane of the viewing volume.</label>
+<label class="opt" data-ok="0"><input type="checkbox" name="q7-2"> The distance to the model that may not be at the pixel location.</label>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>The closest distance at that pixel, and the back clipping plane's distance if nothing is there.</b> The depth buffer stores how far away the nearest surface is, and it's cleared to the far value (<a class="cite" href="slides/W7-07.jpg" data-s="W7-7">W7 p.7</a>, <a class="cite" href="slides/W7-09.jpg" data-s="W7-9">W7 p.9</a>).</p></details>
+</div>
+<div class="mq" data-kind="multi">
+<p><b>3.</b> If you display the depth-buffer image, you can reach the following conclusion <span class="muted">(Multiple answer, pick all that apply)</span></p>
+<label class="opt" data-ok="0"><input type="checkbox" name="q7-3"> The original 3D model (including the hidden surfaces) can be reconstructed from the color-buffer and depth-buffer images.</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q7-3"> The depth-buffer image and the color-buffer image are the same, but the depth-buffer image is in gray. (Canvas shows this as a missed option)</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q7-3"> The darker parts of the depth-buffer image are the portions closer to the viewpoint.</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q7-3"> The color-buffer and depth-buffer images demonstrate the visible surface from the viewpoint.</label>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>Per the key, everything except "the full 3D model can be rebuilt".</b> Darker is closer because near depths are small values. Hidden surfaces were thrown away by the depth test, so you can't recover them. This question was worth 0 points and "same as the color image in gray" is a loose statement, so don't lean on it (<a class="cite" href="slides/W7-07.jpg" data-s="W7-7">W7 p.7 to 11</a>).</p></details>
+</div>
+<div class="mq" data-kind="multi">
+<p><b>4.</b> A normal can be calculated by <span class="muted">(Multiple answer, pick all that apply)</span></p>
+<label class="opt" data-ok="1"><input type="checkbox" name="q7-4"> two vectors</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q7-4"> three points</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q7-4"> a surface equation</label>
+<label class="opt" data-ok="0"><input type="checkbox" name="q7-4"> two points</label>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>A surface equation, three points, or two vectors.</b> Two points only give one direction, and you need two directions to take a cross product (<a class="cite" href="slides/W4-19.jpg" data-s="W4-19">W4 p.19</a>, <a class="cite" href="slides/W4-28.jpg" data-s="W4-28">W4 p.28</a>, <a class="cite" href="slides/W7-14.jpg" data-s="W7-14">W7 p.14</a>).</p></details>
+</div>
+<div class="mq" data-kind="multi">
+<p><b>5.</b> The viewpoint (your eye) is either at the origin or on the positive z axis. A polygon is facing you means it is facing the viewpoint. That is, its normal is pointing towards the viewpoint. <span class="muted">(Multiple answer, pick all that apply)</span></p>
+<label class="opt" data-ok="1"><input type="checkbox" name="q7-5"> The normal of the polygon is pointing towards the viewpoint from any point on the surface.</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q7-5"> The dot product of (0, 0, 1) and the normal of the polygon is positive if the polygon is behind the viewpoint on the z axis.</label>
+<label class="opt" data-ok="0"><input type="checkbox" name="q7-5"> The polygon is not upside down.</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q7-5"> The vertices are counter-clockwise from the viewpoint.</label>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>Everything except "not upside down".</b> Facing is decided by the normal's direction, which follows the vertex order by the right-hand rule. This question was worth 0 points (<a class="cite" href="slides/W7-14.jpg" data-s="W7-14">W7 p.14</a>).</p></details>
+</div>
+<div class="mq" data-kind="multi">
+<p><b>6.</b> Given an octahedron, if we subdivide it twice (depth = 2), how many triangles will be displayed? <span class="muted">(Multiple answer, pick all that apply)</span></p>
+<label class="opt" data-ok="0"><input type="checkbox" name="q7-6"> 32</label>
+<label class="opt" data-ok="0"><input type="checkbox" name="q7-6"> 64</label>
+<label class="opt" data-ok="0"><input type="checkbox" name="q7-6"> 16</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q7-6"> 128</label>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>128.</b> An octahedron has 8 triangles and each subdivision splits every triangle into 4, so \(8\times4^2=128\). Compare this with Quiz 6's circle, where each split makes 2 (<a class="cite" href="slides/W7-17.jpg" data-s="W7-17">W7 p.17</a>, <a class="cite" href="slides/W7-26.jpg" data-s="W7-26">W7 p.26 to 27</a>).</p></details>
+</div>
+<div class="mq" data-kind="multi">
+<p><b>7.</b> Given two spheres, how do we know they are colliding? <span class="muted">(Multiple answer, pick all that apply)</span></p>
+<label class="opt" data-ok="0"><input type="checkbox" name="q7-7"> We may not have enough information to decide.</label>
+<label class="opt" data-ok="1"><input type="checkbox" name="q7-7"> The center distance is smaller than the sum of the two radius.</label>
+<label class="opt" data-ok="0"><input type="checkbox" name="q7-7"> The center distance is bigger than the sum of the two radius.</label>
+<label class="opt" data-ok="0"><input type="checkbox" name="q7-7"> The center distance is bigger than one of the radius.</label>
+<div class="tf"><button class="chk">Check</button><span class="verdict"></span></div>
+<details><summary>Answer and why</summary>
+<p><b>The center distance is smaller than the sum of the radii.</b> If the centers are closer than the two radii added together, the spheres overlap (<a class="cite" href="slides/W7-29.jpg" data-s="W7-29">W7 p.29</a>, <a class="cite" href="slides/W4-29.jpg" data-s="W4-29">W4 p.29</a>).</p>
+<div class="mine">Attempt 1 picked "bigger than the sum", 0/10. That's the condition for being apart. Picture two balls touching. The gap between centers is exactly \(r_1+r_2\), so anything less means they overlap.</div></details>
+</div>
 </div>
 </section>
 
