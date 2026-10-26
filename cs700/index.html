@@ -146,6 +146,14 @@ a.cite{text-decoration:none;border-bottom:1px dotted var(--accent);white-space:n
 <a class="sub" href="#practice-66">Part A. Concepts (17 short questions, about 30 minutes)</a>
 <a class="sub" href="#practice-67">Part B. Problems (8 problems, about 75 minutes)</a>
 <a class="sub" href="#practice-68">Part C. Paper audit (1 question, about 15 minutes)</a>
+<label><input type="checkbox" data-k="homework"><a href="#homework">Homework review</a></label>
+<a class="sub" href="#homework-70">HW0. Probability refresher</a>
+<a class="sub" href="#homework-71">HW2. Beyond performance metrics</a>
+<a class="sub" href="#homework-72">HW3. Choosing a mean, quartiles and Q-Q plots</a>
+<a class="sub" href="#homework-73">HW4. Confidence intervals</a>
+<a class="sub" href="#homework-74">HW5. Hypothesis testing</a>
+<a class="sub" href="#homework-75">HW6. Comparing two alternatives</a>
+<a class="sub" href="#homework-76">HW4 to HW6, Problem 3. Auditing a paper's statistics</a>
 <label><input type="checkbox" data-k="notes"><a href="#notes">Printable notes</a></label>
 </nav>
 <main>
@@ -156,14 +164,14 @@ a.cite{text-decoration:none;border-bottom:1px dotted var(--accent);white-space:n
 <h2>Start here</h2>
 <p>The midterm is in class on Mon 10/26 in Planetary Hall 127. It covers everything up to and including Measurement (10/19), which is Intro, Metrics, Summarizing Data, Confidence Intervals, Hypothesis Testing, Comparing Alternatives and Measurement, plus the advisor, CS 701, publication and ethics lectures. Regression and the later topics come after the exam.</p>
 <p>It's open book and open notes, but no electronics. That means no phone, no laptop and almost certainly no calculator, so plan on doing arithmetic by hand and reading t and z values from a printed table. The syllabus says a device found on you is an automatic zero even if it's off and unused, and it says it's your job to confirm beforehand what's allowed, so ask Setia about a basic calculator before 10/26. The printable notes at the bottom of this page carry the formulas, the procedures and the tables you'd otherwise look up.</p>
-<p>There's no past exam and no quizzes in this course, so the homework is the best preview of the questions. Each topic below follows the same pattern. Read <b>The idea</b> first, then <b>What to know</b> has the formulas in Setia's notation. Do the <b>Worked example</b> on paper before reading the steps. The orange <b>Easy to get wrong</b> box lists the usual mistakes, and <b>Check yourself</b> ends each topic.</p>
+<p>There's no past exam and no quizzes in this course, so the homework is the best preview of the questions. Each topic below follows the same pattern. Read <b>The idea</b> first, then <b>What to know</b> has the formulas in Setia's notation. Do the <b>Worked example</b> on paper before reading the steps. The orange <b>Easy to get wrong</b> box lists the usual mistakes, and <b>Check yourself</b> ends each topic. The <b>Homework review</b> section redoes your homework problems step by step with small by-hand versions.</p>
 <table class="plan">
 <tr><th>Block</th><th>What to do</th></tr>
 <tr><td>1</td><td>Intro, Metrics and Summarizing Data. Do the speedup, mean choice and quartile examples by hand.</td></tr>
 <tr><td>2</td><td>Confidence Intervals. Work a z interval, a t interval and a sample size problem on paper.</td></tr>
 <tr><td>3</td><td>Hypothesis Testing and Comparing Alternatives. Do a paired and a Welch interval by hand.</td></tr>
 <tr><td>4</td><td>Measurement and the research practice lectures.</td></tr>
-<tr><td>5</td><td>Redo your own homework problems without looking at your solutions.</td></tr>
+<tr><td>5</td><td>Homework review, redoing each problem without looking.</td></tr>
 <tr><td>6</td><td>Practice midterm. Sit it in one go with only your printed notes, about two hours, then check every answer.</td></tr>
 <tr><td>Before the exam</td><td>Print the notes, add your own margin notes, and redo every Check yourself question you got wrong.</td></tr>
 </table>
@@ -2922,6 +2930,585 @@ a.cite{text-decoration:none;border-bottom:1px dotted var(--accent);white-space:n
 <p><b>C6.</b> Any two of these. System and day are confounded, since every FastKV run was on Monday and every RocksDB run was on Tuesday after a kernel update. That's a systematic error that sits entirely outside the interval, and more runs would only tighten the interval around the biased difference. The fix is to interleave the two systems in randomized order on the same kernel (<a class="cite" href="midterm_guide_slides/Meas-20.jpg" data-s="Meas-20">Meas p.20</a>, <a class="cite" href="midterm_guide_slides/Meas-22.jpg" data-s="Meas-22">Meas p.22-23</a>). gettimeofday() isn't monotonic, so NTP can move it mid-run, and CLOCK_MONOTONIC is the right clock (<a class="cite" href="midterm_guide_slides/Meas-12.jpg" data-s="Meas-12">Meas p.12</a>). The 30-second warm-up cut is asserted, not justified, so you don't know how it was chosen or whether a steady state exists (<a class="cite" href="midterm_guide_slides/Meas-14.jpg" data-s="Meas-14">Meas p.14</a>).</p>
 <p><b>C7.</b> Two things. A large p-value isn't evidence of equivalence, especially with 5 runs, since the test may have had almost no power (<a class="cite" href="midterm_guide_slides/HT-14.jpg" data-s="HT-14">HT p.14</a>). And a t test compares means, while p99 is a quantile, so if the claim is about the tail the paper should compare p99s directly, for instance with a bootstrap interval on their difference (<a class="cite" href="midterm_guide_slides/Comp-18.jpg" data-s="Comp-18">Comp p.18</a>). An honest version would give the p99 difference with its interval and say how large a difference the experiment could have detected.</p>
 </div></details>
+</div>
+</section>
+
+<section id="homework">
+<h2>Homework review</h2>
+<p class="slides">Slides: Metrics, Summ, CI, HT, Comp. Homework: HW0, HW2, HW3, HW4, HW5, HW6 (HW1 was a LaTeX warm-up and is skipped).</p>
+
+<p>This section stands in for quizzes. Every exam-relevant homework problem is restated here so you can redo it with a pencil. Cover the solution, work the problem, then open it. Where the real homework needed a computer, you get the method, the key numbers from your submission, and a small version you can do by hand. The final answers match your main.tex files, and every one was recomputed. Two places where the submitted work drifts from the slides are flagged in the solutions.</p>
+
+<p>Since the exam has no calculator, keep these table values handy. They're the only ones this section uses.</p>
+<table>
+<tr><th>Value</th><th>Number</th><th>Value</th><th>Number</th></tr>
+<tr><td>\(z[0.05]\)</td><td>1.645</td><td>\(t[0.05,\,15]\)</td><td>1.753</td></tr>
+<tr><td>\(z[0.025]\)</td><td>1.960</td><td>\(t[0.025,\,15]\)</td><td>2.131</td></tr>
+<tr><td>\(z[0.01]\)</td><td>2.326</td><td>\(t[0.005,\,15]\)</td><td>2.947</td></tr>
+<tr><td>\(z[0.005]\)</td><td>2.576</td><td>\(t[0.05,\,3]\), \(t[0.025,\,3]\), \(t[0.005,\,3]\)</td><td>2.353, 3.182, 5.841</td></tr>
+<tr><td>\(\Phi(0.33)\), \(\Phi(0.5)\)</td><td>0.6293, 0.6915</td><td>\(t[0.025,\,8]\)</td><td>2.306</td></tr>
+<tr><td>\(\Phi(0.83)\), \(\Phi(0.9)\)</td><td>0.7967, 0.8159</td><td>\(t[0.05,\,6]\)</td><td>1.943</td></tr>
+<tr><td>\(\Phi(1.3)\), \(\Phi(1.5)\)</td><td>0.9032, 0.9332</td><td>\(t[0.025,\,5]\)</td><td>2.571</td></tr>
+<tr><td>\(\Phi(1.8)\), \(\Phi(2.0)\)</td><td>0.9641, 0.9772</td><td>\(t[0.05,\,37]\)</td><td>1.687</td></tr>
+<tr><td>\(\Phi(2.4)\), \(\Phi(2.5)\)</td><td>0.9918, 0.9938</td><td>\(\Phi(0.21)\), \(\Phi(0.67)\), \(\Phi(1.38)\)</td><td>0.5832, 0.7486, 0.9162</td></tr>
+</table>
+<p>The bracket notation is the slides' upper-tail notation. \(z[\alpha/2]\) is the value with area \(\alpha/2\) above it, so \(z[0.025] = 1.960\) (<a class="cite" href="midterm_guide_slides/CI-30.jpg" data-s="CI-30">CI p.30</a>, <a class="cite" href="midterm_guide_slides/HT-5.jpg" data-s="HT-5">HT p.5</a>). \(\Phi(z)\) is the area below \(z\) in a normal table.</p>
+
+<div data-scope="0" data-slides="Summ-10 Summ-39 Summ-41 Summ-69 HT-13 HT-14 HT-20 CI-9 CI-10 CI-12 CI-15 CI-65 CI-66 Comp-6 Comp-8" class="topic" id="homework-70"><h3>HW0. Probability refresher</h3>
+<p class="muted">Ungraded background on independence, expectation, discrete and continuous distributions, and normal tables. No lecture covers it directly, but the expected value and variance reappear in <a class="cite" href="midterm_guide_slides/Summ-10.jpg" data-s="Summ-10">Summ p.10</a> and <a class="cite" href="midterm_guide_slides/Summ-39.jpg" data-s="Summ-39">Summ p.39</a>, and the normal table drives every interval and test after that.</p>
+
+<div class="q">
+<p><b>Problems 1 and 2.</b> Explain what independent events are. If A and B are independent, what is \(P[A \text{ and } B]\)?</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>Two events are independent when knowing that one happened doesn't change the probability of the other. In symbols \(P[A \mid B] = P[A]\).</li>
+<li>Plug that into the multiplication rule \(P[A \text{ and } B] = P[A \mid B]\,P[B]\) and the conditional probability becomes plain \(P[A]\).</li>
+</ol>
+<p>Final answer. \(P[A \text{ and } B] = P[A]\,P[B]\).</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>The course leans on independence everywhere. The standard error \(\sigma/\sqrt{n}\) only holds when the \(n\) observations are independent (<a class="cite" href="midterm_guide_slides/HT-20.jpg" data-s="HT-20">HT p.20</a>, <a class="cite" href="midterm_guide_slides/CI-65.jpg" data-s="CI-65">CI p.65</a>). A likely short question is "why aren't 10,000 consecutive latency samples from one run 10,000 independent observations?" The answer is that caches, queues and load carry over from one request to the next, so knowing one sample tells you something about the next one (<a class="cite" href="midterm_guide_slides/CI-66.jpg" data-s="CI-66">CI p.66</a>).</p></details>
+</div>
+
+<div class="q">
+<p><b>Problem 3.</b> If \(E[X]\) and \(E[Y]\) are known and \(k, m\) are constants, what is \(E[kX + mY]\)?</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>Expectation is a weighted sum (<a class="cite" href="midterm_guide_slides/Summ-10.jpg" data-s="Summ-10">Summ p.10</a>), and sums can be split and constants pulled out.</li>
+<li>So \(E[kX + mY] = k\,E[X] + m\,E[Y]\). This holds whether or not \(X\) and \(Y\) are independent.</li>
+</ol>
+<p>Final answer. \(k\,E[X] + m\,E[Y]\).</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>"Show that the mean of the differences equals the difference of the means." Take \(k = 1\), \(m = -1\), so \(E[A - B] = E[A] - E[B]\). That's why the paired test's point estimate \(\bar d\) equals \(\bar x_A - \bar x_B\) (<a class="cite" href="midterm_guide_slides/Comp-8.jpg" data-s="Comp-8">Comp p.8</a>, where both analyses give +1.83 s). Variances don't work this way, since \(\text{Var}(A - B) = \sigma_A^2 + \sigma_B^2 - 2\rho\sigma_A\sigma_B\) needs the correlation (<a class="cite" href="midterm_guide_slides/Comp-6.jpg" data-s="Comp-6">Comp p.6</a>).</p></details>
+</div>
+
+<div class="q">
+<p><b>Problem 4.</b> A fair coin is tossed 4 times. Find the probability of all heads, of at least one tail, and of exactly 2 heads and 2 tails.</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>Each toss is independent with \(P[H] = 1/2\), and there are \(2^4 = 16\) equally likely sequences.</li>
+<li>All heads is one sequence, so \(P = (1/2)^4 = 1/16 = 0.0625\).</li>
+<li>"At least one tail" is the complement of "all heads", so \(P = 1 - 1/16 = 15/16 = 0.9375\).</li>
+<li>Exactly 2 heads means choosing which 2 of the 4 tosses are heads, \(\binom{4}{2} = \frac{4 \cdot 3}{2} = 6\) ways, so \(P = 6/16 = 3/8 = 0.375\).</li>
+</ol>
+<p>Final answer. 1/16, 15/16 and 3/8.</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>Setia's error model is this same coin. Each error source adds \(+E\) or \(-E\) with probability 1/2, so two sources give \(x - 2E\), \(x\), \(x + 2E\) with probabilities 1/4, 1/2, 1/4 (<a class="cite" href="midterm_guide_slides/CI-12.jpg" data-s="CI-12">CI p.12</a>). Asked "with 3 sources, what's the chance the measured value is exactly \(x + E\)?", count the paths. Two plus signs and one minus can be arranged \(\binom{3}{2} = 3\) ways, so the answer is 3/8. As the sources grow, the binomial turns into the normal (<a class="cite" href="midterm_guide_slides/CI-15.jpg" data-s="CI-15">CI p.15</a>).</p></details>
+</div>
+
+<div class="q">
+<p><b>Problem 5.</b> Requests per millisecond \(X\) take values 0 to 7 with \(P_0 = 0.18\), \(P_1 = 0.22\), \(P_2 = 0.14\), \(P_4 = 0.18\), \(P_5 = 0.12\), \(P_6 = 0.10\), \(P_7 = 0.06\). Is this discrete or continuous? Why would \(P_7 = 0.09\) make it invalid? Find the mean, variance, standard deviation and coefficient of variation.</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>\(X\) takes whole-number values only, so it's a discrete distribution.</li>
+<li>The listed probabilities add to \(0.18 + 0.22 + 0.14 + 0.18 + 0.12 + 0.10 + 0.06 = 1.00\). That means \(P_3\), which isn't listed, has to be 0. With \(P_7 = 0.09\) the sum would be 1.03, and a distribution's probabilities must sum to exactly 1.</li>
+<li>Mean, using \(E[X] = \sum x_i p_i\) (<a class="cite" href="midterm_guide_slides/Summ-10.jpg" data-s="Summ-10">Summ p.10</a>). \(0(0.18) + 1(0.22) + 2(0.14) + 4(0.18) + 5(0.12) + 6(0.10) + 7(0.06) = 0.22 + 0.28 + 0.72 + 0.60 + 0.60 + 0.42 = 2.84\).</li>
+<li>Second moment. \(E[X^2] = 1(0.22) + 4(0.14) + 16(0.18) + 25(0.12) + 36(0.10) + 49(0.06) = 0.22 + 0.56 + 2.88 + 3.00 + 3.60 + 2.94 = 13.20\).</li>
+<li>Variance. \(\text{Var}(X) = E[X^2] - (E[X])^2 = 13.20 - 2.84^2 = 13.20 - 8.0656 = 5.1344\). This is a population variance from known probabilities, so there's no \(n - 1\) here.</li>
+<li>Standard deviation \(\sqrt{5.1344} \approx 2.266\) (check, \(2.266^2 = 5.135\)).</li>
+<li>Coefficient of variation \(= \sigma/\mu = 2.266/2.84 \approx 0.798\) (<a class="cite" href="midterm_guide_slides/Summ-41.jpg" data-s="Summ-41">Summ p.41</a>).</li>
+</ol>
+<p>Final answer. Discrete. Mean 2.84, variance 5.134, standard deviation 2.27, COV 0.80.</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>A smaller version. \(X\) is 0, 1 or 2 with probabilities 0.25, 0.5, 0.25. Then \(E[X] = 0.5 + 0.5 = 1\), \(E[X^2] = 0.5 + 1 = 1.5\), variance \(1.5 - 1 = 0.5\), standard deviation \(\approx 0.707\), COV 0.707. Watch for a follow-up asking why COV is meaningless when the mean is zero or negative (<a class="cite" href="midterm_guide_slides/Summ-41.jpg" data-s="Summ-41">Summ p.41</a>).</p></details>
+</div>
+
+<div class="q">
+<p><b>Problem 6.</b> The 2019 PhD cohort. Spring has 10 students (6 BS only, 4 MS). Fall has 30 (17 BS only, 13 MS). Pick one student at random. Find \(P[\text{Fall}]\), \(P[\text{MS}]\), \(P[\text{Spring} \mid \text{MS}]\) and \(P[\text{Fall} \mid \text{BS}]\).</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>Total is \(10 + 30 = 40\). MS holders are \(4 + 13 = 17\) and BS-only students are \(6 + 17 = 23\).</li>
+<li>\(P[\text{Fall}] = 30/40 = 0.75\).</li>
+<li>\(P[\text{MS}] = 17/40 = 0.425\).</li>
+<li>Conditioning on MS shrinks the group to the 17 MS holders, and 4 of them started in Spring. So \(P[\text{Spring} \mid \text{MS}] = 4/17 \approx 0.235\).</li>
+<li>Conditioning on BS shrinks it to the 23 BS-only students, 17 of them in Fall. So \(P[\text{Fall} \mid \text{BS}] = 17/23 \approx 0.739\).</li>
+</ol>
+<p>Final answer. 0.75, 0.425, 0.235 and 0.739.</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>The conditional-probability idea comes back in the p-value. A p-value is \(P[\text{data this extreme} \mid H_0]\), not \(P[H_0 \mid \text{data}]\) (<a class="cite" href="midterm_guide_slides/HT-13.jpg" data-s="HT-13">HT p.13-14</a>). The cohort shows the two directions differ. \(P[\text{Spring} \mid \text{MS}] = 4/17\) but \(P[\text{MS} \mid \text{Spring}] = 4/10\).</p></details>
+</div>
+
+<div class="q">
+<p><b>Problem 7.</b> \(X\) is uniform on [10, 90]. Find the mean and standard deviation, and \(P[X \lt 20]\), \(P[X \gt 60]\), \(P[20 \lt X \lt 30]\).</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>For uniform on \([a, b]\), the mean is \((a + b)/2 = (10 + 90)/2 = 50\).</li>
+<li>The variance is \((b - a)^2/12 = 80^2/12 = 6400/12 = 533.3\), so \(\sigma = 80/\sqrt{12} \approx 80/3.464 \approx 23.09\).</li>
+<li>The density is flat at \(1/80\), so every probability is a length divided by 80.</li>
+<li>\(P[X \lt 20] = (20 - 10)/80 = 0.125\). \(P[X \gt 60] = (90 - 60)/80 = 0.375\). \(P[20 \lt X \lt 30] = 10/80 = 0.125\).</li>
+</ol>
+<p>Final answer. Mean 50, standard deviation 23.09, then 0.125, 0.375 and 0.125.</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>If a single reading is rounded to the nearest tick, the rounding error is uniform between \(-\Delta\) and \(+\Delta\) with \(\Delta\) half a tick. For 1 ms resolution, \(\Delta = 0.5\) ms, so the error has mean 0 and standard deviation \(1/\sqrt{12} \approx 0.29\) ms. An interval timer is different, since both ends are quantized and the error can reach a full tick either way (<a class="cite" href="midterm_guide_slides/CI-9.jpg" data-s="CI-9">CI p.9-10</a>).</p></details>
+</div>
+
+<div class="q">
+<p><b>Problem 8.</b> \(Z\) is standard normal. Find \(P[0.9 \lt Z \lt 1.3]\), \(P[Z \gt 0.9]\) and \(P[Z \gt -0.9]\).</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>From the table, \(\Phi(1.3) = 0.9032\) and \(\Phi(0.9) = 0.8159\).</li>
+<li>\(P[0.9 \lt Z \lt 1.3] = 0.9032 - 0.8159 = 0.0873\).</li>
+<li>\(P[Z \gt 0.9] = 1 - 0.8159 = 0.1841\).</li>
+<li>By symmetry, \(P[Z \gt -0.9] = P[Z \lt 0.9] = 0.8159\).</li>
+</ol>
+<p>Final answer. 0.0873, 0.1841 and 0.8159.</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>This is exactly the lookup for a p-value. In HW5 the statistic was \(Z = 1.80\), so the upper tail is \(1 - 0.9641 = 0.0359\) and the two-sided p-value is double that (<a class="cite" href="midterm_guide_slides/HT-13.jpg" data-s="HT-13">HT p.13</a>).</p></details>
+</div>
+
+<div class="q">
+<p><b>Problem 9.</b> Daily August highs are normal with mean 85 and standard deviation 6. Using z-scores, find \(P[83 \lt X \lt 88]\), \(P[X \gt 90]\) and \(P[X \lt 82]\).</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>Standardize with \(z = (x - \mu)/\sigma\).</li>
+<li>83 gives \(z = -2/6 = -0.33\), and 88 gives \(z = 3/6 = 0.5\). So \(P = \Phi(0.5) - \Phi(-0.33) = 0.6915 - (1 - 0.6293) = 0.6915 - 0.3707 = 0.3208\).</li>
+<li>90 gives \(z = 5/6 = 0.83\). So \(P[X \gt 90] = 1 - 0.7967 = 0.2033\).</li>
+<li>82 gives \(z = -3/6 = -0.5\). So \(P[X \lt 82] = 1 - 0.6915 = 0.3085\).</li>
+</ol>
+<p>Final answer. About 0.321, 0.203 and 0.309. Rounding \(z\) to two decimals moves the last digit slightly (the unrounded answers are 0.322 and 0.202).</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>Run it backwards. "Above what temperature are the hottest 5% of days?" You need \(z[0.05] = 1.645\), so \(x = 85 + 1.645 \times 6 = 85 + 9.87 = 94.9\). That's the same move as rescaling a normal quantile with \(x = m + s z\) in a Q-Q plot (<a class="cite" href="midterm_guide_slides/Summ-69.jpg" data-s="Summ-69">Summ p.69</a>).</p></details>
+</div>
+</div>
+
+<div data-scope="1" data-slides="Metrics-7 Metrics-8 Metrics-9 Metrics-10 Metrics-11 Metrics-12 Metrics-13 Metrics-16 Metrics-17 Metrics-27 Metrics-28 Metrics-32 Metrics-33" class="topic" id="homework-71"><h3>HW2. Beyond performance metrics</h3>
+<p class="muted">A short report that evaluates metrics from your own research area against the six criteria from the metrics lecture (<a class="cite" href="midterm_guide_slides/Metrics-7.jpg" data-s="Metrics-7">Metrics p.7-13</a>, assignment on <a class="cite" href="midterm_guide_slides/Metrics-33.jpg" data-s="Metrics-33">Metrics p.33</a>).</p>
+
+<div class="q">
+<p><b>The assignment.</b> Pick one or more metrics common in your area, evaluate them against the lecture's criteria, and propose extra criteria your area needs.</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>Learn the six criteria and what each one means (<a class="cite" href="midterm_guide_slides/Metrics-7.jpg" data-s="Metrics-7">Metrics p.7-12</a>). <b>Linear</b> means twice the metric is twice the performance. <b>Reliable</b> means if A scores higher then A really performs better. <b>Repeatable</b> means the same experiment gives the same value. <b>Easy to use</b> means it's easy to measure correctly. <b>Consistent</b> means the units and definition are the same on every system. <b>Independent</b> means outside pressure, such as vendors, can't bend it.</li>
+<li>Know which are required. Reliable, repeatable, consistent and independent are required, while linear and easy to use are nice to have (<a class="cite" href="midterm_guide_slides/Metrics-13.jpg" data-s="Metrics-13">Metrics p.13</a>).</li>
+<li>Know the means-versus-ends split. A means-based metric counts what was done, useful or not, and an ends-based metric counts only what was accomplished (<a class="cite" href="midterm_guide_slides/Metrics-27.jpg" data-s="Metrics-27">Metrics p.27-28</a>). MIPS is means-based, and execution time is ends-based.</li>
+<li>For each metric you pick, go through all six criteria with a concrete failure. Your report used average throughput and the QoE score from video streaming. Throughput came out linear and easy to use, but not reliable because a sender can inflate it by filling a deep queue (bufferbloat), and not independent because ISPs advertise it. QoE came out not consistent because each paper picks its own weights, not linear because it adds unlike units, and not reliable because the linear form was never validated against subjective tests.</li>
+<li>Propose extra criteria. You added externality (what the flow does to others sharing the link), reporting the distribution and not only the mean, and stating the range of conditions the metric was tested over.</li>
+</ol>
+<p>Final answer (your report). Throughput is linear and easy to use, partly repeatable and consistent, but not reliable or independent. QoE is easy to use and partly repeatable but fails linearity, reliability, consistency and independence.</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>"Evaluate MIPS against the six criteria." MIPS is repeatable, easy to measure and independent, but it isn't linear, reliable or consistent, since instructions do different amounts of work on CISC and RISC machines (<a class="cite" href="midterm_guide_slides/Metrics-16.jpg" data-s="Metrics-16">Metrics p.16-17</a>). Another version asks for precision and recall. A search returns 30 pages, 20 relevant, and misses 40 more relevant pages. Precision is 20/30 = 0.67 and recall is 20/(20 + 40) = 0.33 (<a class="cite" href="midterm_guide_slides/Metrics-32.jpg" data-s="Metrics-32">Metrics p.32</a>).</p></details>
+</div>
+</div>
+
+<div data-scope="2" data-slides="Summ-11 Summ-20 Summ-21 Summ-22 Summ-23 Summ-24 Summ-25 Summ-26 Summ-27 Summ-28 Summ-30 Summ-32 Summ-33 Summ-39 Summ-40 Summ-41 Summ-42 Summ-43 Summ-44 Summ-45 Summ-48 Summ-49 Summ-54 Summ-55 Summ-56 Summ-59 Summ-60 Summ-63 Summ-69 Summ-70 Summ-71 Summ-72 Summ-73" class="topic" id="homework-72"><h3>HW3. Choosing a mean, quartiles and Q-Q plots</h3>
+<p class="muted">Question 1 picks and computes the right mean. Question 2 summarizes two data sets with the course conventions and checks normality with a Q-Q plot. This maps to the summarizing-data lecture (<a class="cite" href="midterm_guide_slides/Summ-20.jpg" data-s="Summ-20">Summ p.20-32</a> and <a class="cite" href="midterm_guide_slides/Summ-39.jpg" data-s="Summ-39">Summ p.39-73</a>).</p>
+
+<div class="q">
+<p><b>Problem 1(a).</b> Five features are each built on top of the previous one and improve quality by 10%, 50%, 70%, 85% and 15%. What's the mean improvement per feature, and which mean?</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>Each feature multiplies the quality left by the one before, so the effects compound. Compounding calls for the geometric mean (<a class="cite" href="midterm_guide_slides/Summ-30.jpg" data-s="Summ-30">Summ p.30</a>, <a class="cite" href="midterm_guide_slides/Summ-32.jpg" data-s="Summ-32">Summ p.32</a>).</li>
+<li>Turn percentages into ratios. 1.10, 1.50, 1.70, 1.85, 1.15.</li>
+<li>Multiply. \(1.10 \times 1.50 = 1.65\), then \(1.65 \times 1.70 = 2.805\), then \(2.805 \times 1.85 = 5.18925\), then \(5.18925 \times 1.15 = 5.9676\).</li>
+<li>Take the 5th root (<a class="cite" href="midterm_guide_slides/Summ-23.jpg" data-s="Summ-23">Summ p.23</a>). By logs, \(\ln 5.9676 = 1.7863\), divided by 5 is 0.3573, and \(e^{0.3573} = 1.4294\). Check by squaring, \(1.43^2 = 2.045\), \(2.045^2 = 4.18\), \(4.18 \times 1.43 = 5.98\).</li>
+</ol>
+<p>Final answer. Geometric mean 1.4294, so about 42.94% per feature, which matches main.tex.</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>Without a calculator the numbers will be friendly. Three successive versions give 100%, 300% and 700% gains. The ratios are 2, 4 and 8, the product is 64, and \(\sqrt[3]{64} = 4\), so the mean gain is 300% per version. The arithmetic mean of the ratios would say 4.67, and \(4.67^3 \approx 102\) overshoots the true 64. That overshoot is the reason the arithmetic mean is wrong for compounding.</p></details>
+</div>
+
+<div class="q">
+<p><b>Problem 1(b).</b> A compiler's running times on six similar programs are 150, 200, 120, 300, 270 and 180 ms. Mean, and which one?</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>These are times. The mean of times should be directly proportional to total time, which is the arithmetic mean (<a class="cite" href="midterm_guide_slides/Summ-25.jpg" data-s="Summ-25">Summ p.25</a>, <a class="cite" href="midterm_guide_slides/Summ-27.jpg" data-s="Summ-27">Summ p.27</a>).</li>
+<li>Sum. \(150 + 200 + 120 + 300 + 270 + 180 = 1220\).</li>
+<li>Divide by 6. \(1220/6 = 203.33\) ms.</li>
+</ol>
+<p>Final answer. Arithmetic mean 203.33 ms, matching main.tex.</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>"If every time doubled, what should happen to the mean?" It should double, and only the arithmetic mean of times does that (<a class="cite" href="midterm_guide_slides/Summ-25.jpg" data-s="Summ-25">Summ p.25</a>). Another version adds weights. Tasks of 2, 5 and 10 s with frequencies 0.5, 0.3, 0.2 give a weighted mean of \(1 + 1.5 + 2 = 4.5\) s (<a class="cite" href="midterm_guide_slides/Summ-33.jpg" data-s="Summ-33">Summ p.33</a>).</p></details>
+</div>
+
+<div class="q">
+<p><b>Problem 1(c).</b> A database ran at 2500, 3500, 3700, 1800 and 2000 transactions per second in five experiments. Mean, and which one?</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>These are rates, with time in the denominator. The mean of rates should be inversely proportional to total time, which is the harmonic mean (<a class="cite" href="midterm_guide_slides/Summ-25.jpg" data-s="Summ-25">Summ p.25</a>, <a class="cite" href="midterm_guide_slides/Summ-28.jpg" data-s="Summ-28">Summ p.28</a>).</li>
+<li>Reciprocals. \(1/2500 = 0.000400\), \(1/3500 = 0.000286\), \(1/3700 = 0.000270\), \(1/1800 = 0.000556\), \(1/2000 = 0.000500\).</li>
+<li>Sum is 0.0020115.</li>
+<li>\(x_H = n / \sum (1/x_i) = 5/0.0020115 = 2485.7\) (<a class="cite" href="midterm_guide_slides/Summ-22.jpg" data-s="Summ-22">Summ p.22</a>).</li>
+</ol>
+<p>Final answer. Harmonic mean 2485.66 transactions per second, matching main.tex.</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>Friendly numbers. Rates of 2, 3 and 6 jobs/s give reciprocals \(1/2 + 1/3 + 1/6 = 1\), so \(x_H = 3/1 = 3\) jobs/s, while the arithmetic mean would say 3.67. A conceptual follow-up is "when does the harmonic mean equal total work divided by total time?" Only when every run did the same amount of work \(F\) (<a class="cite" href="midterm_guide_slides/Summ-26.jpg" data-s="Summ-26">Summ p.26-28</a>). If the work differs, use the weighted harmonic mean or just total work over total time.</p></details>
+</div>
+
+<div class="q">
+<p><b>Problem 2(a) and (b).</b> For normal.txt (1000 values) and not-normal.txt (870 values), find the mean, variance, median and the three quartiles.</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>Mean is \(\bar x = \frac{1}{n}\sum x_i\) (<a class="cite" href="midterm_guide_slides/Summ-11.jpg" data-s="Summ-11">Summ p.11</a>). Sample variance divides by \(n - 1\), and the one-pass form is \(s^2 = \frac{\sum x_i^2 - (\sum x_i)^2/n}{n - 1}\) (<a class="cite" href="midterm_guide_slides/Summ-39.jpg" data-s="Summ-39">Summ p.39</a>).</li>
+<li>For quartiles, sort the data. The \(i\)-th sorted value sits at \(f_i = (i - 0.5)/n\), and you read \(Q(0.25)\), \(Q(0.5)\), \(Q(0.75)\) off that function with linear interpolation (<a class="cite" href="midterm_guide_slides/Summ-59.jpg" data-s="Summ-59">Summ p.59</a>, <a class="cite" href="midterm_guide_slides/Summ-42.jpg" data-s="Summ-42">Summ p.42</a>).</li>
+<li>A computer did the 1000-point files. Key numbers for normal.txt are mean 2.0142, variance 1.0457, \(Q_1 = 1.2680\), median 2.0322, \(Q_3 = 2.6927\). For not-normal.txt they're mean 0.2083, variance 0.0440, \(Q_1 = 0.0587\), median 0.1429, \(Q_3 = 0.2865\).</li>
+<li>The skew already shows in not-normal.txt. The mean 0.2083 sits well above the median 0.1429, and \(Q_3 - Q_2 = 0.144\) is much larger than \(Q_2 - Q_1 = 0.084\), which is what a right-skewed shape looks like (<a class="cite" href="midterm_guide_slides/Summ-48.jpg" data-s="Summ-48">Summ p.48</a>).</li>
+</ol>
+<p><b>By-hand version.</b> Data 7, 1, 11, 5, 9, 3.</p>
+<ol class="steps">
+<li>Sort. 1, 3, 5, 7, 9, 11 with \(n = 6\).</li>
+<li>Mean \(= 36/6 = 6\).</li>
+<li>Variance by the one-pass form. \(\sum x_i^2 = 1 + 9 + 25 + 49 + 81 + 121 = 286\). \((\sum x_i)^2/n = 1296/6 = 216\). So \(s^2 = (286 - 216)/5 = 70/5 = 14\), and \(s = \sqrt{14} \approx 3.742\).</li>
+<li>Plotting positions \(f_i = (i - 0.5)/6\) are 0.083, 0.250, 0.417, 0.583, 0.750, 0.917.</li>
+<li>\(Q_1\) is at \(f = 0.25\), which is exactly \(x_{(2)} = 3\). \(Q_3\) is at \(f = 0.75\), exactly \(x_{(5)} = 9\).</li>
+<li>The median at \(f = 0.5\) falls halfway between \(f_3 = 0.417\) and \(f_4 = 0.583\), so interpolate halfway between 5 and 7 to get 6.</li>
+</ol>
+<p>Final answer. The table in main.tex (mean 2.0142 and 0.2083, variance 1.0457 and 0.0440, quartiles as above) checks out. The small version gives mean 6, \(s^2 = 14\), \(Q_1 = 3\), median 6, \(Q_3 = 9\).</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>With \(n = 10\), \(f_i = (i - 0.5)/10\) are 0.05, 0.15, ..., 0.95, so \(Q_1\) at 0.25 is exactly \(x_{(3)}\) and \(Q_3\) at 0.75 is exactly \(x_{(8)}\) (that's the layout in <a class="cite" href="midterm_guide_slides/Summ-60.jpg" data-s="Summ-60">Summ p.60</a>). Expect a follow-up on which spread measure to report. For skewed data SIQR \(= (Q_3 - Q_1)/2\) is better than \(s\), for the same reason the median beats the mean (<a class="cite" href="midterm_guide_slides/Summ-45.jpg" data-s="Summ-45">Summ p.45</a>, <a class="cite" href="midterm_guide_slides/Summ-49.jpg" data-s="Summ-49">Summ p.49</a>). For not-normal.txt, SIQR \(= (0.2865 - 0.0587)/2 = 0.1139\).</p></details>
+</div>
+
+<div class="q">
+<p><b>Problem 2(c).</b> Plot a histogram of each data set.</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>Divide the range into equal bins, count the points in each, and plot relative frequency (<a class="cite" href="midterm_guide_slides/Summ-54.jpg" data-s="Summ-54">Summ p.54</a>).</li>
+<li>The bin count comes from Sturges' rule. The slide writes it with floor brackets, \(k = \lfloor 1 + \log_2 n \rfloor\) (<a class="cite" href="midterm_guide_slides/Summ-54.jpg" data-s="Summ-54">Summ p.54</a>).</li>
+<li>For \(n = 1000\), \(\log_2 1000 \approx 9.97\) since \(2^{10} = 1024\). So \(1 + 9.97 = 10.97\), and the floor gives 10 bins.</li>
+<li>For \(n = 870\), \(\log_2 870 \approx 9.76\), so \(k = \lfloor 10.76 \rfloor = 10\).</li>
+</ol>
+<p>Final answer. Per the slide, 10 bins for both files. Your main.tex says 11 bins for both, because analyze.py used <code>round(1 + log2 n)</code> rather than the floor. It's a small slip that doesn't change any conclusion, but on the exam use the floor as the slide shows.</p>
+<p><b>By-hand version.</b> With the six values 1, 3, 5, 7, 9, 11, \(k = \lfloor 1 + 2.58 \rfloor = 3\) bins. The range is 10, so each bin is 3.33 wide, giving [1, 4.33), [4.33, 7.67), [7.67, 11] with 2, 2 and 2 points.</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>"Why does the bin size matter?" The same 12 values look different with 7 bins and with 12 bins (<a class="cite" href="midterm_guide_slides/Summ-55.jpg" data-s="Summ-55">Summ p.55-56</a>), so a histogram's shape partly reflects the analyst's choice. That's why the Q-Q plot, which has no bins, is the better check of shape.</p></details>
+</div>
+
+<div class="q">
+<p><b>Problem 2(d).</b> Draw the quantile plot of each data set.</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>A quantile plot puts \(f_i = (i - 0.5)/n\) on the x-axis and the \(i\)-th sorted value \(x_{(i)}\) on the y-axis (<a class="cite" href="midterm_guide_slides/Summ-59.jpg" data-s="Summ-59">Summ p.59</a>).</li>
+<li>For normal.txt the curve is an S shape, steep at both ends and flat in the middle where most values sit. For not-normal.txt it stays low and flat for most of \(f\), then shoots up near \(f = 1\), which is the long right tail.</li>
+</ol>
+<p>Final answer. These are the two quantile-plot figures in main.tex.</p>
+<p><b>By-hand version.</b> For 1, 3, 5, 7, 9, 11, plot (0.083, 1), (0.25, 3), (0.417, 5), (0.583, 7), (0.75, 9), (0.917, 11). The points fall on a straight line because the values are evenly spaced.</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>Given a 10-row table like <a class="cite" href="midterm_guide_slides/Summ-60.jpg" data-s="Summ-60">Summ p.60</a>, you could be asked to read off the 80th percentile. With \(n = 10\), \(f = 0.75\) is \(x_{(8)} = 44.5\) and \(f = 0.85\) is \(x_{(9)} = 50.3\). Halfway between them, \(Q(0.80) = 44.5 + 0.5(50.3 - 44.5) = 47.4\).</p></details>
+</div>
+
+<div class="q">
+<p><b>Problem 2(e).</b> Compare each data set with the normal distribution using a Q-Q plot.</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>For each \(f_i\), find the standard normal quantile \(z_i\), the value with \(\Phi(z_i) = f_i\). With no closed-form inverse you use a table or the approximation \(z_i = 4.91[f_i^{0.14} - (1 - f_i)^{0.14}]\) (<a class="cite" href="midterm_guide_slides/Summ-69.jpg" data-s="Summ-69">Summ p.69</a>).</li>
+<li>Rescale to the data's units with \(x_i = m + s z_i\), using the sample mean and standard deviation (<a class="cite" href="midterm_guide_slides/Summ-69.jpg" data-s="Summ-69">Summ p.69</a>).</li>
+<li>Plot \((x_i, x_{(i)})\), theoretical against observed (<a class="cite" href="midterm_guide_slides/Summ-63.jpg" data-s="Summ-63">Summ p.63</a>). Points on the 45° line mean the data are normal. Without rescaling, the intercept estimates the mean and the slope estimates the standard deviation (<a class="cite" href="midterm_guide_slides/Summ-70.jpg" data-s="Summ-70">Summ p.70</a>).</li>
+<li>Read the shape (<a class="cite" href="midterm_guide_slides/Summ-71.jpg" data-s="Summ-71">Summ p.71-73</a>). For normal.txt the points follow the line, with correlation 0.9993. For not-normal.txt the points sit above the line at both ends and below it in the middle, with correlation 0.904. At the left end, the normal predicts values near \(-0.5\) but the data can't go below 0. At the right end, the data's largest values are far bigger than a normal would give. That's the asymmetric, right-skewed pattern.</li>
+</ol>
+<p><b>By-hand version.</b> Data 1, 3, 5, 7, 9, 11 with \(m = 6\), \(s = 3.742\).</p>
+<ol class="steps">
+<li>The \(z_i\) for \(f\) = 0.083, 0.25, 0.417 come from the table as \(-1.38\), \(-0.67\), \(-0.21\), since \(\Phi(1.38) = 0.916\), \(\Phi(0.67) = 0.749\) and \(\Phi(0.21) = 0.583\). The other three are the same with a plus sign.</li>
+<li>Rescale. \(6 - 3.742(1.38) = 0.84\), \(6 - 3.742(0.67) = 3.49\), \(6 - 3.742(0.21) = 5.21\), and symmetrically 6.79, 8.51, 11.16.</li>
+<li>Pair them with the data. (0.84, 1), (3.49, 3), (5.21, 5), (6.79, 7), (8.51, 9), (11.16, 11). Every point is within about 0.5 of the line, so the data look consistent with a normal.</li>
+</ol>
+<p>Final answer. normal.txt is consistent with a normal (correlation 0.9993), and not-normal.txt is right-skewed and not normal (correlation 0.904), matching main.tex.</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>A skewed six-point version. Data 1, 1, 1, 2, 3, 10 have \(m = 3\) and \(s^2 = (4 + 4 + 4 + 1 + 0 + 49)/5 = 12.4\), so \(s \approx 3.52\). The theoretical values are about \(-1.86, 0.64, 2.26, 3.74, 5.36, 7.86\). Against the data, the first point (−1.86, 1) is above the line, the middle points (2.26, 1), (3.74, 2), (5.36, 3) are below, and the last (7.86, 10) is above. That's the same bowed shape as not-normal.txt, so you'd answer "right-skewed, not normal".</p></details>
+</div>
+</div>
+
+<div data-scope="3" data-slides="CI-27 CI-28 CI-29 CI-30 CI-31 CI-32 CI-33 CI-35 CI-37 CI-39 CI-44 CI-63 CI-64 CI-65 CI-66 CI-67 CI-68 CI-69 CI-70 Summ-39" class="topic" id="homework-73"><h3>HW4. Confidence intervals</h3>
+<p class="muted">Intervals for a mean with \(z\) and \(t\), what sample size and the critical value do to the width, and the three fixes when normality fails (batching, transformation, bootstrap). This is the confidence-interval lecture (<a class="cite" href="midterm_guide_slides/CI-27.jpg" data-s="CI-27">CI p.27-38</a> and <a class="cite" href="midterm_guide_slides/CI-63.jpg" data-s="CI-63">CI p.63-70</a>).</p>
+
+<div class="q">
+<p><b>Problem 1.1.</b> normal.txt is the whole population. Find the population mean and variance.</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>The file is the population, so divide by \(N\), not \(N - 1\). The \(n - 1\) correction is for estimating a population variance from a sample (<a class="cite" href="midterm_guide_slides/Summ-39.jpg" data-s="Summ-39">Summ p.39</a>).</li>
+<li>From HW3 you already have the sample-style variance 1.0457. Converting, \(1.0457 \times 999/1000 = 1.0447\).</li>
+</ol>
+<p>Final answer. \(\mu = 2.0142\), \(\sigma^2 = 1.0447\), matching main.tex. For not-normal.txt (Problem 2.1), \(\mu = 0.2083\), \(\sigma^2 = 0.0440\). These are the same population values shown on <a class="cite" href="midterm_guide_slides/CI-32.jpg" data-s="CI-32">CI p.32</a>.</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>"Your HW3 and HW4 variances differ in the fourth digit. Which is right?" Both are. HW3 treated the file as a sample and used \(n - 1\), and HW4 treated it as the population and used \(N\).</p></details>
+</div>
+
+<div class="q">
+<p><b>Problem 1.2.</b> Draw 50 values from normal.txt and give 90%, 95% and 99% intervals for the mean. Do they contain \(\mu\)?</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>\(n = 50 \gt 30\), so \(s\) is a good stand-in for \(\sigma\) and the normal applies (<a class="cite" href="midterm_guide_slides/CI-27.jpg" data-s="CI-27">CI p.27</a>). The interval is \(\bar x \pm z_{\alpha/2}\, s/\sqrt{n}\) (<a class="cite" href="midterm_guide_slides/CI-31.jpg" data-s="CI-31">CI p.31</a>).</li>
+<li>Your sample had \(\bar x = 2.2093\) and \(s = 0.9443\).</li>
+<li>Standard error. \(\sqrt{50} \approx 7.071\), so \(0.9443/7.071 = 0.1335\).</li>
+<li>90%. \(1.645 \times 0.1335 = 0.2197\), giving (1.9896, 2.4290).</li>
+<li>95%. \(1.960 \times 0.1335 = 0.2617\), giving (1.9476, 2.4710).</li>
+<li>99%. \(2.576 \times 0.1335 = 0.3440\), giving (1.8653, 2.5533).</li>
+<li>All three contain \(\mu = 2.0142\).</li>
+</ol>
+<p>Final answer. (1.9897, 2.4290), (1.9476, 2.4710), (1.8653, 2.5533), all containing \(\mu\), matching main.tex. The hand version's 1.9896 differs in the last digit only from rounding the standard error.</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>"\(n = 100\), \(\bar x = 10\), \(s = 2\). Give the 95% interval." The standard error is \(2/10 = 0.2\), so \(10 \pm 1.96(0.2) = (9.61, 10.39)\). A follow-up asks how many measurements make the 95% half-width \(\pm 5\%\) of the mean. Using \(n = (z_{\alpha/2}\, s / (\bar x e))^2\) (<a class="cite" href="midterm_guide_slides/CI-44.jpg" data-s="CI-44">CI p.44</a>), \(n = (1.96 \times 2 / 0.5)^2 = 7.84^2 \approx 61.5\), so 62 runs.</p></details>
+</div>
+
+<div class="q">
+<p><b>Problem 1.3.</b> Draw 16 values and give the three intervals again.</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>\(n = 16\) is small and the population is normal, so use \(t\) with \(n - 1 = 15\) degrees of freedom. The interval is \(\bar x \pm t_{[\alpha/2;\,n-1]}\, s/\sqrt{n}\) (<a class="cite" href="midterm_guide_slides/CI-37.jpg" data-s="CI-37">CI p.37</a>).</li>
+<li>Your sample had \(\bar x = 2.2911\), \(s = 1.1332\). Standard error \(1.1332/4 = 0.2833\), since \(\sqrt{16} = 4\).</li>
+<li>90%. \(1.753 \times 0.2833 = 0.4966\), giving (1.7945, 2.7877).</li>
+<li>95%. \(2.131 \times 0.2833 = 0.6037\), giving (1.6874, 2.8948).</li>
+<li>99%. \(2.947 \times 0.2833 = 0.8349\), giving (1.4562, 3.1260).</li>
+</ol>
+<p>Final answer. (1.7944, 2.7877), (1.6872, 2.8949), (1.4562, 3.1259), all containing \(\mu\), matching main.tex to within rounding.</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>"\(n = 9\), \(\bar x = 20\), \(s = 6\), 95% interval?" Standard error \(6/3 = 2\), \(t[0.025, 8] = 2.306\), so \(20 \pm 4.61 = (15.39, 24.61)\). If they give \(\sigma\) instead of \(s\), use \(z\) even at small \(n\) (<a class="cite" href="midterm_guide_slides/CI-27.jpg" data-s="CI-27">CI p.27</a>).</p></details>
+</div>
+
+<div class="q">
+<p><b>Problem 1.4.</b> Compare the widths from 1.2 and 1.3 and explain the difference using both the sample size and the distribution.</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>At 95% the widths are \(2 \times 0.6037 = 1.207\) for \(n = 16\) and \(2 \times 0.2617 = 0.523\) for \(n = 50\). The ratio is about 2.31.</li>
+<li>Width is proportional to \(\text{crit} \times s/\sqrt{n}\), so the ratio splits into three factors.</li>
+<li>Sample size. \(\sqrt{50/16} = \sqrt{3.125} \approx 1.77\), because width shrinks with \(\sqrt{n}\) (<a class="cite" href="midterm_guide_slides/CI-39.jpg" data-s="CI-39">CI p.39</a>).</li>
+<li>Critical value. \(2.131/1.960 \approx 1.09\), because \(t\) has heavier tails than \(z\), the price of estimating \(\sigma\) from 16 values (<a class="cite" href="midterm_guide_slides/CI-35.jpg" data-s="CI-35">CI p.35</a>).</li>
+<li>Luck. The sample of 16 happened to have a larger \(s\), \(1.1332/0.9443 \approx 1.20\).</li>
+<li>Check. \(1.77 \times 1.09 \times 1.20 \approx 2.31\).</li>
+</ol>
+<p>Final answer. The 16-sample interval is about 2.3 times as wide, mostly from \(\sqrt{n}\), a bit from \(t\) versus \(z\), and some from a larger sample standard deviation. This matches main.tex.</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>"How many times more data to halve an interval's width?" Four times, since width goes as \(1/\sqrt{n}\). Also "what happens to the width as the confidence level goes up?" It grows, because the critical value grows (<a class="cite" href="midterm_guide_slides/CI-32.jpg" data-s="CI-32">CI p.32</a>).</p></details>
+</div>
+
+<div class="q">
+<p><b>Problem 2.2 and 2.3.</b> Repeat with not-normal.txt, samples of 50 and 16.</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>For \(n = 50\), the data aren't normal, but the CLT makes the sample mean close to normal at this size, so the \(z\) interval is still fine (<a class="cite" href="midterm_guide_slides/CI-29.jpg" data-s="CI-29">CI p.29</a>, <a class="cite" href="midterm_guide_slides/CI-67.jpg" data-s="CI-67">CI p.67</a>).</li>
+<li>Sample of 50. \(\bar x = 0.2168\), \(s = 0.2278\), standard error \(0.2278/7.071 = 0.03222\). At 95%, \(1.96 \times 0.03222 = 0.0632\), giving (0.1537, 0.2800).</li>
+<li>Sample of 16. \(\bar x = 0.2406\), \(s = 0.2040\), standard error \(0.2040/4 = 0.0510\).</li>
+<li>90%. \(1.753 \times 0.0510 = 0.0894\), giving (0.1512, 0.3300). 95%. \(2.131 \times 0.0510 = 0.1087\), giving (0.1319, 0.3493). 99%. \(2.947 \times 0.0510 = 0.1503\), giving (0.0903, 0.3909).</li>
+<li>All contain \(\mu = 0.2083\).</li>
+</ol>
+<p>Final answer. 50-sample intervals (0.1638, 0.2698), (0.1537, 0.2800), (0.1339, 0.2998). 16-sample intervals (0.1512, 0.3300), (0.1319, 0.3493), (0.0903, 0.3909). These match main.tex.</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>"Why is the \(t\) interval at \(n = 16\) suspect for this data but fine at \(n = 50\)?" With skewed data and small \(n\), the CLT hasn't kicked in. The slide's example is exactly \(n = 16\) from a population with skew 1.8, where a nominal 95% interval covers only about 91% of the time, and it's consistently too narrow (<a class="cite" href="midterm_guide_slides/CI-67.jpg" data-s="CI-67">CI p.67</a>).</p></details>
+</div>
+
+<div class="q">
+<p><b>Problem 2a.</b> Batch the 16 values into 4 batches of 4 in draw order, and build the intervals from the 4 batch means with \(t\) on 3 degrees of freedom.</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>Batching averages groups of at least four, which pushes the values toward normal. It's the CLT applied by hand (<a class="cite" href="midterm_guide_slides/CI-68.jpg" data-s="CI-68">CI p.68</a>). Keep draw order, since sorting would make each batch a different slice of the distribution.</li>
+<li>Your batch means were 0.4212, 0.2368, 0.0904, 0.2139.</li>
+<li>Mean. \(0.9623/4 = 0.2406\), the same as the raw sample mean, as it has to be.</li>
+<li>Variance by the one-pass form. \(\sum x^2 = 0.1774 + 0.0561 + 0.0082 + 0.0458 = 0.2874\). \((\sum x)^2/4 = 0.9260/4 = 0.2315\). So \(s^2 = (0.2874 - 0.2315)/3 = 0.0186\), and \(s \approx 0.1365\).</li>
+<li>Standard error. \(0.1365/\sqrt{4} = 0.0683\).</li>
+<li>90%. \(2.353 \times 0.0683 = 0.1606\), giving (0.0800, 0.4012). 95%. \(3.182 \times 0.0683 = 0.2172\), giving (0.0234, 0.4578). 99%. \(5.841 \times 0.0683 = 0.3987\), giving (−0.1581, 0.6393).</li>
+</ol>
+<p>Final answer. (0.0799, 0.4012), (0.0233, 0.4578), (−0.1581, 0.6393), all containing \(\mu\), matching main.tex to rounding.</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>"16 observations become 4 batches. What happens to the 95% critical value?" It goes from \(t[0.025, 15] = 2.131\) to \(t[0.025, 3] = 3.182\), about 50% wider (<a class="cite" href="midterm_guide_slides/CI-68.jpg" data-s="CI-68">CI p.68</a>). A twist. "Your 12 observations become 3 batches of 4. Batch means are 2, 4, 6." Mean 4, \(s^2 = (4 + 0 + 4)/2 = 4\), \(s = 2\), standard error \(2/\sqrt{3} \approx 1.155\), and with \(t[0.025, 2] = 4.303\) the 95% interval is \(4 \pm 4.97\). That's huge, which shows why batching needs plenty of data.</p></details>
+</div>
+
+<div class="q">
+<p><b>Problem 2b.</b> Bootstrap the 16 values with \(B = 10{,}000\) resamples and report the percentile intervals.</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>Treat the sample as a stand-in for the population. Draw 16 values from it <i>with replacement</i>, compute the mean, and repeat \(B\) times (<a class="cite" href="midterm_guide_slides/CI-69.jpg" data-s="CI-69">CI p.69</a>).</li>
+<li>Sort the \(B\) means. The 95% interval runs from the 2.5th to the 97.5th percentile, the 90% interval from the 5th to the 95th, and the 99% from the 0.5th to the 99.5th.</li>
+<li>Replacement is the whole trick. Without it every resample is the same 16 values and every mean is identical (<a class="cite" href="midterm_guide_slides/CI-69.jpg" data-s="CI-69">CI p.69</a>).</li>
+<li>Your run with seed 12345 gave (0.1618, 0.3242), (0.1493, 0.3407), (0.1230, 0.3705).</li>
+</ol>
+<p><b>By-hand version.</b> Sample {2, 4, 9}. Four resamples might be {2, 2, 9} with mean 4.33, {4, 9, 9} with mean 7.33, {2, 4, 4} with mean 3.33 and {9, 2, 4} with mean 5. With thousands of these, you'd sort the means and read off the percentiles. The computer is only needed because \(B\) is large, and nothing in the method needs a formula.</p>
+<p>Final answer. The three bootstrap intervals above, matching main.tex.</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>"Name a statistic you can get an interval for by bootstrap but not by the \(t\) formula." The median, a quantile, a ratio or a correlation (<a class="cite" href="midterm_guide_slides/CI-69.jpg" data-s="CI-69">CI p.69</a>). "What's the catch at small \(n\)?" Percentile intervals under-cover, and if your 16 values missed the tail, every resample misses it too (<a class="cite" href="midterm_guide_slides/CI-69.jpg" data-s="CI-69">CI p.69-70</a>).</p></details>
+</div>
+
+<div class="q">
+<p><b>Problem 2c.</b> Compare raw, batched and bootstrap intervals. Which is widest and narrowest? Why does batching widen the interval and what did it cost? Does the 99% batched interval contain impossible values? Why doesn't one sample's coverage tell you a method's coverage?</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>At 95% the widths are raw 0.2174, batched 0.4345, bootstrap 0.1914. Batching is widest and bootstrap narrowest at every level, which is what the slides predict (<a class="cite" href="midterm_guide_slides/CI-68.jpg" data-s="CI-68">CI p.68</a>, <a class="cite" href="midterm_guide_slides/CI-70.jpg" data-s="CI-70">CI p.70</a>).</li>
+<li>Batching widens because the degrees of freedom fall from 15 to 3, so the critical value jumps from 2.131 to 3.182. The standard error also grew, from 0.0510 to 0.0683, because these four batch means happened to be spread out. The cost is precision, and you lose any statement about individual observations (<a class="cite" href="midterm_guide_slides/CI-68.jpg" data-s="CI-68">CI p.68</a>).</li>
+<li>The 99% batched interval goes down to −0.1581. Every value in the file is positive, so a negative mean is impossible. With only 4 batch means the method is too blunt at high confidence.</li>
+<li>Coverage is a long-run property of the procedure. About 95 of 100 repeated 95% intervals should contain \(\mu\) (<a class="cite" href="midterm_guide_slides/CI-33.jpg" data-s="CI-33">CI p.33</a>). One sample containing \(\mu\) is consistent with 95% coverage and also with 91%, so you'd have to repeat the draw many times and count.</li>
+</ol>
+<p>Final answer. Batching widest, bootstrap narrowest, all nine intervals contain 0.2083, and the 99% batched interval includes impossible negative values. This matches main.tex, where batching came out about twice as wide as raw at 95%, more than the slide's "about 50%" because this sample's batch means happened to be spread out.</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>"Your measurements are consecutive request latencies from one run. Which of the three responses should you use?" Batching, because it's the only one that handles correlated observations (<a class="cite" href="midterm_guide_slides/CI-70.jpg" data-s="CI-70">CI p.70</a>). "You want the median." Transform or bootstrap. And remember the transform trap, where back-transforming the endpoints of a log interval gives an interval for the median, not the mean (<a class="cite" href="midterm_guide_slides/CI-68.jpg" data-s="CI-68">CI p.68</a>).</p></details>
+</div>
+</div>
+
+<div data-scope="4" data-slides="HT-4 HT-5 HT-6 HT-7 HT-8 HT-9 HT-10 HT-11 HT-13 HT-14 HT-19" class="topic" id="homework-74"><h3>HW5. Hypothesis testing</h3>
+<p class="muted">A \(z\) test with known \(\sigma\), its p-value, the rejection threshold, and choosing \(H_0\) for a one-sided claim. This is the hypothesis-testing lecture (<a class="cite" href="midterm_guide_slides/HT-4.jpg" data-s="HT-4">HT p.4-15</a>).</p>
+
+<div class="q">
+<p><b>Problem 1.1.</b> Neural network training time has known \(\sigma = 0.8\) h. Test \(H_0\colon \mu = 2.5\) h at \(\alpha = 0.05\) when 36 systems average 2.74 h.</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>State the hypotheses. \(H_0\colon \mu = 2.5\) and \(H_1\colon \mu \ne 2.5\). Nothing in the question names a direction, so it's two-sided (<a class="cite" href="midterm_guide_slides/HT-5.jpg" data-s="HT-5">HT p.5</a>).</li>
+<li>\(\sigma\) is known, so use \(Z = (\bar x - \mu_0)/(\sigma/\sqrt{n})\) (<a class="cite" href="midterm_guide_slides/HT-8.jpg" data-s="HT-8">HT p.8</a>).</li>
+<li>Standard error. \(0.8/\sqrt{36} = 0.8/6 = 0.1333\).</li>
+<li>\(Z = (2.74 - 2.5)/0.1333 = 0.24/0.1333 = 1.80\).</li>
+<li>Reject if \(|Z| \gt z[0.025] = 1.960\). Since \(1.80 \lt 1.96\), don't reject.</li>
+<li>Same verdict from the interval. \(2.74 \pm 1.96(0.1333) = 2.74 \pm 0.261 = (2.479, 3.001)\), which contains 2.5 (<a class="cite" href="midterm_guide_slides/HT-8.jpg" data-s="HT-8">HT p.8-9</a>).</li>
+</ol>
+<p>Final answer. \(Z = 1.80\), fail to reject \(H_0\), matching main.tex.</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>Smaller numbers. \(n = 16\), \(\sigma = 0.8\), \(\bar x = 2.9\). Standard error \(0.8/4 = 0.2\), \(Z = 0.4/0.2 = 2.0 \gt 1.96\), so reject at 0.05. Or the slide's example, \(n = 50\), \(\bar x = 12.3\), \(\sigma = 0.5\), \(\mu_0 = 12.5\), which gives \(Z = -2.83\) and rejects (<a class="cite" href="midterm_guide_slides/HT-10.jpg" data-s="HT-10">HT p.10</a>).</p></details>
+</div>
+
+<div class="q">
+<p><b>Problem 1.2.</b> Find the p-value and restate the conclusion.</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>The p-value is the probability, if \(H_0\) is true, of a statistic at least as extreme as the one seen (<a class="cite" href="midterm_guide_slides/HT-13.jpg" data-s="HT-13">HT p.13</a>).</li>
+<li>Upper tail. \(P[Z \ge 1.80] = 1 - \Phi(1.80) = 1 - 0.9641 = 0.0359\).</li>
+<li>Two-sided, so count both tails. \(p = 2 \times 0.0359 = 0.0718\).</li>
+<li>\(p = 0.072 \gt 0.05\), so fail to reject, the same verdict as before. That has to happen, since the p-value and critical-value rules always agree (<a class="cite" href="midterm_guide_slides/HT-13.jpg" data-s="HT-13">HT p.13</a>).</li>
+</ol>
+<p>Final answer. \(p = 0.0718\), fail to reject, matching main.tex.</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>For \(Z = 2.0\), the two-sided \(p = 2(1 - 0.9772) = 0.0456\), which rejects at 0.05 but not at 0.01. Also expect a "true or false" on what a p-value means. "p = 0.07 means there's a 7% chance \(H_0\) is true" is false (<a class="cite" href="midterm_guide_slides/HT-14.jpg" data-s="HT-14">HT p.14</a>).</p></details>
+</div>
+
+<div class="q">
+<p><b>Problem 1.3.</b> At \(\alpha = 0.01\) with 36 systems, what's the smallest observed mean above 2.5 that rejects \(H_0\)?</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>Keep the test two-sided, so the critical value is \(z[0.005] = 2.576\).</li>
+<li>Reject when \((\bar x - 2.5)/0.1333 \gt 2.576\).</li>
+<li>Solve. \(\bar x \gt 2.5 + 2.576 \times 0.1333 = 2.5 + 0.343 = 2.843\).</li>
+<li>If \(H_1\) were the one-sided \(\mu \gt 2.5\), you'd use \(z[0.01] = 2.326\) and get \(2.5 + 0.310 = 2.810\) (<a class="cite" href="midterm_guide_slides/HT-5.jpg" data-s="HT-5">HT p.5</a>).</li>
+</ol>
+<p>Final answer. About 2.84 h (two-sided), or 2.81 h one-sided, matching main.tex.</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>"With \(\sigma = 0.8\), how many systems do you need to detect a 0.2 h difference with 80% power at \(\alpha = 0.05\)?" Using the rule of thumb \(n \approx 7.8(\sigma/\delta)^2\) (<a class="cite" href="midterm_guide_slides/HT-19.jpg" data-s="HT-19">HT p.19</a>), \(n \approx 7.8 \times 16 = 124.8\), so 125 systems.</p></details>
+</div>
+
+<div class="q">
+<p><b>Problem 2.1.</b> A group suspects the mean time to first sensor fault is below 740 h. What should \(H_0\) and \(H_1\) be?</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>To establish a claim, make its negation the null (<a class="cite" href="midterm_guide_slides/HT-4.jpg" data-s="HT-4">HT p.4</a>). The claim is "less than 740", so it goes in \(H_1\).</li>
+<li>\(H_0\colon \mu = 740\) (or \(\mu \ge 740\)) and \(H_1\colon \mu \lt 740\).</li>
+<li>It's one-sided, since only a mean below 740 supports the claim (<a class="cite" href="midterm_guide_slides/HT-5.jpg" data-s="HT-5">HT p.5</a>).</li>
+<li>The reason. Rejecting \(H_0\) is evidence for \(H_1\), but failing to reject is not evidence for \(H_0\) (<a class="cite" href="midterm_guide_slides/HT-4.jpg" data-s="HT-4">HT p.4</a>). If the claim sat in \(H_0\), a small noisy experiment would "support" it just by failing to reject.</li>
+</ol>
+<p>Final answer. \(H_0\colon \mu = 740\), \(H_1\colon \mu \lt 740\), one-sided, matching main.tex.</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>"A vendor claims its new disk has mean latency under 5 ms. Set up the test." \(H_0\colon \mu = 5\), \(H_1\colon \mu \lt 5\). The trap version picks the direction after seeing the data, which turns a one-sided test into a disguised two-sided test at \(\alpha = 0.10\) (<a class="cite" href="midterm_guide_slides/HT-5.jpg" data-s="HT-5">HT p.5</a>).</p></details>
+</div>
+
+<div class="q">
+<p><b>Problem 2.2.</b> 50 systems give mean 706 h and \(s = 96.1\) h. At \(\alpha = 0.01\), can you confirm \(\mu \lt 740\)?</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>\(\sigma\) is unknown but \(n = 50\) is large, so \(t\) and \(Z\) are nearly the same and \(s\) can stand in for \(\sigma\) (<a class="cite" href="midterm_guide_slides/HT-11.jpg" data-s="HT-11">HT p.11</a>).</li>
+<li>Standard error. \(96.1/\sqrt{50} = 96.1/7.071 = 13.59\).</li>
+<li>Statistic. \((706 - 740)/13.59 = -34/13.59 = -2.50\).</li>
+<li>One-sided at 0.01, reject if the statistic is below \(-z[0.01] = -2.326\). Since \(-2.50 \lt -2.326\), reject \(H_0\).</li>
+<li>p-value. \(P[Z \le -2.50] = 1 - 0.9938 = 0.0062 \lt 0.01\).</li>
+</ol>
+<p>Final answer. Reject \(H_0\), so the data confirm the mean is below 740 h at the 0.01 level, with \(p = 0.0062\). This matches main.tex. Using \(t\) with 49 degrees of freedom instead (critical value about 2.405) gives the same verdict.</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>Friendlier numbers. \(n = 36\), \(\bar x = 716\), \(s = 60\). Standard error \(60/6 = 10\), statistic \(-24/10 = -2.4\), which is below \(-2.326\), so reject at 0.01 (\(p = 1 - 0.9918 = 0.0082\)). With \(n = 9\) and the same mean and \(s\), you'd need \(t[0.01, 8]\) and the population roughly normal (<a class="cite" href="midterm_guide_slides/HT-11.jpg" data-s="HT-11">HT p.11</a>).</p></details>
+</div>
+</div>
+
+<div data-scope="5" data-slides="Comp-5 Comp-6 Comp-7 Comp-8 Comp-9 Comp-10 Comp-11 Comp-12 Comp-13 Comp-15 Comp-16 Comp-23" class="topic" id="homework-75"><h3>HW6. Comparing two alternatives</h3>
+<p class="muted">A paired interval for two routing algorithms and an unpaired Welch interval for two systems. This is the comparing-alternatives lecture (<a class="cite" href="midterm_guide_slides/Comp-5.jpg" data-s="Comp-5">Comp p.5-14</a>).</p>
+
+<div class="q">
+<p><b>Problem 1.</b> Two routing algorithms ran the same 9 workloads. Delays for A are 115.0, 89.3, 102.1, 94.3, 117.3, 120.3, 98.9, 87.6, 104.5 and for B are 125.3, 97.6, 85.3, 101.3, 112.7, 87.9, 104.2, 96.3, 113.2. Is A better than B with 95% confidence?</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>The same workload ran under both, so the design is paired. Analyse the 9 differences \(d_i = A_i - B_i\) (<a class="cite" href="midterm_guide_slides/Comp-5.jpg" data-s="Comp-5">Comp p.5</a>, <a class="cite" href="midterm_guide_slides/Comp-9.jpg" data-s="Comp-9">Comp p.9</a>). Lower delay is better, so a negative \(d\) favours A.</li>
+<li>Differences. −10.3, −8.3, 16.8, −7.0, 4.6, 32.4, −5.3, −8.7, −8.7.</li>
+<li>Sum. Positives give \(16.8 + 4.6 + 32.4 = 53.8\), negatives give \(10.3 + 8.3 + 7.0 + 5.3 + 8.7 + 8.7 = 48.3\), so \(\sum d = 5.5\) and \(\bar d = 5.5/9 = 0.611\).</li>
+<li>Squares. 106.09, 68.89, 282.24, 49.00, 21.16, 1049.76, 28.09, 75.69, 75.69, which sum to 1756.61.</li>
+<li>Variance by the one-pass form. \(s_d^2 = (1756.61 - 5.5^2/9)/8 = (1756.61 - 3.36)/8 = 219.16\), so \(s_d \approx 14.80\).</li>
+<li>Standard error. \(14.80/\sqrt{9} = 4.935\).</li>
+<li>Interval. \(\bar d \pm t[0.025, 8]\, s_d/\sqrt{n} = 0.611 \pm 2.306 \times 4.935 = 0.611 \pm 11.38 = (-10.77, 11.99)\) (<a class="cite" href="midterm_guide_slides/Comp-9.jpg" data-s="Comp-9">Comp p.9</a>).</li>
+<li>Zero is inside, so the data don't establish a difference.</li>
+</ol>
+<p>Final answer. (−10.77, 11.99), you can't say A is better at 95%, matching main.tex. Note that this isn't evidence the two are equal. With 9 workloads the interval is consistent with A being 10 units better or 12 units worse (<a class="cite" href="midterm_guide_slides/Comp-11.jpg" data-s="Comp-11">Comp p.11</a>).</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>A 4-pair version. Differences 2, 4, 3, 3 give \(\bar d = 3\), \(s_d^2 = (1 + 1 + 0 + 0)/3 = 0.667\), \(s_d = 0.816\), standard error \(0.408\), and with \(t[0.025, 3] = 3.182\) the 95% interval is \(3 \pm 1.30 = (1.70, 4.30)\), which excludes 0. A rank-based follow-up on the HW6 data. The sign test counts 3 positive differences out of 9. Under \(H_0\), \(S \sim \text{Binomial}(9, 1/2)\) and \(P[S \le 3] = (1 + 9 + 36 + 84)/512 = 130/512\), so the two-sided \(p = 260/512 \approx 0.51\) (<a class="cite" href="midterm_guide_slides/Comp-23.jpg" data-s="Comp-23">Comp p.23</a>). Same conclusion.</p></details>
+</div>
+
+<div class="q">
+<p><b>Problem 2.</b> CPU times for 30 transactions on System A and 24 on System B. Is A faster at 90% confidence?</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>Different transactions on each system and unequal sizes, so there's no pairing. Use Welch's unpaired interval by default (<a class="cite" href="midterm_guide_slides/Comp-12.jpg" data-s="Comp-12">Comp p.12-13</a>).</li>
+<li>Summary statistics, computed from the 54 values. A has \(n_A = 30\), \(\bar x_A = 1.8830\), \(s_A = 1.9017\). B has \(n_B = 24\), \(\bar x_B = 2.2623\), \(s_B = 2.9108\).</li>
+<li>Difference. \(\bar x_A - \bar x_B = -0.3793\).</li>
+<li>Pieces. \(s_A^2/n_A = 3.6166/30 = 0.12055\) and \(s_B^2/n_B = 8.4727/24 = 0.35303\).</li>
+<li>Standard deviation of the difference. \(s = \sqrt{0.12055 + 0.35303} = \sqrt{0.47358} = 0.6882\).</li>
+<li>Effective degrees of freedom. \(\nu = \frac{0.47358^2}{0.12055^2/29 + 0.35303^2/23} = \frac{0.22428}{0.000501 + 0.005419} = \frac{0.22428}{0.005920} = 37.89\) (<a class="cite" href="midterm_guide_slides/Comp-12.jpg" data-s="Comp-12">Comp p.12</a>).</li>
+<li>Round down to 37, so \(t[0.05, 37] = 1.687\). Half-width \(1.687 \times 0.6882 = 1.161\).</li>
+<li>Interval. \(-0.3793 \pm 1.161 = (-1.540, 0.782)\). Zero is inside.</li>
+</ol>
+<p>Final answer. (−1.540, 0.781), so A isn't shown to be faster at 90%, matching main.tex (which used \(\nu = 37.89\) directly, hence 0.781).</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>A small Welch problem. A is 2, 4, 6, 8 and B is 6, 8, 10, 12, 14. Means 5 and 10, variances \(20/3 = 6.67\) and \(40/4 = 10\). Pieces \(6.67/4 = 1.667\) and \(10/5 = 2\), so \(s = \sqrt{3.667} = 1.915\). \(\nu = 3.667^2/(1.667^2/3 + 2^2/4) = 13.44/(0.926 + 1) = 6.98\), round down to 6. With \(t[0.05, 6] = 1.943\), the 90% interval is \(-5 \pm 3.72 = (-8.72, -1.28)\), which excludes 0, so A is smaller. Never use \(n - 1\) of one sample as the degrees of freedom (<a class="cite" href="midterm_guide_slides/Comp-12.jpg" data-s="Comp-12">Comp p.12</a>). A related trap is reading overlap of two separate intervals as "no difference" when the interval on the difference excludes 0 (<a class="cite" href="midterm_guide_slides/Comp-15.jpg" data-s="Comp-15">Comp p.15-16</a>).</p></details>
+</div>
+</div>
+
+<div data-scope="6" data-slides="CI-17 CI-33 CI-66 CI-67 CI-69 CI-70 HT-4 HT-5 HT-14 HT-16 HT-17 HT-18 HT-19 HT-20 HT-21 HT-22 HT-23 HT-24 HT-25 HT-26 HT-27 HT-28 Comp-5 Comp-6 Comp-7 Comp-8 Comp-15 Comp-17 Comp-18 Comp-24 Comp-25" class="topic" id="homework-76"><h3>HW4 to HW6, Problem 3. Auditing a paper's statistics</h3>
+<p class="muted">Each of HW4, HW5 and HW6 ended with a paper from the "in the wild" handouts, read for its setup and results only. The exam can ask the same questions about an experiment it describes, so learn the questions and the checklist rather than your specific papers.</p>
+
+<div class="q">
+<p><b>HW4 Problem 3 (confidence intervals in the wild).</b> Locate the first interval, identify the estimator and formula, find \(n\) and whether it's justified, check the normality assumption and which of the three responses was used, check what counts as an independent unit, name one error source the interval doesn't cover, and check whether the authors claim something only a credible interval could support.</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>Your paper was Puffer (Yan et al., NSDI 2020). The headline estimator is the stall ratio, a ratio rather than a plain mean, so no lecture formula fits and the authors bootstrapped it (<a class="cite" href="midterm_guide_slides/CI-69.jpg" data-s="CI-69">CI p.69</a>).</li>
+<li>Stalls are heavily skewed (only about 4% of streams stalled), which is why the intervals stay wide even with years of data (<a class="cite" href="midterm_guide_slides/CI-67.jpg" data-s="CI-67">CI p.67</a>).</li>
+<li>Independence was your key finding. Randomization was by session, but the bootstrap resampled streams, and streams in one session share a connection. Resampling the wrong unit makes intervals too narrow (<a class="cite" href="midterm_guide_slides/CI-66.jpg" data-s="CI-66">CI p.66</a>, <a class="cite" href="midterm_guide_slides/HT-20.jpg" data-s="HT-20">HT p.20</a>).</li>
+<li>The interval excludes systematic error, such as serving everything from one Stanford server to self-selected viewers. A narrow interval is a claim about precision, not accuracy (<a class="cite" href="midterm_guide_slides/CI-17.jpg" data-s="CI-17">CI p.17</a>).</li>
+<li>The interpretation check is whether the paper says "95% probability the true value is in here". That needs a credible interval, while a confidence interval is a statement about the procedure (<a class="cite" href="midterm_guide_slides/CI-33.jpg" data-s="CI-33">CI p.33</a>).</li>
+</ol>
+<p>Final answer. Your answers are in homework4/main.tex. The general lesson is that the estimator, the unit of resampling and the excluded error sources matter as much as the formula.</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>"A paper reports mean latency 4.2 ms ± 0.1 ms (95% CI) from 10,000 requests in one run. What's wrong?" The requests aren't independent, so \(n\) isn't 10,000 and the interval is too narrow. The fix is several separate runs with one summary per run, or batching (<a class="cite" href="midterm_guide_slides/HT-20.jpg" data-s="HT-20">HT p.20-22</a>, <a class="cite" href="midterm_guide_slides/CI-70.jpg" data-s="CI-70">CI p.70</a>).</p></details>
+</div>
+
+<div class="q">
+<p><b>HW5 Problem 3 (hypothesis testing in the wild).</b> Write down \(H_0\) and \(H_1\) and whether one- or two-sided, identify the test and its assumptions and the unit, find \(\alpha\), \(n\) and any power analysis, count the tests and the family-wise error, check the stopping rule and interference, and rewrite the result as an effect size with an interval.</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>Your paper was Spang et al. (IMC 2021) on Netflix bitrate capping. It never stated \(H_0\), so you reconstructed it as "the total treatment effect is 0", two-sided because the paper uses two-sided 95% intervals (<a class="cite" href="midterm_guide_slides/HT-4.jpg" data-s="HT-4">HT p.4-5</a>).</li>
+<li>The unit measured is the video session, but they counted hour cells as n, because sessions in the same hour share congestion and aren't independent (<a class="cite" href="midterm_guide_slides/HT-20.jpg" data-s="HT-20">HT p.20</a>).</li>
+<li>No power analysis. You estimated the detectable effect as about \(2.8 \times \text{SE}\), from \(z[0.025] + z[0.20] = 1.96 + 0.84 = 2.8\) (<a class="cite" href="midterm_guide_slides/HT-19.jpg" data-s="HT-19">HT p.19</a>). With SE about 2.6 points, that's about 7%.</li>
+<li>Counting tests. 28 intervals with no correction give \(\text{FWER} = 1 - 0.95^{28} \approx 0.76\) (<a class="cite" href="midterm_guide_slides/HT-27.jpg" data-s="HT-27">HT p.27</a>).</li>
+<li>Interference is the paper's point. Capped and uncapped sessions shared a link, so the naive A/B test said −5% while capping nearly all traffic gave +12% (<a class="cite" href="midterm_guide_slides/HT-22.jpg" data-s="HT-22">HT p.22</a>).</li>
+</ol>
+<p>Final answer. Your answers are in homework5/main.tex. Rewritten, capping raised throughput about 12% (95% CI roughly 7% to 17%).</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>"A paper runs 10 independent tests at \(\alpha = 0.05\) with every \(H_0\) true. What's the chance of at least one false positive?" \(1 - 0.95^{10} \approx 0.40\) (<a class="cite" href="midterm_guide_slides/HT-27.jpg" data-s="HT-27">HT p.27</a>). With Bonferroni each test uses \(0.05/10 = 0.005\) (<a class="cite" href="midterm_guide_slides/HT-28.jpg" data-s="HT-28">HT p.28</a>). Or "the team checked the dashboard every morning and stopped when p dropped below 0.05". That's peeking, and with 20 looks the real Type I error is about 25% (<a class="cite" href="midterm_guide_slides/HT-23.jpg" data-s="HT-23">HT p.23-24</a>).</p></details>
+</div>
+
+<div class="q">
+<p><b>HW6 Problem 3 (comparing two systems in the wild).</b> Identify the design and unit, ask whether an unpaired design could have been paired, find the test with its degrees of freedom and exact \(p\), check normality, check what the error bars are and whether overlap was used, find the effect size, and rewrite the claim with what the experiment couldn't detect.</p>
+<details><summary>Step-by-step solution</summary>
+<ol class="steps">
+<li>Your paper was Miller (2024) on error bars for language-model evals. It's paired, with the question as the unit, since both models answer the same questions (<a class="cite" href="midterm_guide_slides/Comp-5.jpg" data-s="Comp-5">Comp p.5</a>).</li>
+<li>Pairing pays through the correlation term in \(\text{Var}(A - B) = \sigma_A^2 + \sigma_B^2 - 2\rho\sigma_A\sigma_B\) (<a class="cite" href="midterm_guide_slides/Comp-6.jpg" data-s="Comp-6">Comp p.6</a>). In Miller's example \(\rho = 0.5\) cuts the variance from 1/6 to 1/9, so the standard error drops by a factor \(\sqrt{(1/9)/(1/6)} = \sqrt{2/3} \approx 0.82\), about 18%.</li>
+<li>Scores are 0 or 1, so not normal. The large-sample CLT covers 5,000 questions, but for 164 questions a paired bootstrap or sign test is safer (<a class="cite" href="midterm_guide_slides/Comp-17.jpg" data-s="Comp-17">Comp p.17-18</a>).</li>
+<li>Single-model intervals overlapped on MATH even though the paired interval excluded 0, which is the overlap trap (<a class="cite" href="midterm_guide_slides/Comp-15.jpg" data-s="Comp-15">Comp p.15</a>).</li>
+<li>Undetectable effect. HumanEval's interval half-width was about 4.1 points, so SE ≈ 2.1 and the smallest reliably detectable difference is about \(2.8 \times 2.1 \approx 6\) points (<a class="cite" href="midterm_guide_slides/Comp-25.jpg" data-s="Comp-25">Comp p.25</a>).</li>
+</ol>
+<p>Final answer. Your answers are in homework6/main.tex. Rewritten, Galleon beat Dreadnought by 2.5 points on MATH (95% CI 1.2 to 3.8), and HumanEval couldn't detect differences under about 6 points.</p>
+</details>
+<details><summary>How this could show up on the exam</summary><p>"Two compilers were each run on 8 benchmarks, and the paper used an unpaired test. Comment." It should have been paired, since every benchmark ran under both. On the slide example the paired interval is (0.65, 3.00) s and the unpaired one is (−22.0, 25.7) s, the same data with the opposite conclusion (<a class="cite" href="midterm_guide_slides/Comp-7.jpg" data-s="Comp-7">Comp p.7-8</a>).</p></details>
+</div>
+
+<div class="q">
+<p><b>The general checklist.</b> Use this order on any experiment the exam describes.</p>
+<ol class="steps">
+<li><b>Claim and hypotheses.</b> What exactly is claimed, what are \(H_0\) and \(H_1\), and was the direction picked before the data (<a class="cite" href="midterm_guide_slides/HT-4.jpg" data-s="HT-4">HT p.4-5</a>)?</li>
+<li><b>Unit and \(n\).</b> What is independently replicated, a run, a benchmark, a user? Does \(n\) count units or measurements (<a class="cite" href="midterm_guide_slides/HT-20.jpg" data-s="HT-20">HT p.20</a>)?</li>
+<li><b>Design.</b> Paired or unpaired, and could it have been paired (<a class="cite" href="midterm_guide_slides/Comp-5.jpg" data-s="Comp-5">Comp p.5</a>)?</li>
+<li><b>Test and assumptions.</b> \(z\), \(t\), Welch, rank-based or bootstrap, and is the response plausibly normal or is it a ratio, a bounded score or a tail quantile (<a class="cite" href="midterm_guide_slides/Comp-17.jpg" data-s="Comp-17">Comp p.17-18</a>, <a class="cite" href="midterm_guide_slides/CI-67.jpg" data-s="CI-67">CI p.67</a>)?</li>
+<li><b>\(\alpha\), power and \(n\).</b> Was \(n\) planned from a power calculation? If not, what effect could it have detected (<a class="cite" href="midterm_guide_slides/HT-19.jpg" data-s="HT-19">HT p.19</a>)?</li>
+<li><b>Multiple tests and peeking.</b> How many comparisons, any correction, a fixed stopping rule (<a class="cite" href="midterm_guide_slides/HT-23.jpg" data-s="HT-23">HT p.23-28</a>)?</li>
+<li><b>Effect size with an interval.</b> Is the difference reported in real units with an interval, and is it big enough to matter (<a class="cite" href="midterm_guide_slides/HT-16.jpg" data-s="HT-16">HT p.16-18</a>, <a class="cite" href="midterm_guide_slides/Comp-24.jpg" data-s="Comp-24">Comp p.24</a>)?</li>
+<li><b>What the interval misses.</b> Systematic error, interference, a narrow setup (<a class="cite" href="midterm_guide_slides/CI-17.jpg" data-s="CI-17">CI p.17</a>, <a class="cite" href="midterm_guide_slides/HT-22.jpg" data-s="HT-22">HT p.22</a>).</li>
+<li><b>Reading of the result.</b> No "equivalent" from a non-significant result, no conclusions from overlapping error bars, no "95% probability" for a confidence interval (<a class="cite" href="midterm_guide_slides/HT-14.jpg" data-s="HT-14">HT p.14</a>, <a class="cite" href="midterm_guide_slides/Comp-15.jpg" data-s="Comp-15">Comp p.15</a>, <a class="cite" href="midterm_guide_slides/CI-33.jpg" data-s="CI-33">CI p.33</a>).</li>
+</ol>
+<details><summary>How this could show up on the exam</summary><p>"A paper says our scheduler cuts mean latency from 12.1 to 11.4 ms, p &lt; 0.05, from one run of each system with 10,000 requests, after trying three workloads and reporting the one that worked." Going down the list, the unit is the run, so \(n\) is 1 per system and the p-value means nothing. The workload choice is a hidden family of 3 tests. There's no interval on the 0.7 ms difference, and "p &lt; 0.05" throws away the exact \(p\). A fix would be several independent runs per system on all three workloads, paired by workload, with the difference and its interval reported for each.</p></details>
+</div>
 </div>
 </section>
 
