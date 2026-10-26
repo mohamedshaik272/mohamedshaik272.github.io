@@ -4117,6 +4117,13 @@ The min is the first sorted value, 12, and the max is the last, 60.</li>
 </div>
 </section>
 
+<style>
+blockquote.question{background:var(--know);border-left:4px solid var(--accent);border-radius:6px;margin:10px 0 12px;padding:8px 14px}
+blockquote.question p,blockquote.question ul,blockquote.question ol{margin:6px 0}
+blockquote.question pre{font-size:13px;overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:8px}
+blockquote.question table{margin:6px 0}
+.hq{display:block;color:var(--muted);font-style:italic;margin:2px 0 4px}
+</style>
 <section id="homework">
 <h2>Homework review</h2>
 <p class="slides">Slides: Metrics, Summ, CI, HT, Comp. Homework: HW0, HW2, HW3, HW4, HW5, HW6 (HW1 was a LaTeX warm-up and is skipped).</p>
@@ -4144,6 +4151,7 @@ The min is the first sorted value, 12, and the max is the last, 60.</li>
 
 <div class="q">
 <p><b>Problems 1 and 2.</b> Explain what independent events are. If A and B are independent, what is \(P[A \text{ and } B]\)?</p>
+<blockquote class="question"><b>Question.</b> 1. Explain what is meant by “independent events” in probability theory. 2. If A and B are independent events, what is P[A and B]?</blockquote>
 <div class="idea"><b>In plain words.</b> Two things are independent if one happening tells you nothing about the other. The question wants the definition and the fact that for independent events you just multiply the two probabilities.</div>
 <details><summary>Step-by-step solution</summary>
 <ol class="steps">
@@ -4161,6 +4169,7 @@ It says the chance both happen is the chance B happens times the chance A happen
 
 <div class="q">
 <p><b>Problem 3.</b> If \(E[X]\) and \(E[Y]\) are known and \(k, m\) are constants, what is \(E[kX + mY]\)?</p>
+<blockquote class="question"><b>Question.</b> If the expected values of two random variables X and Y are E[X] and E[Y], respectively, what is the expected value of \(k \cdot X + m \cdot Y\) (i.e., \(E[k \cdot X + m \cdot Y]\)), if k and m are constants?</blockquote>
 <div class="idea"><b>In plain words.</b> Expected value is a long-run average. Averages split over sums and let constants come out front, so you can work on each piece separately.</div>
 <details><summary>Step-by-step solution</summary>
 <ol class="steps">
@@ -4177,6 +4186,7 @@ This holds whether or not \(X\) and \(Y\) are independent.</li>
 
 <div class="q">
 <p><b>Problem 4.</b> A fair coin is tossed 4 times. Find the probability of all heads, of at least one tail, and of exactly 2 heads and 2 tails.</p>
+<blockquote class="question"><b>Question.</b> A fair coin is tossed 4 times.<ul><li>What is the probability that all four tosses will be “heads”?</li><li>What is the probability that at least one toss will give “tail”?</li><li>What is the probability that there will be exactly 2 heads and 2 tails?</li></ul>Show your work (i.e., explain how you obtained your answers).</blockquote>
 <div class="idea"><b>In plain words.</b> Four independent coin flips give 16 equally likely sequences. Each answer is "count the sequences you want, divide by 16". The "at least one" part is easiest through the opposite event.</div>
 <details><summary>Step-by-step solution</summary>
 <ol class="steps">
@@ -4196,6 +4206,7 @@ where \(n\) is the number of tosses, \(k\) the number of heads you want, \(p\) t
 
 <div class="q">
 <p><b>Problem 5.</b> Requests per millisecond \(X\) take values 0 to 7 with \(P_0 = 0.18\), \(P_1 = 0.22\), \(P_2 = 0.14\), \(P_4 = 0.18\), \(P_5 = 0.12\), \(P_6 = 0.10\), \(P_7 = 0.06\). Is this discrete or continuous? Why would \(P_7 = 0.09\) make it invalid? Find the mean, variance, standard deviation and coefficient of variation.</p>
+<blockquote class="question"><b>Question.</b> On a certain server, the number of client requests per millisecond varies between 0 and 7, with the following probabilities (\(P_i\) is the probability that there are \(i\) requests per millisecond). \(P_0 = 0.18\), \(P_1 = 0.22\), \(P_2 = 0.14\), \(P_4 = 0.18\), \(P_5 = 0.12\), \(P_6 = 0.10\), \(P_7 = 0.06\). (The handout lists no \(P_3\).)<p>What type of probability distribution is this (discrete or continuous)?</p><p>If \(P_7\) was 0.09, this would not be a valid probability distribution. Why?</p><p>Let X denote the random variable that shows the number of client requests per millisecond (i.e., \(P_i = P(X = i)\)). Find the mean, variance, standard deviation, coefficient of variation for X. Show your work.</p></blockquote>
 <div class="idea"><b>In plain words.</b> You're handed a probability table for a count. Check it's a valid distribution (probabilities add to 1), then compute the average count, how spread out it is, and how big that spread is compared to the average.</div>
 <details><summary>Step-by-step solution</summary>
 <ol class="steps">
@@ -4229,6 +4240,7 @@ where \(n\) is the number of tosses, \(k\) the number of heads you want, \(p\) t
 
 <div class="q">
 <p><b>Problem 6.</b> The 2019 PhD cohort. Spring has 10 students (6 BS only, 4 MS). Fall has 30 (17 BS only, 13 MS). Pick one student at random. Find \(P[\text{Fall}]\), \(P[\text{MS}]\), \(P[\text{Spring} \mid \text{MS}]\) and \(P[\text{Fall} \mid \text{BS}]\).</p>
+<blockquote class="question"><b>Question.</b> The 2019 PhD CS cohort has the following student profiles.<ul><li>Spring 2019 start term. 10 students started. 6 have only BS degree, 4 have MS degrees.</li><li>Fall 2019 start term. 30 students started. 17 have only BS degree, 13 have MS degrees.</li></ul>If a random student is selected from the 2019 cohort<ul><li>What is the probability that the student started in Fall 2019?</li><li>What is the probability that the student has MS degree?</li><li>If we randomly select a student and the student has MS degree, what is the probability that the student started in Spring’19?</li><li>If we randomly select a student and the student has only BS degree, what is the probability that the student started in Fall’19?</li></ul></blockquote>
 <div class="idea"><b>In plain words.</b> Plain probabilities are "count of the kind you want over all 40 students". The "given" ones (the bar \(\mid\)) mean you already know something about the student, so you only look inside that smaller group.</div>
 <details><summary>Step-by-step solution</summary>
 <p>First lay the counts out as a table, since every answer reads off it.</p>
@@ -4267,6 +4279,7 @@ the chance of A once you know B happened. Here A = started in Spring and B = hol
 
 <div class="q">
 <p><b>Problem 7.</b> \(X\) is uniform on [10, 90]. Find the mean and standard deviation, and \(P[X \lt 20]\), \(P[X \gt 60]\), \(P[20 \lt X \lt 30]\).</p>
+<blockquote class="question"><b>Question.</b> Assume a random variable has uniform distribution between 10 and 90. What is the mean? What is the standard deviation? What is the probability that the random variable will take a value<ul><li>Less than 20?</li><li>More than 60?</li><li>Between 20 and 30?</li></ul></blockquote>
 <div class="idea"><b>In plain words.</b> Uniform means every value between 10 and 90 is equally likely, so the density is a flat rectangle. Any probability is just the width of the stretch you care about divided by the full width 80.</div>
 <details><summary>Step-by-step solution</summary>
 <ol class="steps">
@@ -4292,6 +4305,7 @@ where \([c, d]\) is the stretch you want (clipped to stay inside \([a, b]\)).</l
 
 <div class="q">
 <p><b>Problem 8.</b> \(Z\) is standard normal. Find \(P[0.9 \lt Z \lt 1.3]\), \(P[Z \gt 0.9]\) and \(P[Z \gt -0.9]\).</p>
+<blockquote class="question"><b>Question.</b> Assume a random variable has standard normal distribution N(0,1). What is the probability that this random variable will take on a value<ul><li>Between 0.9 and 1.3</li><li>Greater than 0.9</li><li>Greater than −0.9</li></ul>Explain how you obtained your results.</blockquote>
 <div class="idea"><b>In plain words.</b> The normal table only gives the area to the left of a number, \(\Phi(z)\). Every other area is built from that by subtracting two table values, taking 1 minus a value, or using the fact that the bell curve is symmetric around 0.</div>
 <details><summary>Step-by-step solution</summary>
 <ol class="steps">
@@ -4315,6 +4329,7 @@ where \([c, d]\) is the stretch you want (clipped to stay inside \([a, b]\)).</l
 
 <div class="q">
 <p><b>Problem 9.</b> Daily August highs are normal with mean 85 and standard deviation 6. Using z-scores, find \(P[83 \lt X \lt 88]\), \(P[X \gt 90]\) and \(P[X \lt 82]\).</p>
+<blockquote class="question"><b>Question.</b> Over the course of several years, in a certain city, it is observed that the highest daily temperature in August, in Fahrenheit, is normally distributed with mean = 85 and standard deviation = 6. What is the probability that a randomly selected August day’s highest temperature is<ul><li>Between 83 and 88</li><li>Greater than 90</li><li>Smaller than 82</li></ul>Solve problem 9 using z scores. Show your work.</blockquote>
 <div class="idea"><b>In plain words.</b> The table only covers the standard normal (mean 0, standard deviation 1). So you first convert each temperature into "how many standard deviations from the mean" (its z-score), then do Problem 8 again.</div>
 <details><summary>Step-by-step solution</summary>
 <ol class="steps">
@@ -4345,6 +4360,7 @@ where \([c, d]\) is the stretch you want (clipped to stay inside \([a, b]\)).</l
 
 <div class="q">
 <p><b>The assignment.</b> Identify one or more metrics common in your area, evaluate them against the lecture's criteria, and propose extra criteria your area needs.</p>
+<blockquote class="question"><b>Question.</b> <ul><li>Identify one or more metrics commonly used in your area of research.<ul><li>If you haven’t yet decided on your research area, pick one of the areas you might be interested in.</li><li>Look at one or more seminal research articles in your area and see what metrics were used.</li></ul></li><li>Evaluate the metric(s) based on the criteria discussed in today’s lecture.<ul><li>What additional criteria might be useful in evaluating metrics in your research area?</li></ul></li><li>Submit a short typed report (at most 4 pages), formatted in LaTeX.</li></ul></blockquote>
 <div class="idea"><b>In plain words.</b> Take a number your field uses to say "this system is better" and stress-test it. For each of the six criteria, ask whether the number could go up while the thing you actually care about gets worse. Then say what the six criteria miss for your field.</div>
 <details><summary>Step-by-step solution</summary>
 <ol class="steps">
@@ -4368,6 +4384,7 @@ where \([c, d]\) is the stretch you want (clipped to stay inside \([a, b]\)).</l
 
 <div class="q">
 <p><b>Problem 1(a).</b> Five features are each built on top of the previous one and improve quality by 10%, 50%, 70%, 85% and 15%. What's the mean improvement per feature, and which mean?</p>
+<blockquote class="question"><b>Question.</b> For each of the following sub-questions, i) indicate what type of mean (arithmetic, geometric, or harmonic) should be used, with explanation, ii) compute the mean value based on your choice.<p>a. A researcher considers adding five new features to her optimization project to improve the quality of the solution. Each feature is implemented on top of the previous one (i.e., Feature 2 is implemented on top of Feature 1, Feature 3 is implemented on top of Feature 2, and so on). She observes the following quality improvements after adding each feature. Feature 1, 10%. Feature 2, 50%. Feature 3, 70%. Feature 4, 85%. Feature 5, 15%. What is the mean improvement per feature? What type of mean did you use and why?</p></blockquote>
 <div class="idea"><b>In plain words.</b> Each feature multiplies the quality you already had, so the gains compound like interest. You want the one constant growth factor that, applied five times, gives the same total. That's the geometric mean.</div>
 <details><summary>Step-by-step solution</summary>
 <ol class="steps">
@@ -4387,6 +4404,7 @@ where \(x_i\) is each growth ratio and \(n\) is how many there are (<a class="ci
 
 <div class="q">
 <p><b>Problem 1(b).</b> A compiler's running times on six similar programs are 150, 200, 120, 300, 270 and 180 ms. Mean, and which one?</p>
+<blockquote class="question"><b>Question.</b> For each of the following sub-questions, i) indicate what type of mean (arithmetic, geometric, or harmonic) should be used, with explanation, ii) compute the mean value based on your choice.<p>b. The running time of a new compiler is measured with source programs of comparable size. In 6 experiments, the running times are measured as 150 ms, 200 ms, 120 ms, 300 ms, 270 ms, and 180 ms. What is the mean execution time? What type of mean did you use and why?</p></blockquote>
 <div class="idea"><b>In plain words.</b> These are times. Times add up to a total time, so the right average is the ordinary one, total divided by count.</div>
 <details><summary>Step-by-step solution</summary>
 <ol class="steps">
@@ -4402,6 +4420,7 @@ where \(x_i\) is each growth ratio and \(n\) is how many there are (<a class="ci
 
 <div class="q">
 <p><b>Problem 1(c).</b> A database ran at 2500, 3500, 3700, 1800 and 2000 transactions per second in five experiments. Mean, and which one?</p>
+<blockquote class="question"><b>Question.</b> For each of the following sub-questions, i) indicate what type of mean (arithmetic, geometric, or harmonic) should be used, with explanation, ii) compute the mean value based on your choice.<p>c. A new database system is implemented and its performance is tested. In five different experiments, the following performance (speed) values are obtained. 2500 transactions per second, 3500 transactions per second, 3700 transactions per second, 1800 transactions per second, 2000 transactions per second. What is the mean performance (in terms of transactions per second)? What type of mean did you use and why?</p></blockquote>
 <div class="idea"><b>In plain words.</b> These are rates, "per second", so time is on the bottom. Averaging rates directly overweights the fast runs. Flip each rate into time per transaction, average those, and flip back. That's the harmonic mean.</div>
 <details><summary>Step-by-step solution</summary>
 <ol class="steps">
@@ -4421,6 +4440,7 @@ where \(x_i\) is each rate and \(n\) the number of runs (<a class="cite" href="m
 
 <div class="q">
 <p><b>Problem 2(a) and (b).</b> For normal.txt (1000 values) and not-normal.txt (870 values), find the mean and variance, then the median and the first, second and third quartiles.</p>
+<blockquote class="question"><b>Question.</b> Consider the two data sets, normal.txt and not-normal.txt. For each data set, do the following exercises.<p>a. Find the mean and variance of the sample data.<br>b. Find the median, first, second, and third quartile of the sample data.</p></blockquote>
 <div class="idea"><b>In plain words.</b> Summarize each file with its center (mean, median) and spread (variance, quartiles). The quartiles are the values one quarter, half and three quarters of the way up the sorted list, found with the course's plotting position \(f_i = (i - 0.5)/n\).</div>
 <details><summary>Step-by-step solution</summary>
 <ol class="steps">
@@ -4457,6 +4477,7 @@ If \(i\) is a whole number, the answer is \(x_{(i)}\). If not, interpolate betwe
 
 <div class="q">
 <p><b>Problem 2(c).</b> Plot a histogram of each data set.</p>
+<blockquote class="question"><b>Question.</b> Consider the two data sets, normal.txt and not-normal.txt. For each data set, do the following exercises.<p>c. Plot the sample data using a histogram.</p></blockquote>
 <div class="idea"><b>In plain words.</b> Chop the range into equal bins, count how many values land in each, and draw bars. The only number you have to compute is how many bins, and the course uses Sturges' rule for that.</div>
 <details><summary>Step-by-step solution</summary>
 <ol class="steps">
@@ -4477,6 +4498,7 @@ where \(k\) is the number of bins, \(n\) the number of values, and \(\lfloor \cd
 
 <div class="q">
 <p><b>Problem 2(d).</b> Draw the quantile plot of each data set.</p>
+<blockquote class="question"><b>Question.</b> Consider the two data sets, normal.txt and not-normal.txt. For each data set, do the following exercises.<p>d. Draw the quantile plot for the sample data.</p></blockquote>
 <div class="idea"><b>In plain words.</b> Sort the data and plot each value against its position fraction \(f_i\). It's the sorted data drawn as a curve, so steep parts mean values are spread out and flat parts mean values are bunched together.</div>
 <details><summary>Step-by-step solution</summary>
 <ol class="steps">
@@ -4492,6 +4514,7 @@ where \(k\) is the number of bins, \(n\) the number of values, and \(\lfloor \cd
 
 <div class="q">
 <p><b>Problem 2(e).</b> Compare each data set with the normal distribution using a Q-Q plot.</p>
+<blockquote class="question"><b>Question.</b> Consider the two data sets, normal.txt and not-normal.txt. For each data set, do the following exercises.<p>e. Compare the distribution of the sample data against the theoretical normal distribution using a Q-Q plot.</p><p>Note. You can use a program such as Microsoft Excel, OpenOffice Calc, Matlab or Mathematica for doing these exercises, or you can do them without the help of any program.</p></blockquote>
 <div class="idea"><b>In plain words.</b> For each sorted data value, work out what that value "should" be if the data were normal with the same mean and standard deviation. Plot real against expected. If the data are normal the points hug the 45° line, and the way they bend away tells you the shape.</div>
 <details><summary>Step-by-step solution</summary>
 <ol class="steps">
@@ -4518,6 +4541,7 @@ where \(k\) is the number of bins, \(n\) the number of values, and \(\lfloor \cd
 
 <div class="q">
 <p><b>Problem 1.1.</b> normal.txt is the whole population. Find the population mean and variance.</p>
+<blockquote class="question"><b>Question.</b> <b>Problem 1, normally distributed data.</b> Use the population data in the file normal.txt. This data is normally distributed.<p>1. Find the population mean and variance.</p></blockquote>
 <div class="idea"><b>In plain words.</b> Here the file isn't a sample, it's everything. So you compute the true mean \(\mu\) and true variance \(\sigma^2\), dividing by \(N\) instead of \(N - 1\). These are the targets the intervals in the next parts try to capture.</div>
 <details><summary>Step-by-step solution</summary>
 <ol class="steps">
@@ -4532,6 +4556,7 @@ where \(k\) is the number of bins, \(n\) the number of values, and \(\lfloor \cd
 
 <div class="q">
 <p><b>Problem 1.2.</b> Draw 50 values from normal.txt and give 90%, 95% and 99% intervals for the mean. Do they contain \(\mu\)?</p>
+<blockquote class="question"><b>Question.</b> <b>Problem 1, normally distributed data.</b> Use the population data in the file normal.txt. This data is normally distributed.<p>2. Generate a random sample of size 50, that is, randomly select 50 numbers from the population. Find 90%, 95% and 99% confidence intervals for the mean. Is the population mean within the intervals?</p></blockquote>
 <div class="idea"><b>In plain words.</b> From 50 random values, give a range that you're 90%, 95% or 99% confident contains the true mean. The range is "sample mean plus or minus a critical value times the standard error". With \(n \gt 30\) you use \(z\).</div>
 <details><summary>Step-by-step solution</summary>
 <ol class="steps">
@@ -4557,6 +4582,7 @@ where \(e\) is the allowed error as a fraction of the mean. Plug in \(z = 1.96\)
 
 <div class="q">
 <p><b>Problem 1.3.</b> Draw 16 values and give the three intervals again. Do they contain \(\mu\)?</p>
+<blockquote class="question"><b>Question.</b> <b>Problem 1, normally distributed data.</b> Use the population data in the file normal.txt. This data is normally distributed.<p>3. Generate a random sample of size 16. Find 90%, 95% and 99% confidence intervals for the mean. Is the population mean within the intervals?</p></blockquote>
 <div class="idea"><b>In plain words.</b> Same job with only 16 values. Now \(s\) is a shaky estimate of \(\sigma\), so you swap \(z\) for the bigger \(t\) value with \(n - 1\) degrees of freedom. That's allowed because the population is normal.</div>
 <details><summary>Step-by-step solution</summary>
 <ol class="steps">
@@ -4579,6 +4605,7 @@ where \(t_{[\alpha/2;\,n-1]}\) is the t value with upper-tail area \(\alpha/2\) 
 
 <div class="q">
 <p><b>Problem 1.4.</b> Compare the widths from 1.2 and 1.3 and explain the difference using both the sample size and the distribution.</p>
+<blockquote class="question"><b>Question.</b> <b>Problem 1, normally distributed data.</b> Use the population data in the file normal.txt. This data is normally distributed.<p>4. Compare the widths of the intervals from parts 2 and 3. Explain the difference in terms of both the sample size and the distribution you used for the critical value.</p></blockquote>
 <div class="idea"><b>In plain words.</b> The 16-value interval came out much wider. Width is "critical value times \(s/\sqrt{n}\)", so you can split the ratio of widths into three pieces, one from \(\sqrt{n}\), one from \(t\) versus \(z\), and one from the two samples having different \(s\).</div>
 <details><summary>Step-by-step solution</summary>
 <ol class="steps">
@@ -4599,6 +4626,7 @@ where \(t_{[\alpha/2;\,n-1]}\) is the t value with upper-tail area \(\alpha/2\) 
 
 <div class="q">
 <p><b>Problem 2.1 to 2.3.</b> Repeat 1.1 to 1.3 with not-normal.txt, samples of 50 and 16.</p>
+<blockquote class="question"><b>Question.</b> <b>Problem 2, data that is not normally distributed.</b> Repeat parts 1 to 3 of Problem 1 for the population data in the file not-normal.txt. This data is not normally distributed.<p class="muted">Reminder of parts 1 to 3. (1) Find the population mean and variance. (2) Random sample of size 50, 90%, 95% and 99% confidence intervals for the mean, is the population mean within them? (3) The same with a random sample of size 16.</p></blockquote>
 <div class="idea"><b>In plain words.</b> Same formulas, but now the population is skewed. At \(n = 50\) the central limit theorem still makes the sample mean close to normal, so \(z\) is fine. At \(n = 16\) the \(t\) interval is shakier, which sets up the fixes in 2a and 2b.</div>
 <details><summary>Step-by-step solution</summary>
 <ol class="steps">
@@ -4621,6 +4649,7 @@ where \(t_{[\alpha/2;\,n-1]}\) is the t value with upper-tail area \(\alpha/2\) 
 
 <div class="q">
 <p><b>Problem 2a.</b> Batch the 16 values into 4 batches of 4 in draw order, and build the intervals from the 4 batch means with \(t\) on 3 degrees of freedom.</p>
+<blockquote class="question"><b>Question.</b> Then, for the smaller sample only (size 16), compute the 90%, 95% and 99% intervals two further ways. These correspond to the first and third responses on the lecture slides for when the normality assumption fails.<p><b>2a. Batching.</b> Group your 16 observations into 4 batches of 4 and compute the mean of each batch. You now have 4 numbers. Compute the confidence intervals from those 4 batch means, using the t distribution with 3 degrees of freedom.</p><p>Batch the observations in the order you drew them. Do not sort the sample first, since sorting would group the small values together and the large values together, and the batch means would no longer be four draws from the same distribution.</p></blockquote>
 <div class="idea"><b>In plain words.</b> Averaging a few skewed values gives something closer to normal. So you average each group of 4, pretend those 4 averages are your data, and build an ordinary \(t\) interval from them. You pay for it with only 3 degrees of freedom.</div>
 <details><summary>Step-by-step solution</summary>
 <ol class="steps">
@@ -4646,6 +4675,20 @@ where \(t_{[\alpha/2;\,n-1]}\) is the t value with upper-tail area \(\alpha/2\) 
 
 <div class="q">
 <p><b>Problem 2b.</b> Bootstrap the 16 values with \(B = 10{,}000\) resamples and report the percentile intervals.</p>
+<blockquote class="question"><b>Question.</b> <b>2b. Bootstrap.</b> Resample your 16 observations with replacement, recompute the mean, and repeat many times. The percentiles of those resampled means give the interval. The script below does this. Save it next to not-normal.txt and run it with Python 3 (it needs only NumPy).<pre>import numpy as np
+
+data = np.loadtxt("not-normal.txt")
+rng = np.random.default_rng(12345)                    # record your seed
+
+sample = rng.choice(data, size=16, replace=False)
+
+B = 10000
+resamples = rng.choice(sample, size=(B, len(sample)), replace=True)
+means = resamples.mean(axis=1)
+for level in (0.90, 0.95, 0.99):
+    a = (1 - level) / 2
+    lo, hi = np.quantile(means, [a, 1 - a])
+    print(f"{level:.0%}: ({lo:.4f}, {hi:.4f})")</pre>If you are working in Excel or R instead, you may use any equivalent implementation, but report B, your seed, and the tool you used.</blockquote>
 <div class="idea"><b>In plain words.</b> Pretend your 16 values are the whole population. Draw fake samples of 16 from them with replacement, take each fake sample's mean, and see how much those means bounce around. The middle 95% of the bounce is your 95% interval.</div>
 <details><summary>Step-by-step solution</summary>
 <ol class="steps">
@@ -4663,6 +4706,7 @@ where \(t_{[\alpha/2;\,n-1]}\) is the t value with upper-tail area \(\alpha/2\) 
 
 <div class="q">
 <p><b>Problem 2c.</b> (1) Put raw, batched and bootstrap intervals in one table and say whether each contains \(\mu\). (2) Which is widest and narrowest, and did you expect that? (3) Why does batching widen the interval and what did it cost? (4) Does the 99% batched interval contain impossible values? (5) Why doesn't one sample's coverage tell you a method's coverage?</p>
+<blockquote class="question"><b>Question.</b> <b>2c. Compare.</b><ol><li>Put the three sets of intervals for the sample of 16 (raw, batched, and bootstrapped) into a single table, at all three confidence levels. State for each whether it contains the population mean.</li><li>Which method gives the widest intervals, and which the narrowest? Was that what you expected before computing them?</li><li>The batched interval is meant to correct for the data not being normal. Explain why the correction makes the interval wider rather than narrower, and say what you gave up to obtain it.</li><li>Look at your 99% batched interval. Does it contain any values that are impossible for this quantity? What does that tell you about the method at this sample size?</li><li>Your sample either did or did not contain the population mean. Explain why that single outcome does not, on its own, tell you whether a method’s coverage is correct.</li></ol></blockquote>
 <div class="idea"><b>In plain words.</b> Line up the three methods, measure each interval's width (upper minus lower), and explain the ranking. Then two conceptual points. Batching trades precision for safety, and "my interval caught \(\mu\)" is one coin flip, not proof the method works.</div>
 <details><summary>Step-by-step solution</summary>
 <ol class="steps">
@@ -4695,6 +4739,7 @@ where \(t_{[\alpha/2;\,n-1]}\) is the t value with upper-tail area \(\alpha/2\) 
 
 <div class="q">
 <p><b>Problem 1.1.</b> Neural network training time has known \(\sigma = 0.8\) h. Test \(H_0\colon \mu = 2.5\) h at \(\alpha = 0.05\) when 36 systems average 2.74 h.</p>
+<blockquote class="question"><b>Question.</b> <b>Problem 1, testing a mean with \(\sigma\) known.</b> For a certain class of a new neural network architecture, we would like to test the hypothesis that the mean training time \(\mu\) is equal to \(\mu_0 = 2.5\) hours. The standard deviation is known to be 0.8 hours.<p>1. Suppose we run experiments with 36 such systems and observe that the mean training time in our experiments is 2.74 hours. Test the null hypothesis \(H_0\colon \mu = 2.5\) hours at the level of significance \(\alpha = 0.05\). Do you reject \(H_0\) or fail to reject it?</p></blockquote>
 <div class="idea"><b>In plain words.</b> Someone claims the true mean is 2.5 h. You saw 2.74 h. Is that gap big enough that it's unlikely to be just noise? Measure the gap in standard errors (that's \(Z\)) and compare it with 1.96.</div>
 <details><summary>Step-by-step solution</summary>
 <ol class="steps">
@@ -4715,6 +4760,7 @@ where \(t_{[\alpha/2;\,n-1]}\) is the t value with upper-tail area \(\alpha/2\) 
 
 <div class="q">
 <p><b>Problem 1.2.</b> Find the p-value and restate the conclusion.</p>
+<blockquote class="question"><b>Question.</b> <b>Problem 1, testing a mean with \(\sigma\) known.</b> For a certain class of a new neural network architecture, we would like to test the hypothesis that the mean training time \(\mu\) is equal to \(\mu_0 = 2.5\) hours. The standard deviation is known to be 0.8 hours.<p>2. For the same experiments, find the p-value. Using the p-value you computed, restate the conclusion you reached in part 1.</p></blockquote>
 <div class="idea"><b>In plain words.</b> The p-value asks "if \(H_0\) were true, how often would I see a result at least this far from 2.5?" Small p means surprising under \(H_0\). Two-sided means you count both tails.</div>
 <details><summary>Step-by-step solution</summary>
 <ol class="steps">
@@ -4732,6 +4778,7 @@ where \(t_{[\alpha/2;\,n-1]}\) is the t value with upper-tail area \(\alpha/2\) 
 
 <div class="q">
 <p><b>Problem 1.3.</b> At \(\alpha = 0.01\) with 36 systems, what's the smallest observed mean above 2.5 that rejects \(H_0\)?</p>
+<blockquote class="question"><b>Question.</b> <b>Problem 1, testing a mean with \(\sigma\) known.</b> For a certain class of a new neural network architecture, we would like to test the hypothesis that the mean training time \(\mu\) is equal to \(\mu_0 = 2.5\) hours. The standard deviation is known to be 0.8 hours.<p>3. Suppose we reduce the level of significance to \(\alpha = 0.01\). If we run experiments on 36 systems to test the null hypothesis that \(\mu = 2.5\) hours, what is the minimum mean time (larger than 2.5 hours) we would need to observe to reject the hypothesis?</p></blockquote>
 <div class="idea"><b>In plain words.</b> Run the test backwards. Instead of computing \(Z\) from a mean, set \(Z\) equal to the critical value and solve for the mean. That gives the cutoff the observed mean has to beat.</div>
 <details><summary>Step-by-step solution</summary>
 <ol class="steps">
@@ -4751,6 +4798,7 @@ where \(\delta\) is the smallest difference you care about and \(\beta = 0.20\) 
 
 <div class="q">
 <p><b>Problem 2.1.</b> A group suspects the mean time to first sensor fault is below 740 h. What should \(H_0\) and \(H_1\) be?</p>
+<blockquote class="question"><b>Question.</b> <b>Problem 2, choosing the null hypothesis.</b> A research group develops an autonomous driving system. Because of the specific sensor model adopted, they suspect that the mean time \(\mu\) to experience the first fault in the sensor subsystem is <b>less than</b> \(\mu_0 = 740\) hours.<p>1. If we use hypothesis testing to confirm this assertion, what should be the null hypothesis \(H_0\)? What should be the alternative hypothesis \(H_1\)? Carefully justify your choices for \(H_0\) and \(H_1\).</p></blockquote>
 <div class="idea"><b>In plain words.</b> A test can only "prove" something by rejecting \(H_0\). So whatever you want to show goes in \(H_1\), and \(H_0\) is the boring opposite.</div>
 <details><summary>Step-by-step solution</summary>
 <ol class="steps">
@@ -4766,6 +4814,7 @@ where \(\delta\) is the smallest difference you care about and \(\beta = 0.20\) 
 
 <div class="q">
 <p><b>Problem 2.2.</b> 50 systems give mean 706 h and \(s = 96.1\) h. At \(\alpha = 0.01\), can you confirm \(\mu \lt 740\)?</p>
+<blockquote class="question"><b>Question.</b> <b>Problem 2, choosing the null hypothesis.</b> A research group develops an autonomous driving system. Because of the specific sensor model adopted, they suspect that the mean time \(\mu\) to experience the first fault in the sensor subsystem is <b>less than</b> \(\mu_0 = 740\) hours.<p>2. Suppose we test 50 such systems and obtain a mean time to first fault of 706 hours, with a standard deviation of 96.1 hours. If the target level of significance is \(\alpha = 0.01\), can we confirm, based on these experiments, the assertion that the mean time to first fault is less than 740 hours?</p></blockquote>
 <div class="idea"><b>In plain words.</b> 706 is below 740, but is it far enough below to rule out noise at the strict 1% level? Compute how many standard errors below 740 it is, and since it's one-sided, compare with \(-2.326\).</div>
 <details><summary>Step-by-step solution</summary>
 <ol class="steps">
@@ -4788,6 +4837,7 @@ where \(\delta\) is the smallest difference you care about and \(\beta = 0.20\) 
 
 <div class="q">
 <p><b>Problem 1.</b> Two routing algorithms ran the same 9 workloads. Delays for A are 115.0, 89.3, 102.1, 94.3, 117.3, 120.3, 98.9, 87.6, 104.5 and for B are 125.3, 97.6, 85.3, 101.3, 112.7, 87.9, 104.2, 96.3, 113.2. Is A better than B with 95% confidence?</p>
+<blockquote class="question"><b>Question.</b> Two packet routing algorithms are being evaluated. Experiments were conducted by injecting <b>the same workload</b> in the network and measuring the average end-to-end packet delay. The results of the various experiments are shown in Table 1. Can you say with 95% confidence that routing algorithm A is better than algorithm B?<table><tr><th>Experiment</th><th>A</th><th>B</th></tr><tr><td>1</td><td>115.0</td><td>125.3</td></tr><tr><td>2</td><td>89.3</td><td>97.6</td></tr><tr><td>3</td><td>102.1</td><td>85.3</td></tr><tr><td>4</td><td>94.3</td><td>101.3</td></tr><tr><td>5</td><td>117.3</td><td>112.7</td></tr><tr><td>6</td><td>120.3</td><td>87.9</td></tr><tr><td>7</td><td>98.9</td><td>104.2</td></tr><tr><td>8</td><td>87.6</td><td>96.3</td></tr><tr><td>9</td><td>104.5</td><td>113.2</td></tr></table></blockquote>
 <div class="idea"><b>In plain words.</b> Each workload ran under both algorithms, so compare them workload by workload. Take the 9 differences A minus B and build an ordinary \(t\) interval for their mean. If the interval includes 0, you can't say either one is better.</div>
 <details><summary>Step-by-step solution</summary>
 <ol class="steps">
@@ -4815,6 +4865,7 @@ where \(\delta\) is the smallest difference you care about and \(\beta = 0.20\) 
 
 <div class="q">
 <p><b>Problem 2.</b> CPU times for 30 transactions on System A and 24 on System B. Is A faster at 90% confidence?</p>
+<blockquote class="question"><b>Question.</b> Two computer systems are being evaluated for their performance. Data corresponding to the CPU time for running some transactions on System A and System B are reported in Table 2. Is System A faster than System B at the 90% confidence level?<p>Table 2, CPU time (sec). System A, 30 values. 1.3779, 0.0457, 1.4415, 1.3589, 0.6898, 0.7076, 3.9083, 2.2081, 0.9244, 6.5770, 4.4775, 4.6199, 0.1775, 0.3354, 0.3687, 0.0956, 1.2116, 3.8814, 0.2922, 3.0970, 3.2150, 1.2880, 3.0046, 6.8230, 0.7478, 0.3845, 0.2354, 0.9951, 0.3045, 1.6950.</p><p>System B, 24 values. 0.9584, 0.5726, 1.3915, 0.8075, 0.1344, 0.1277, 1.8032, 1.2048, 9.5949, 4.9107, 0.2834, 0.3841, 0.0812, 2.1362, 4.6396, 1.0127, 2.9434, 1.0844, 0.7860, 2.1536, 1.4948, 11.7346, 0.9436, 3.1111.</p></blockquote>
 <div class="idea"><b>In plain words.</b> Different transactions ran on each system, so you can't pair them up. Compare the two means with Welch's interval, which lets the two systems have different spreads and sizes. If the interval for \(\bar x_A - \bar x_B\) includes 0, you can't say A is faster.</div>
 <details><summary>Step-by-step solution</summary>
 <ol class="steps">
@@ -4860,17 +4911,18 @@ B, \(54.2944^2 = 2947.88\), \(/24 = 122.828\), \(317.698 - 122.828 = 194.870\), 
 
 <div class="q">
 <p><b>HW4 Problem 3 (confidence intervals in the wild).</b> Eight questions from Part III of the confidence-intervals in-practice handout.</p>
+<blockquote class="question"><b>Question.</b> Work through the homework exercise in Part III of the companion handout Confidence Intervals in the Wild. Read only the experimental setup and results sections of the paper you choose, and answer all eight questions there. Two or three sentences per question is enough. Give the full citation at the top.<p>Choosing the paper is part of the exercise. Pick the entry from Part I of the handout that sits closest to your own research area, or any peer-reviewed paper from that area, ideally one you would cite anyway, that reports experimental results with confidence intervals, error bars, or any other statement of uncertainty. Papers that report results with no statement of uncertainty are also fair game, and often more revealing.</p><p>If you do not have an area yet, or your area is not represented in Part I, use entry 4 (Georges, Buytaert and Eeckhout, Statistically Rigorous Java Performance Evaluation, OOPSLA 2007) or entry 13 (Henning et al., When Should I Run My Application Benchmark?, FSE Companion 2025) as your default. Entry 13 is the better choice if you want a reported experiment to audit. Entry 4 is the better choice if you want the mechanics of Problems 1 and 2 drilled on a real evaluation. Either is an acceptable answer to question 1, so say which you picked and why you defaulted to it.</p></blockquote>
 <div class="idea"><b>In plain words.</b> Take a real paper's error bars and ask whether they mean what they seem to. What's being estimated, from how many truly independent pieces, under what assumption, and what errors the bars can't see.</div>
 <details><summary>Step-by-step solution</summary>
 <ol class="steps">
-<li><b>(1) What you picked and why.</b> Puffer (Yan et al., NSDI 2020). Your research is low-latency video streaming, no Part I entry covered it, and the paper reports intervals throughout.</li>
-<li><b>(2) Locate the interval.</b> Section 3.4 says the 95% interval on a scheme's stall ratio is between ±13% and ±21% of the mean. The first figure with intervals is Figure 9.</li>
-<li><b>(3) Identify the estimator.</b> The headline is the stall ratio, total stall time over total watch time. That's a ratio, not a plain mean, so no lecture formula fits and they bootstrapped it (<a class="cite" href="midterm_guide_slides/CI-69.jpg" data-s="CI-69">CI p.69</a>). Average SSIM is a time-weighted mean with a \(z\) interval.</li>
-<li><b>(4) Find \(n\).</b> 637,189 streams from 54,612 IP addresses, about 2.5 to 2.8 stream-years per scheme. It's whatever eight months collected, not planned. The "2 stream-years to separate a 15% difference" claim isn't derived.</li>
-<li><b>(5) Check the assumption.</b> Stalls are heavily skewed (only about 4% of streams stalled), which is why the intervals stay wide (<a class="cite" href="midterm_guide_slides/CI-67.jpg" data-s="CI-67">CI p.67</a>). Bootstrap was the right response, but the number of resamples and the interval type aren't stated.</li>
-<li><b>(6) Check independence.</b> Randomization was by session, but the bootstrap resampled streams, and streams in one session share a connection. Resampling the wrong unit makes intervals too narrow (<a class="cite" href="midterm_guide_slides/CI-66.jpg" data-s="CI-66">CI p.66</a>, <a class="cite" href="midterm_guide_slides/HT-20.jpg" data-s="HT-20">HT p.20</a>). Resampling sessions would match the randomization.</li>
-<li><b>(7) What the interval excludes.</b> Systematic error, such as serving everything from one Stanford server to self-selected viewers. A narrow interval is a claim about precision, not accuracy (<a class="cite" href="midterm_guide_slides/CI-17.jpg" data-s="CI-17">CI p.17</a>).</li>
-<li><b>(8) Interpretation.</b> They never say "95% probability the true value is in here", which would need a credible interval, since a confidence interval is a statement about the procedure (<a class="cite" href="midterm_guide_slides/CI-33.jpg" data-s="CI-33">CI p.33</a>). They do compare schemes by overlapping error bars, which isn't a test.</li>
+<li><b>(1) What you picked and why.</b> <span class="hq">Handout question 1. Say what you picked and why. Give the full citation and one or two sentences on how the paper relates to your own work.</span> Puffer (Yan et al., NSDI 2020). Your research is low-latency video streaming, no Part I entry covered it, and the paper reports intervals throughout.</li>
+<li><b>(2) Locate the interval.</b> <span class="hq">Handout question 2. Locate the interval. Quote the sentence or identify the figure where an interval or error bar first appears. If you cannot find one, say so, that is a finding, and the rest of the questions still apply to whatever the paper reports in its place.</span> Section 3.4 says the 95% interval on a scheme's stall ratio is between ±13% and ±21% of the mean. The first figure with intervals is Figure 9.</li>
+<li><b>(3) Identify the estimator.</b> <span class="hq">Handout question 3. Identify the estimator. Mean, proportion, variance, quantile, geometric mean, or something else? Which formula from lecture applies, if any?</span> The headline is the stall ratio, total stall time over total watch time. That's a ratio, not a plain mean, so no lecture formula fits and they bootstrapped it (<a class="cite" href="midterm_guide_slides/CI-69.jpg" data-s="CI-69">CI p.69</a>). Average SSIM is a time-weighted mean with a \(z\) interval.</li>
+<li><b>(4) Find \(n\).</b> <span class="hq">Handout question 4. Find n. How many measurements? Is the choice justified, or asserted?</span> 637,189 streams from 54,612 IP addresses, about 2.5 to 2.8 stream-years per scheme. It's whatever eight months collected, not planned. The "2 stream-years to separate a 15% difference" claim isn't derived.</li>
+<li><b>(5) Check the assumption.</b> <span class="hq">Handout question 5. Check the assumption. What distributional assumption does their interval require, and do the authors address it? If the response is plainly not normal and n is small, which of the three responses on slide 68 did they use, and if none, which would you have used?</span> Stalls are heavily skewed (only about 4% of streams stalled), which is why the intervals stay wide (<a class="cite" href="midterm_guide_slides/CI-67.jpg" data-s="CI-67">CI p.67</a>). Bootstrap was the right response, but the number of resamples and the interval type aren't stated.</li>
+<li><b>(6) Check independence.</b> <span class="hq">Handout question 6. Check the independence. What is the unit being treated as an independent draw, a run, a request, a benchmark, a user, a seed? Are consecutive units plausibly independent, or is this an entry-15 situation dressed up as an entry-1 situation?</span> Randomization was by session, but the bootstrap resampled streams, and streams in one session share a connection. Resampling the wrong unit makes intervals too narrow (<a class="cite" href="midterm_guide_slides/CI-66.jpg" data-s="CI-66">CI p.66</a>, <a class="cite" href="midterm_guide_slides/HT-20.jpg" data-s="HT-20">HT p.20</a>). Resampling sessions would match the randomization.</li>
+<li><b>(7) What the interval excludes.</b> <span class="hq">Handout question 7. Check what the interval excludes. Name one source of error in their setup that the interval does not cover (pitfall 3).</span> Systematic error, such as serving everything from one Stanford server to self-selected viewers. A narrow interval is a claim about precision, not accuracy (<a class="cite" href="midterm_guide_slides/CI-17.jpg" data-s="CI-17">CI p.17</a>).</li>
+<li><b>(8) Interpretation.</b> <span class="hq">Handout question 8. Check the interpretation. Do the authors state a conclusion that requires a credible interval while computing a confidence interval?</span> They never say "95% probability the true value is in here", which would need a credible interval, since a confidence interval is a statement about the procedure (<a class="cite" href="midterm_guide_slides/CI-33.jpg" data-s="CI-33">CI p.33</a>). They do compare schemes by overlapping error bars, which isn't a test.</li>
 </ol>
 <p>Final answer. Your full answers are in homework4/main.tex. The general lesson is that the estimator, the unit of resampling and the excluded error sources matter as much as the formula.</p>
 </details>
@@ -4879,16 +4931,17 @@ B, \(54.2944^2 = 2947.88\), \(/24 = 122.828\), \(317.698 - 122.828 = 194.870\), 
 
 <div class="q">
 <p><b>HW5 Problem 3 (hypothesis testing in the wild).</b> Seven questions (numbered 0 to 6) from Part III of the hypothesis-testing in-practice handout.</p>
+<blockquote class="question"><b>Question.</b> Work through the homework exercise in Part III of the companion handout Hypothesis Testing in the Wild. Read only the experimental setup and results sections of the paper you choose, and answer all seven questions there. Two or three sentences per question is enough, except for the last question, which asks you to rewrite the paper’s key result as an effect size with a confidence interval. Give the full citation at the top.<p>Choosing the paper is part of the exercise. Pick the entry from Part I of the handout that sits closest to your own research area, or any peer-reviewed paper from that area, ideally one you would cite anyway, that makes a claim of the form “A is better than B”. Papers that make that claim with no test and no statement of uncertainty are also fair game, and often more revealing. Several entries (1, 3, 4, 7, 9 and 10) are about statistical practice rather than about one system beating another. If you pick one of them, apply the questions to the paper’s own central empirical claim, for entry 3, for example, that the share of machine translation papers using significance tests fell after 2016.</p><p>If you do not have an area yet, or your area is not represented in Part I, use one of two default papers. Computer architecture and compilers, Mytkowicz, Diwan, Hauswirth and Sweeney, Producing Wrong Data Without Doing Anything Obviously Wrong!, ASPLOS 2009 (a harmless setup detail changes the measured speedup of -O3 over -O2, and the paper ends with a single 95% confidence interval on that speedup). Computer vision, Musgrave, Belongie and Lim, A Metric Learning Reality Check, ECCV 2020 (re-runs 14 methods with 10 training runs each, reports means with 95% confidence intervals, and finds that years of claimed improvements shrink to almost nothing). Either is an acceptable answer to question 0, so say which you picked and why you defaulted to it.</p></blockquote>
 <div class="idea"><b>In plain words.</b> Take a paper that says "A beats B" and rebuild the test it should have run. What are \(H_0\) and \(H_1\), what's an independent unit, could it have detected a real effect, how many tests did it run, and what's the effect in real units with an interval.</div>
 <details><summary>Step-by-step solution</summary>
 <ol class="steps">
-<li><b>(0) What you picked and why.</b> Spang et al. (IMC 2021) on Netflix bitrate capping, entry 8, the closest to video streaming. Your own comparisons share a bottleneck link too.</li>
-<li><b>(1) \(H_0\) and \(H_1\).</b> Never stated, so you reconstructed them. \(H_0\), the total treatment effect is 0. \(H_1\), it isn't 0. Two-sided because the paper uses two-sided 95% intervals (<a class="cite" href="midterm_guide_slides/HT-4.jpg" data-s="HT-4">HT p.4-5</a>).</li>
-<li><b>(2) Test, assumptions and unit.</b> No named test. A regression on hourly means with Newey-West standard errors, which assumes the hourly means are roughly normal. The unit measured is the session, but they counted hour cells as \(n\), because sessions in the same hour share congestion and aren't independent (<a class="cite" href="midterm_guide_slides/HT-20.jpg" data-s="HT-20">HT p.20</a>).</li>
-<li><b>(3) \(\alpha\), \(n\) and power.</b> \(\alpha = 0.05\) implied by the 95% intervals. Only a few dozen hour cells per estimate and no power analysis. Detectable effect, formula \(\delta \approx (z[\alpha/2] + z[\beta]) \times \text{SE}\) (<a class="cite" href="midterm_guide_slides/HT-19.jpg" data-s="HT-19">HT p.19</a>). Plug in \((1.96 + 0.84) \times 2.6\). Arithmetic, \(1.96 + 0.84 = 2.8\), and \(2.8 \times 2.6 = 7.28\). So about 7%.</li>
-<li><b>(4) Count the tests.</b> 28 intervals (7 metrics times 4 estimates) with no correction. Formula \(\text{FWER} = 1 - (1 - \alpha)^m\) (<a class="cite" href="midterm_guide_slides/HT-27.jpg" data-s="HT-27">HT p.27</a>). Plug in \(1 - 0.95^{28}\). Arithmetic by repeated squaring, \(0.95^2 = 0.9025\), \(0.95^4 = 0.9025^2 = 0.8145\), \(0.95^8 = 0.8145^2 = 0.6634\), \(0.95^{16} = 0.6634^2 = 0.4401\). Then \(0.95^{28} = 0.95^{16} \times 0.95^{8} \times 0.95^{4} = 0.4401 \times 0.6634 \times 0.8145 = 0.238\). So \(\text{FWER} = 1 - 0.238 = 0.76\). False discovery rate control fits the claim better (<a class="cite" href="midterm_guide_slides/HT-28.jpg" data-s="HT-28">HT p.28</a>).</li>
-<li><b>(5) Stopping rule and interference.</b> Five days, but not said to be fixed in advance. Interference is the paper's point. Capped and uncapped sessions shared a link, so the naive A/B test said −5% while capping nearly all traffic gave +12% (<a class="cite" href="midterm_guide_slides/HT-22.jpg" data-s="HT-22">HT p.22</a>).</li>
-<li><b>(6) Rewrite the result.</b> Capping nearly all traffic raised throughput by about 12% (95% CI roughly 7% to 17%), while the naive test estimated −5% (95% CI about −8% to −2%). The claim gets stronger, since the intervals don't overlap, but the true gain could be as small as 7%.</li>
+<li><b>(0) What you picked and why.</b> <span class="hq">Handout question 0. Say what you picked and why. Give the full citation and one or two sentences on how the paper relates to your own work.</span> Spang et al. (IMC 2021) on Netflix bitrate capping, entry 8, the closest to video streaming. Your own comparisons share a bottleneck link too.</li>
+<li><b>(1) \(H_0\) and \(H_1\).</b> <span class="hq">Handout question 1. Write down H0 and H1. For the paper’s central claim, state the null and alternative hypotheses, and whether the test is one- or two-sided. If the paper never states them, reconstruct them, and say so.</span> Never stated, so you reconstructed them. \(H_0\), the total treatment effect is 0. \(H_1\), it isn't 0. Two-sided because the paper uses two-sided 95% intervals (<a class="cite" href="midterm_guide_slides/HT-4.jpg" data-s="HT-4">HT p.4-5</a>).</li>
+<li><b>(2) Test, assumptions and unit.</b> <span class="hq">Handout question 2. Identify the test and its assumptions. Which test was used, if any? What does it assume (normality, independence, pairing, equal variances)? Do the authors check or address those assumptions? What is the experimental unit, and does n count units or measurements (slide 20)?</span> No named test. A regression on hourly means with Newey-West standard errors, which assumes the hourly means are roughly normal. The unit measured is the session, but they counted hour cells as \(n\), because sessions in the same hour share congestion and aren't independent (<a class="cite" href="midterm_guide_slides/HT-20.jpg" data-s="HT-20">HT p.20</a>).</li>
+<li><b>(3) \(\alpha\), \(n\) and power.</b> <span class="hq">Handout question 3. Find α, n, and β. What significance level? How many observations, and what is an observation (a run, a seed, a benchmark, a user)? Is there any power analysis? If not, estimate roughly what effect size the experiment could have detected.</span> \(\alpha = 0.05\) implied by the 95% intervals. Only a few dozen hour cells per estimate and no power analysis. Detectable effect, formula \(\delta \approx (z[\alpha/2] + z[\beta]) \times \text{SE}\) (<a class="cite" href="midterm_guide_slides/HT-19.jpg" data-s="HT-19">HT p.19</a>). Plug in \((1.96 + 0.84) \times 2.6\). Arithmetic, \(1.96 + 0.84 = 2.8\), and \(2.8 \times 2.6 = 7.28\). So about 7%.</li>
+<li><b>(4) Count the tests.</b> <span class="hq">Handout question 4. Count the tests. How many comparisons does the paper make in total? What is the family-wise error rate if none were corrected (slide 27)? Is there a correction, and does the choice between family-wise error and false discovery rate control fit the paper’s claims (slide 28)?</span> 28 intervals (7 metrics times 4 estimates) with no correction. Formula \(\text{FWER} = 1 - (1 - \alpha)^m\) (<a class="cite" href="midterm_guide_slides/HT-27.jpg" data-s="HT-27">HT p.27</a>). Plug in \(1 - 0.95^{28}\). Arithmetic by repeated squaring, \(0.95^2 = 0.9025\), \(0.95^4 = 0.9025^2 = 0.8145\), \(0.95^8 = 0.8145^2 = 0.6634\), \(0.95^{16} = 0.6634^2 = 0.4401\). Then \(0.95^{28} = 0.95^{16} \times 0.95^{8} \times 0.95^{4} = 0.4401 \times 0.6634 \times 0.8145 = 0.238\). So \(\text{FWER} = 1 - 0.238 = 0.76\). False discovery rate control fits the claim better (<a class="cite" href="midterm_guide_slides/HT-28.jpg" data-s="HT-28">HT p.28</a>).</li>
+<li><b>(5) Stopping rule and interference.</b> <span class="hq">Handout question 5. Check the stopping rule and the estimand. Was n fixed in advance, or could the authors have kept running until the result was significant (slides 23 to 25)? Could units in the experiment have interfered with each other (slide 22)? Does the test measure the quantity the paper’s claim is about (pitfall 7)?</span> Five days, but not said to be fixed in advance. Interference is the paper's point. Capped and uncapped sessions shared a link, so the naive A/B test said −5% while capping nearly all traffic gave +12% (<a class="cite" href="midterm_guide_slides/HT-22.jpg" data-s="HT-22">HT p.22</a>).</li>
+<li><b>(6) Rewrite the result.</b> <span class="hq">Handout question 6. Rewrite the result. Rewrite the paper’s key sentence as an effect size with a confidence interval, as slides 16 and 18 recommend. Is the effect large enough to matter? Does the claim become stronger, weaker, or different?</span> Capping nearly all traffic raised throughput by about 12% (95% CI roughly 7% to 17%), while the naive test estimated −5% (95% CI about −8% to −2%). The claim gets stronger, since the intervals don't overlap, but the true gain could be as small as 7%.</li>
 </ol>
 <p>Final answer. Your full answers are in homework5/main.tex.</p>
 </details>
@@ -4897,17 +4950,18 @@ B, \(54.2944^2 = 2947.88\), \(/24 = 122.828\), \(317.698 - 122.828 = 194.870\), 
 
 <div class="q">
 <p><b>HW6 Problem 3 (comparing two systems in the wild).</b> Eight questions from Part III of the comparing-alternatives in-practice handout.</p>
+<blockquote class="question"><b>Question.</b> Work through the homework exercise in Part III of the companion handout Comparing Two Systems in the Wild. Read only the experimental setup and results sections of the paper you choose, and answer all eight questions there. Two or three sentences per question is enough, except for the last question, which asks you to rewrite the paper’s headline comparison as an effect with a confidence interval and to say what the experiment could not have detected. Give the full citation at the top.<p>Choosing the paper is part of the exercise. Pick the entry from Part I of the handout that sits closest to your own research area, or any peer-reviewed paper from that area, ideally one you would cite anyway, that compares exactly two systems, models, algorithms or configurations. “Ours” versus a baseline is ideal. Papers that make that comparison with no test and no statement of uncertainty are also fair game, and often more revealing. Several entries (4, 5, 9, 10 and 11) are guides to, or surveys of, statistical practice rather than a comparison of two systems. If you pick one of them, apply the questions to the paper’s own central empirical claim, for entry 9, for example, that most published researchers could not position two error bars so that the difference was just significant.</p><p>If you do not have an area yet, or your area is not represented in Part I, use one of three default papers, each comparing two alternatives with a test from the lecture (unpaired t, paired t, or rank-based), and each turning on what counts as an independent observation. Systems and compilers, Curtsinger and Berger, STABILIZER, ASPLOS 2013 (an unpaired two-sample t test of -O3 against -O2 on each SPEC CPU2006 benchmark, check which version of the t test it names and whether its fallback test for non-normal benchmarks matches its design). Machine learning, Dietterich, Approximate Statistical Tests for Comparing Supervised Classification Learning Algorithms, Neural Computation 1998 (the paired t test on error rates over the same splits or folds, ask what the unit is and why differences on overlapping training sets aren’t independent). Software security and testing, Klees et al., Evaluating Fuzz Testing, CCS 2018 (AFLFast against AFL with at least 30 trials of 24 hours, compared with the Mann-Whitney U test, ask why a rank test suits this response, what the unit is, and whether trials on each target could have been paired). Any of the three is an acceptable answer to question 1, so say which you picked and why you defaulted to it.</p></blockquote>
 <div class="idea"><b>In plain words.</b> Take a paper comparing two systems and check the design. Was it paired, which test, does the response fit that test's assumptions, are error bars being read correctly, and how big a difference could the experiment actually have seen.</div>
 <details><summary>Step-by-step solution</summary>
 <ol class="steps">
-<li><b>(1) What you picked and why.</b> Miller (2024), "Adding Error Bars to Evals", entry 3. Your research compares vision-language models on the same benchmark questions.</li>
-<li><b>(2) Design and unit.</b> Paired, with the question as the unit (the cluster for MGSM), since both models answer the same questions (<a class="cite" href="midterm_guide_slides/Comp-5.jpg" data-s="Comp-5">Comp p.5</a>). 5,000 MATH, 164 HumanEval and 2,500 MGSM questions.</li>
-<li><b>(3) Could it be paired, and what does pairing buy?</b> It already is. Formula \(\text{Var}(A - B) = \sigma_A^2 + \sigma_B^2 - 2\rho\sigma_A\sigma_B\) (<a class="cite" href="midterm_guide_slides/Comp-6.jpg" data-s="Comp-6">Comp p.6</a>). In Miller's example \(\rho = 0.5\) cuts the variance from 1/6 to 1/9. Standard error scales with the square root, so the ratio is \(\sqrt{(1/9)/(1/6)} = \sqrt{6/9} = \sqrt{2/3} \approx 0.82\). That's \(1 - 0.82 = 0.18\), about 18% smaller.</li>
-<li><b>(4) The comparison.</b> A paired \(z\) test on per-question differences, interval \(= \bar d \pm 1.96\,\text{SE}\). No degrees of freedom or p-values, significance means the interval excludes 0.</li>
-<li><b>(5) Assumptions.</b> Scores are 0 or 1, so not normal. The CLT covers 5,000 questions, but for 164 a paired bootstrap or sign test is safer (<a class="cite" href="midterm_guide_slides/Comp-17.jpg" data-s="Comp-17">Comp p.17-18</a>).</li>
-<li><b>(6) The figure.</b> No figures, only standard errors in tables, and no conclusion from overlap. Single-model intervals on MATH overlap even though the paired interval excludes 0, which is the overlap trap (<a class="cite" href="midterm_guide_slides/Comp-15.jpg" data-s="Comp-15">Comp p.15</a>).</li>
-<li><b>(7) Effect size.</b> Galleon beats Dreadnought by 2.5 points on MATH, 95% CI (1.2, 3.8). Whether that matters is left to whoever runs the eval.</li>
-<li><b>(8) Rewrite and what it couldn't detect.</b> HumanEval's interval half-width was about 4.1 points. Formula \(\text{SE} = \text{half-width}/1.96\). Plug in \(4.1/1.96 = 2.09 \approx 2.1\). Smallest reliably detectable difference \(\approx 2.8 \times \text{SE}\) (<a class="cite" href="midterm_guide_slides/Comp-25.jpg" data-s="Comp-25">Comp p.25</a>, same 2.8 as above). Plug in \(2.8 \times 2.1 = 5.9\), about 6 points. Rewritten, Galleon scored 2.5 points higher on MATH (95% CI 1.2 to 3.8). HumanEval (−3.1, CI −7.2 to 1.0) and MGSM (−2.7, CI −6.1 to 0.7) are consistent with no difference, and HumanEval couldn't detect differences under about 6 points.</li>
+<li><b>(1) What you picked and why.</b> <span class="hq">Handout question 1. Say what you picked and why. Full citation and a sentence on its relation to your work.</span> Miller (2024), "Adding Error Bars to Evals", entry 3. Your research compares vision-language models on the same benchmark questions.</li>
+<li><b>(2) Design and unit.</b> <span class="hq">Handout question 2. Identify the design. Paired or unpaired? What is the unit, a benchmark, a test-set example, a run, a user? How many units per system?</span> Paired, with the question as the unit (the cluster for MGSM), since both models answer the same questions (<a class="cite" href="midterm_guide_slides/Comp-5.jpg" data-s="Comp-5">Comp p.5</a>). 5,000 MATH, 164 HumanEval and 2,500 MGSM questions.</li>
+<li><b>(3) Could it be paired, and what does pairing buy?</b> <span class="hq">Handout question 3. If it is unpaired, could it have been paired? If yes, estimate what that would have bought. How much of the observed variance is between units rather than between systems?</span> It already is. Formula \(\text{Var}(A - B) = \sigma_A^2 + \sigma_B^2 - 2\rho\sigma_A\sigma_B\) (<a class="cite" href="midterm_guide_slides/Comp-6.jpg" data-s="Comp-6">Comp p.6</a>). In Miller's example \(\rho = 0.5\) cuts the variance from 1/6 to 1/9. Standard error scales with the square root, so the ratio is \(\sqrt{(1/9)/(1/6)} = \sqrt{6/9} = \sqrt{2/3} \approx 0.82\). That's \(1 - 0.82 = 0.18\), about 18% smaller.</li>
+<li><b>(4) The comparison.</b> <span class="hq">Handout question 4. Find the comparison. Which test, if any? Is the statistic reported with its degrees of freedom and an exact p? If there is no test, what is offered instead?</span> A paired \(z\) test on per-question differences, interval \(= \bar d \pm 1.96\,\text{SE}\). No degrees of freedom or p-values, significance means the interval excludes 0.</li>
+<li><b>(5) Assumptions.</b> <span class="hq">Handout question 5. Check the assumptions. Is the response plausibly normal, or is it a bounded score, a ratio, or a quantile? Would a rank-based test or a bootstrap have been more defensible (slides 17 to 18)?</span> Scores are 0 or 1, so not normal. The CLT covers 5,000 questions, but for 164 a paired bootstrap or sign test is safer (<a class="cite" href="midterm_guide_slides/Comp-17.jpg" data-s="Comp-17">Comp p.17-18</a>).</li>
+<li><b>(6) The figure.</b> <span class="hq">Handout question 6. Look at the figure. If there are error bars, does the caption say what they are? Is any conclusion drawn from their overlap (slides 15 to 16)?</span> No figures, only standard errors in tables, and no conclusion from overlap. Single-model intervals on MATH overlap even though the paired interval excludes 0, which is the overlap trap (<a class="cite" href="midterm_guide_slides/Comp-15.jpg" data-s="Comp-15">Comp p.15</a>).</li>
+<li><b>(7) Effect size.</b> <span class="hq">Handout question 7. Find the effect size. What is the difference, in the units of the response, and does the paper give an interval for it? Is the difference large enough to matter, and who decides?</span> Galleon beats Dreadnought by 2.5 points on MATH, 95% CI (1.2, 3.8). Whether that matters is left to whoever runs the eval.</li>
+<li><b>(8) Rewrite and what it couldn't detect.</b> <span class="hq">Handout question 8. Rewrite the claim. Restate the paper’s headline comparison as an effect with an interval, and add the sentence about what the experiment could not have detected.</span> HumanEval's interval half-width was about 4.1 points. Formula \(\text{SE} = \text{half-width}/1.96\). Plug in \(4.1/1.96 = 2.09 \approx 2.1\). Smallest reliably detectable difference \(\approx 2.8 \times \text{SE}\) (<a class="cite" href="midterm_guide_slides/Comp-25.jpg" data-s="Comp-25">Comp p.25</a>, same 2.8 as above). Plug in \(2.8 \times 2.1 = 5.9\), about 6 points. Rewritten, Galleon scored 2.5 points higher on MATH (95% CI 1.2 to 3.8). HumanEval (−3.1, CI −7.2 to 1.0) and MGSM (−2.7, CI −6.1 to 0.7) are consistent with no difference, and HumanEval couldn't detect differences under about 6 points.</li>
 </ol>
 <p>Final answer. Your full answers are in homework6/main.tex.</p>
 </details>
